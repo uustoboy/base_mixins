@@ -1,0 +1,119 @@
+@charset "UTF-8";
+//关于文本的混合宏(mixin);
+
+//超出一行....;
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//多行显示;
+@mixin ellipsis-row( $row:2 ){
+  @include css3(display,box,false,true);
+  @include css3(line-clamp,$row);
+  @include css3(box-orient,vertical);
+  overflow : hidden;
+  text-overflow: ellipsis;
+}
+
+// 强制折行;
+@mixin break-word{
+  word-break:break-all; /*支持IE，chrome，FF不支持*/
+　word-wrap:break-word; /*支持IE，chrome，FF*/
+}
+
+//断行;
+@mixin word-wrap($wrap: break-word) {
+  overflow-wrap: $wrap;
+  word-wrap: $wrap;
+
+  @if $wrap == break-word {
+    word-break: break-all;
+  } @else {
+    word-break: $wrap;
+  }
+}
+
+//隐藏文字;
+@mixin hide-text(){
+  @include indent(101%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+//设置text-indent;
+@mixin indent( $value:2em ){
+  text-indent:$value;
+}
+
+//显示图标;
+@mixin replace-text($image,$x:50%,$y:50%){
+  @include hide-text();
+  background-image:$image;
+  background-repeat:no-repeat;
+  background-position:$x $y;
+}
+  
+//文字居左对齐;
+@mixin tal{ 
+  @include text-align(left);
+}
+
+//文字居右对齐;
+@mixin tar{ 
+  @include text-align(right);
+}
+
+//文字居中对齐;
+@mixin tac{ 
+  @include text-align(center);
+}
+
+//设置文字对齐方式;
+@mixin text-align( $direction:left ){
+  text-align: $direction;
+}
+
+//元素顶端对齐方式;
+@mixin vit{
+  @include vertical-align(top);
+}
+
+//元素中部对齐方式;
+@mixin vic{
+  @include vertical-align(middle);
+}
+
+//元素最低对齐方式;
+@mixin vib{
+  @include vertical-align(bottom);
+}
+
+//元素垂直对齐方式;
+@mixin vertical-align( $direction:middle ){
+  //baseline    :   默认。元素放置在父元素的基线上;
+  //sub         :   垂直对齐文本的下标;
+  //super       :   垂直对齐文本的上标;
+  //top         :   把元素的顶端与行中最高元素的顶端对齐;
+  //text-top    :   把元素的顶端与父元素字体的顶端对齐;
+  //middle      :   把此元素放置在父元素的中部;
+  //bottom      :   把元素的顶端与行中最低的元素的顶端对齐;
+  //text-bottom :   把元素的底端与父元素字体的底端对齐;
+  //%           :   使用 "line-height" 属性的百分比值来排列此元素。允许使用负值;
+  //inherit     :   规定应该从父元素继承 vertical-align 属性的值;
+  vertical-align: $direction;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

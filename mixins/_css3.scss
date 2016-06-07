@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+// css3属性的混合宏(mixin);
+
+$prefixForWebkit:             true !default; //谷歌前缀:o前缀   
+$prefixForMozilla:            true !default; //火狐前缀:moz前缀
+$prefixForMicrosoft:          true !default; //IE前缀:ms前缀
+$prefixForOpera:              true !default; //opera前缀:o前缀
+$prefixNo:                    true !default; //默认;
+
+//////////////////////////////////////////////////////
+// css3前缀:                                        //  
+//  $style     :  样式名 ;                          //
+//  $frames    :  样式内容;                         //
+//  $before    :  是否添加样式前缀,默认开启;        //
+//  $after     :  是否添加样式后缀,默认关闭;        //
+//  $prefixes  :  设置添加前缀的种类,默认四个;      //
+//////////////////////////////////////////////////////
+@mixin css3( $style,$frames,$before:true,$after:false,$prefixes: webkit moz ms o ){
+  
+    @each $prefix in $prefixes {
+
+      @if $prefix == webkit and $prefixForWebkit == true {
+          @include prefix( $before,$after,$prefix,$style,$frames );
+      }
+      @else if $prefix == moz and $prefixForMozilla == true {
+          @include prefix( $before,$after,$prefix,$style,$frames ); 
+      }
+      @else if $prefix == ms and $prefixForMicrosoft == true {
+          @include prefix( $before,$after,$prefix,$style,$frames );
+      }
+      @else if $prefix == o and $prefixForOpera == true {
+          @include prefix( $before,$after,$prefix,$style,$frames );
+      }
+    }
+    
+    @if $prefixNo {
+      #{$style}: $frames;
+    }
+}
+
+//辅助css3添加前缀;
+@mixin prefix( $before,$after,$prefix,$style,$frames ){
+
+    @if( $before and not $after ){
+       -#{$prefix}-#{$style} : #{$frames};
+    }
+
+    @if( $after and not $before ){
+        #{$style}: -#{$prefix}-#{$frames};
+    }
+    
+    @if( $before and $after ){
+       -#{$prefix}-#{$style} : -#{$prefix}-#{$frames};
+    }
+
+}
+
+//css3过渡;
+@mixin tran($name:all,$time:0.2s){
+  @include css3( transition,$name $time );  
+}
+
+//css3圆角;
+@mixin border-radius($radius: 5px) {
+  @include css3( border-radius,$radius );
+}
+
+//
+@mixin border-image($image){
+  @include css3(border-image, $image);
+}
+
+//
+@mixin box-sizing( $type: border-box ) {
+  @include css3( box-sizing, $type );
+}
+
+//
+// @mixin background-size( $size ) {
+//   @if length($size) >= 1 {
+//     @include css3(background-size, $size);
+//   }
+//   @else if( $size == 'cover' ){
+//     @include css3(background-size, cover);
+//   }
+//   @else if( $size == 'contain' ){
+//     @include css3(background-size, contain);
+//   }
+// }
+
+ 
+// @mixin box-shadow($shadow...) {
+//   @if length($shadow) >= 1 {
+//     @include prefixer(box-shadow, $shadow);
+//   } @else{
+//     $shadow:0 0 4px rgba(0,0,0,.3);
+//     @include prefixer(box-shadow, $shadow);
+//   }
+// }
+// @mixin no-box-shadow($noshadow:none){
+//   @include prefixer(box-shadow,$noshadow);
+// }
+
+// @mixin hyphens($value: auto) {
+//   @include prefixer(hyphens, $value, webkit moz);
+// }
+
+// @mixin user-select($arg: text) {
+//   @include prefixer(user-select, $arg,webkit moz ms);
+// }
+// @mixin background-clip($clip...) {
+//   @if length($clip) >= 1 {
+//     @include prefixer(background-clip, $clip);
+//   } @else {
+//     @include prefixer(background-clip, padding-box);
+//   }
+// }
+
+
+
+// @mixin transform($property...) {
+//   @include css3(transform, $property);
+// }
+// @mixin transform-origin($axes) {
+//   @include prefixer(transform-origin, $axes,webkit ms);
+// }
+// @mixin transform-style ($style: preserve-3d) {
+//   @include prefixer(transform-style, $style,webkit ms);
+// }
+// @mixin rotate($degrees) {
+//   @include prefixer(transform, rotate($degrees),webkit ms);
+// }
+// @mixin rotate3D($degrees...) {
+//   @include prefixer(transform, rotate3D($degrees),webkit ms);
+// }
+// @mixin rotateX($degrees) {
+//   @include prefixer(transform, rotateX($degrees),webkit ms);
+// }
+// @mixin rotateY($degrees) {
+//   @include prefixer(transform, rotateY($degrees),webkit ms);
+// }
+// @mixin rotateZ($degrees) {
+//   @include prefixer(transform, rotateZ($degrees),webkit ms);
+// }
+// @mixin scale($ratio...) {
+//   @include prefixer(transform, scale($ratio),webkit ms);
+// }
+// @mixin scale3D($ratio...) {
+//   @include prefixer(transform, scale3D($ratio),webkit ms);
+// }
+// @mixin scaleX($ratio) {
+//   @include prefixer(transform, scaleX($ratio),webkit ms);
+// }
+// @mixin scaleY($ratio) {
+//   @include prefixer(transform, scaleY($ratio),webkit ms);
+// }
+// @mixin scaleZ($ratio) {
+//   @include prefixer(transform, scaleZ($ratio),webkit ms);
+// }
+// @mixin translate($px...) {
+//   @include prefixer(transform, translate($px),webkit ms);
+// }
+// @mixin translate3D($px...) {
+//   @include prefixer(transform, translate3D($px),webkit ms);
+// }
+// @mixin translateX($px) {
+//   @include prefixer(transform, translateX($px),webkit ms);
+// }
+// @mixin translateY($px) {
+//   @include prefixer(transform, translateY($px),webkit ms);
+// }
+// @mixin translateZ($px) {
+//   @include prefixer(transform, translateZ($px),webkit ms);
+// }
+// @mixin skew($degrees...) {
+//   @include prefixer(transform, skew($degrees),webkit ms);
+//   @include backface-visibility;
+// }
+// @mixin skewX($degrees) {
+//   @include prefixer(transform, skewX($degrees),webkit ms);
+//   @include backface-visibility;
+// }
+// @mixin skewY($degrees) {
+//   @include prefixer(transform, skewY($degrees),webkit ms);
+//   @include backface-visibility;
+// }
+// @mixin backface-visibility($visibility:hidden){
+//   @include prefixer(backface-visibility, $visibility);
+// }
+// @mixin perspective($depth: none) {
+//   @include prefixer(perspective, $depth,webkit ms);
+// }
+// @mixin perspective-origin($value: 50% 50%) {
+//   @include prefixer(perspective-origin, $value,webkit ms);
+// }
+// @mixin transition($properties...) {
+//   @if length($properties) >= 1 {
+//     @include prefixer(transition, $properties);
+//   }
+//   @else {
+//     $properties: all 0.3s ease;
+//     @include prefixer(transition, $properties);
+//   }
+// }
+// @mixin transition-property($properties...) {
+//   -webkit-transition-property: transitionPropertyNames($properties, webkit);
+//   @if $prefixForOpera {
+//     -o-transition-property: transitionPropertyNames($properties, o);
+//   }
+//   transition-property: transitionPropertyNames($properties, false);
+// }
+// @mixin transition-duration($times...) {
+//   @include prefixer(transition-duration, $times);
+// }
+// @mixin transition-timing-function($motions...) {
+//   @include prefixer(transition-timing-function, $motions);
+// }
+// @mixin transition-delay($times...) {
+//   @include prefixer(transition-delay, $times);
+// }
+
+// @mixin filter($arg){
+//   @include prefixer(filter,$arg);
+// }
+// @mixin filter-url($resSvg){
+//   @include prefixer(filter,url(unquote($resSvg)));
+// }
+// @mixin filter-blur($radius) {
+//   @include prefixer(filter,blur($radius));
+// }
+// @mixin filter-brightness($percent: 100%) {
+//   @include prefixer(filter,brightness($percent));
+// }
+// @mixin filter-contrast($percent: 100%) {
+//   @include prefixer(filter,contrast($percent));
+// }
+// @mixin filter-drop-shadow($dropShadow...){
+//   @include prefixer(filter,drop-shadow($dropShadow));
+// }
+
+// @mixin filter-grayscale($percent) {
+//   @include prefixer(filter,grayscale($percent));
+// }
+// @mixin filter-hue-rotate($rotate) {
+//   @include prefixer(filter,hue-rotate($rotate));
+// }
+// @mixin filter-invert($percent: 0) {
+//   @include prefixer(filter,invert($percent));
+// }
+// @mixin filter-saturate($percent: 100%) {
+//   @include prefixer(filter,saturate($percent));
+// }
+// @mixin filter-sepia($percent) {
+//   @include prefixer(filter,sepia($percent));
+// }
+// @mixin filter-opacity($percent){
+//   @include prefixer(filter,opacity($percent));
+// }
+
+
+
+
