@@ -1,0 +1,90 @@
+@charset "utf-8";
+//关于字体的混合宏(mixin);
+
+//设置字体;
+@mixin f( $font:12,$un:px ){
+	@if( unitless($font) ){
+		font-size:$font+$un; 
+	}@else{
+		font-size:$font; 
+	}
+}
+
+//设置字体;
+@mixin fa( $family:'Microsoft Yahei' ){ 
+	font-family:$family,'宋体','黑体';
+}
+
+//文字颜色;
+@mixin c( $color:#000 ){
+	color:$color;
+}
+
+//文字风格;
+@mixin fs( $value:bold  ){
+	font-style: $value;
+}
+
+//文字加粗;
+@mixin b( $value:bold ){
+	font-weight: $value;
+}
+
+//去掉文字加粗;
+@mixin no-b{
+	font-weight: normal;
+}
+
+//文字斜体;
+@mixin ita( $value:italic ){
+	@include fs( $value );
+}
+
+//去掉文字风格;
+@mixin no-fs{
+	@include fs( normal );
+}
+
+//设置line-height;
+@mixin line( $line ){
+	line-height:$line;
+}
+
+//设置font-szie/line-height;
+@mixin fline( $font,$line ){
+	@include f( $font );
+	@include line( $line );
+}
+
+//设置font-size/line-height/color;
+@mixin flc( $font,$line,$color ){
+	@include f( $font );
+	@include line( $line );
+	@include c( $color );
+}
+
+//设置family/font-size/line-height/color;
+@mixin faflc( $family,$font,$line,$color ){
+	@include fa( $family );
+	@include f( $font );
+	@include line( $line );
+	@include c( $color );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

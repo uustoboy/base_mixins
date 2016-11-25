@@ -1,0 +1,45 @@
+@charset "utf-8";
+//浮动and清楚浮动;
+
+//左浮动;
+@mixin fl{
+    @include float(left);
+}
+
+//右浮动;
+@mixin fr{
+   @include float(right);
+}
+
+//设置浮动方向;
+@mixin float($directions:left){
+    float:$directions;
+}
+
+//清除浮动;
+@mixin clear(){
+    *zoom:1;
+    &:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        overflow: hidden;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

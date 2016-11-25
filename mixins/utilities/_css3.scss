@@ -1,0 +1,255 @@
+@charset "UTF-8";
+// css3属性的混合宏(mixin);
+
+//////////////////////////////////////////////////////
+// css3前缀:                                        //  
+//  $style     :  样式名 ;                          //
+//  $frames    :  样式内容;                         //
+//  $prefix    :  是否添加样式前缀,默认开启;        //
+//  $suffix    :  是否添加样式后缀,默认关闭;        //
+//////////////////////////////////////////////////////
+@mixin css3($style,$frames,$prefix:true,$suffix:false){
+  @if( $prefixNo ){
+    $style : $frames; 
+  }@else{
+    @if( $prefix ){
+      @if( $suffix ){
+        @each $goods  in $vendors {
+          @if( $prefixWebkit and $goods == 'webkit' ){
+            -#{$goods}-#{$style} : -#{$goods}-#{$frames};
+          }@else if( $prefixMozilla and $goods == 'moz' ){
+            -#{$goods}-#{$style} : -#{$goods}-#{$frames};
+          }@else if($prefixMicrosoft and $goods == 'ms' ){
+            -#{$goods}-#{$style} : -#{$goods}-#{$frames}; 
+          }@else if($prefixOpera and $goods == 'o' ){
+            -#{$goods}-#{$style} :-#{$goods}-#{$frames};
+          }
+        }
+        #{$style} : #{$frames}; 
+      }@else{
+          @each $goods  in $vendors {
+            @if( $prefixWebkit and $goods == 'webkit' ){
+              -#{$goods}-#{$style} : #{$frames};
+            }@else if( $prefixMozilla and $goods == 'moz' ){
+              -#{$goods}-#{$style} : #{$frames};
+            }@else if($prefixMicrosoft and $goods == 'ms' ){
+              -#{$goods}-#{$style} : #{$frames}; 
+            }@else if($prefixOpera and $goods == 'o' ){
+              -#{$goods}-#{$style} : #{$frames};
+            }
+          }   
+          #{$style} : #{$frames}; 
+      }
+    }@else{
+      @if( $suffix ){
+          @each $goods  in $vendors {
+            @if( $prefixWebkit and $goods == 'webkit' ){
+              #{$style} : -#{$goods}-#{$frames};
+            }@else if( $prefixMozilla and $goods == 'moz' ){
+              #{$style} : -#{$goods}-#{$frames};
+            }@else if($prefixMicrosoft and $goods == 'ms' ){
+              #{$style} : -#{$goods}-#{$frames}; 
+            }@else if($prefixOpera and $goods == 'o' ){
+              #{$style} : -#{$goods}-#{$frames};
+            }
+          } 
+          #{$style} : #{$frames};
+      }@else{
+          #{$style} : #{$frames};
+      }
+    }
+  }
+}
+
+//css3过渡;
+@mixin transition($name:all,$time:0.2s){
+  @if($time){
+    @include css3( transition,$name $time );
+  }@eles{
+    @include css3( transition,$name);
+  }
+    
+}
+
+//css3圆角;
+@mixin border-radius($radius: 5px) {
+  @include css3( border-radius,$radius );
+}
+
+//
+@mixin border-image($image){
+  @include css3(border-image, $image);
+}
+
+//
+@mixin box-sizing( $type: border-box ) {
+  @include css3( box-sizing, $type );
+}
+
+//
+@mixin box-shadow($shadow...) {
+  @if length($shadow) >= 1 {
+    @include css3(box-shadow, $shadow);
+  } @else{
+    $shadow:0 0 4px rgba(0,0,0,.3);
+    @include css3(box-shadow, $shadow);
+  }
+}
+
+@mixin no-box-shadow($noshadow:none){
+  @include css3(box-shadow,$noshadow);
+}
+
+// @mixin hyphens($value: auto) {
+//   @include css3(hyphens, $value, webkit moz);
+// }
+
+@mixin user-select($arg: text) {
+  @include css3(user-select, $arg);
+}
+
+@mixin transform($property...) {
+  @include css3(transform, $property);
+}
+
+@mixin transform-origin($axes) {
+  @include css3(transform-origin, $axes );
+}
+
+@mixin transform-style ($style: preserve-3d) {
+  @include css3(transform-style, $style );
+}
+
+@mixin rotate($degrees) {
+  @include css3(transform, rotate($degrees) );
+}
+@mixin rotate3D($degrees...) {
+  @include css3(transform, rotate3D($degrees));
+}
+@mixin rotateX($degrees) {
+  @include css3(transform, rotateX($degrees) );
+}
+@mixin rotateY($degrees) {
+  @include css3(transform, rotateY($degrees) );
+}
+@mixin rotateZ($degrees) {
+  @include css3(transform, rotateZ($degrees) );
+}
+@mixin scale($ratio...) {
+  @include css3(transform, scale($ratio) );
+}
+@mixin scale3D($ratio...) {
+  @include css3(transform, scale3D($ratio) );
+}
+@mixin scaleX($ratio) {
+  @include css3(transform, scaleX($ratio) );
+}
+@mixin scaleY($ratio) {
+  @include css3(transform, scaleY($ratio) );
+}
+@mixin scaleZ($ratio) {
+  @include css3(transform, scaleZ($ratio) );
+}
+@mixin translate($px...) {
+  @include css3(transform, translate($px) );
+}
+@mixin translate3D($px...) {
+  @include css3(transform, translate3D($px) );
+}
+@mixin translateX($px) {
+  @include css3(transform, translateX($px) );
+}
+@mixin translateY($px) {
+  @include css3(transform, translateY($px) );
+}
+@mixin translateZ($px) {
+  @include css3(transform, translateZ($px) );
+}
+@mixin skew($degrees...) {
+  @include css3(transform, skew($degrees) );
+  @include backface-visibility;
+}
+@mixin skewX($degrees) {
+  @include css3(transform, skewX($degrees) );
+  @include backface-visibility;
+}
+@mixin skewY($degrees) {
+  @include css3(transform, skewY($degrees) );
+  @include backface-visibility;
+}
+@mixin backface-visibility($visibility:hidden){
+  @include css3(backface-visibility, $visibility);
+}
+@mixin perspective($depth: none) {
+  @include css3(perspective, $depth );
+}
+@mixin perspective-origin($value: 50% 50%) {
+  @include css3(perspective-origin, $value );
+}
+@mixin transition($properties...) {
+  @if length($properties) >= 1 {
+    @include css3(transition, $properties);
+  }
+  @else {
+    $properties: all 0.3s ease;
+    @include css3(transition, $properties);
+  }
+}
+@mixin transition-property($properties...) {
+  -webkit-transition-property: transitionPropertyNames($properties, webkit);
+  @if $prefixForOpera {
+    -o-transition-property: transitionPropertyNames($properties, o);
+  }
+  transition-property: transitionPropertyNames($properties, false);
+}
+@mixin transition-duration($times...) {
+  @include css3(transition-duration, $times);
+}
+@mixin transition-timing-function($motions...) {
+  @include css3(transition-timing-function, $motions);
+}
+@mixin transition-delay($times...) {
+  @include css3(transition-delay, $times);
+}
+
+@mixin filter($arg){
+  @include css3(filter,$arg);
+}
+@mixin filter-url($resSvg){
+  @include css3(filter,url(unquote($resSvg)));
+}
+@mixin filter-blur($radius) {
+  @include css3(filter,blur($radius));
+}
+@mixin filter-brightness($percent: 100%) {
+  @include css3(filter,brightness($percent));
+}
+@mixin filter-contrast($percent: 100%) {
+  @include css3(filter,contrast($percent));
+}
+@mixin filter-drop-shadow($dropShadow...){
+  @include css3(filter,drop-shadow($dropShadow));
+}
+
+@mixin filter-grayscale($percent) {
+  @include css3(filter,grayscale($percent));
+}
+@mixin filter-hue-rotate($rotate) {
+  @include css3(filter,hue-rotate($rotate));
+}
+@mixin filter-invert($percent: 0) {
+  @include css3(filter,invert($percent));
+}
+@mixin filter-saturate($percent: 100%) {
+  @include css3(filter,saturate($percent));
+}
+@mixin filter-sepia($percent) {
+  @include css3(filter,sepia($percent));
+}
+@mixin filter-opacity($percent){
+  @include css3(filter,opacity($percent));
+}
+
+
+
+
