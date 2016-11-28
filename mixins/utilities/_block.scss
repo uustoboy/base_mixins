@@ -1,0 +1,108 @@
+@charset "UTF-8";
+// 块的混合宏(mixin);
+
+//块
+@mixin block{
+    display:block;
+}
+
+//inline-block;
+@mixin inline{
+    display:inline;
+}
+
+//inline-block;
+@mixin inblock{
+    display:inline-block;
+}
+
+//flex(新版本的弹性盒模型);
+@mixin flex{
+    @include css3(display,flex,false,true);
+}
+
+//box(老版本的弹性盒模型);
+@mixin box{
+    @include css3(display,box,false,true);
+}
+
+//flex(据说最新~新版本的弹性盒模型);
+// @mixin flexbox{
+//     display:flexbox;
+// }
+
+//table;
+@mixin table{
+    display:table;
+}
+
+//none;
+@mixin hide{ 
+	display:none;  
+}
+
+//怪异盒模型;
+@mixin box-sizing( $type: border-box ) {
+  @include css3( box-sizing, $type );
+}
+
+//display;
+@mixin display( $block:block ){
+    @if( $block == 'flex' or $block == 'box' or $block == 'flexbox' ){
+		@include flex;
+    }
+    @else{
+		display:$block;
+    }
+}
+
+//设置元素可伸缩其尺寸;
+@mixin box-flex( $value:1 ){
+    @include css3(box-flex,$value,true,false);
+}
+
+//设置子元素应该被水平或垂直排列;
+@mixin box-orient( $value:horizontal ){
+	//box-orient: horizontal(在水平行中从左向右排列子元素) 					|
+	//			  vertical(从上向下垂直排列子元素)							|
+	//			  inline-axis(沿着行内轴来排列子元素(映射为 horizontal) )	|
+	//			  block-axis(沿着块轴来排列子元素(映射为 vertical) )		|
+	//			  inherit(应该从父元素继承 box-orient 属性的值);
+    @include css3(box-orient,$value,true,false);
+}
+
+//设置子元素水平排列;
+@mixin horizontal{
+	@include css3(box-orient,horizontal,true,false);
+}
+
+//设置子元素垂直排列;
+@mixin vertical{
+	@include css3(box-orient,vertical,true,false);
+}
+
+//规定框元素的子元素方向排列;
+@mixin box-direction( $value:reverse ){
+	//normal(默认方向) | reverse(反方向) | inherit(应该从子元素继承 box-direction 属性的值)
+	@include css3(box-direction,$value,true,false);
+}
+
+//反方向排列;
+@mixin reverse{
+	@include css3(box-direction,reverse,true,false);
+}
+
+//默认方向方向排列;
+@mixin no-box-direction{
+	@include css3(box-direction,normal,true,false);
+}
+
+//对齐框的子元素;
+@mixin box-align( $value:center ){
+	//box-align: start(对于正常方向的框,上边缘沿着框的顶边放置|对于反方向的框,上边缘沿着框的底边放置)  |
+	//			  end(对于正常方向的框,下边框沿着框的顶边放置|对于反方向的框,下边框沿着框的底边放置)   |													|
+	//			  center(均等地分割多余的空间，一半位于子元素之上，另一半位于子元素之下 )			   |
+	//			  baseline(如果 box-orient 是inline-axis或horizontal，所有子元素均与其基线对齐)		   |
+	//			  stretch(拉伸子元素以填充包含块);
+	@include css3(box-align,$value,true,false);
+}

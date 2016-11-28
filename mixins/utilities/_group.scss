@@ -1,0 +1,73 @@
+@charset "UTF-8";
+//关于混合缩写的混合宏(mixin);
+
+//设置width/height/line-height;
+@mixin whl($width,$height,$line-height:$height){
+	@include w($width);
+	@include h($height);
+	@include line($line-height);
+}
+
+//设置width/height/line-height/font-size;
+@mixin whlf($width,$height,$line-height,$font){
+	@include w($width);
+	@include h($height);
+	@include line($line-height);
+	@include f($font);
+}
+
+//设置width/height/line-height;
+@mixin whlfc($width,$height,$line-height,$font,$color){
+	@include w($width);
+	@include h($height);
+	@include line($line-height);
+	@include f($font);
+	@include c($color);
+}
+
+//设置height/line-height;
+@mixin hl($height,$line-height:$height){
+	@include h($height);
+	@include line($line-height);
+}
+
+//设置width/line-height;
+@mixin wl($width,$line-height:$height){
+	@include w($width);
+	@include line($line-height);
+}
+
+//设置font-szie/line-height;
+@mixin fline( $font,$line ){
+	@include f( $font );
+	@include line( $line );
+}
+
+//设置font-size/line-height/color;
+@mixin flc( $font,$line,$color ){
+	@include f( $font );
+	@include line( $line );
+	@include c( $color );
+}
+
+//设置family/font-size/line-height/color;
+@mixin faflc( $family,$font,$line,$color ){
+	@include fa( $family );
+	@include f( $font );
+	@include line( $line );
+	@include c( $color );
+}
+
+//设置width/height;
+@mixin wh($width, $height:$width,$attr:true){
+	@if( $attr == 'w' ){
+		@include w($width);
+	}
+	@else if( $attr == 'h' ){
+		@include h($height);
+	}
+	@else{
+		@include w($width);
+		@include h($height);
+	}
+}

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+//关于背景图的混合宏(mixin);
+
+//设置背景;
+@mixin bg( $color,$img:false,$repeat:no-repeat,$position:0 0 ){
+	if( $img ){
+		background:url($img) $color $repeat $position;
+	}else{
+		background:$color $repeat $position;
+	}
+}
+
+//设置background-size;
+@mixin bgsize( $value:cover ){
+	background-size:$value;
+}
+
+//设置background-clip;
+@mixin bgclip( $value:content-box ){
+	background-clip:$value;
+}
+
+//设置background-origin;
+@mixin bgorigin( $value:content-box ){	
+	background-origin:$value;
+}
+
+//设置background-size;
+@mixin bgposition( $value:center center ){
+	background-position:$value;
+}
+
+//设置背景颜色;
+@mixin bgc($color,$opacity:1,$support-for-ie:true){
+	@if( str-slice($color, 1, 4)  == 'rgba' ){
+		background-color:$color;
+	}@else{
+		background-color:rgba($color,$opacity);
+		@if $support-for-ie{
+			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str(rgba($color,$opacity))},endColorstr=#{ie-hex-str(rgba($color,$opacity))});
+			:root & {
+				filter:none;
+			}
+		}
+	}
+}
