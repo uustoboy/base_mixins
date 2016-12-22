@@ -3,10 +3,10 @@
 
 //设置背景;
 @mixin bg( $color,$img:false,$repeat:no-repeat,$position:0 0 ){
-	if( $img ){
+	@if( $img ){
 		background:url($img) $color $repeat $position;
-	}else{
-		background:$color $repeat $position;
+	}@else{
+		background:url($color) $repeat $position;
 	}
 }
 
@@ -32,9 +32,7 @@
 
 //设置背景颜色;
 @mixin bgc($color,$opacity:1,$support-for-ie:true){
-	@if( str-slice($color, 1, 4)  == 'rgba' ){
-		background-color:$color;
-	}@else{
+	@if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
 		background-color:rgba($color,$opacity);
 		@if $support-for-ie{
 			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str(rgba($color,$opacity))},endColorstr=#{ie-hex-str(rgba($color,$opacity))});
@@ -42,5 +40,7 @@
 				filter:none;
 			}
 		}
+	}@else{
+		background-color:unquote($color);
 	}
 }

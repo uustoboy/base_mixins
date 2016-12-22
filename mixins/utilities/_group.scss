@@ -9,20 +9,30 @@
 }
 
 //设置width/height/line-height/font-size;
-@mixin whlf($width,$height,$line-height,$font){
+@mixin whfl($width,$height,$line-height,$font){
 	@include w($width);
 	@include h($height);
 	@include line($line-height);
 	@include f($font);
 }
 
-//设置width/height/line-height;
-@mixin whlfc($width,$height,$line-height,$font,$color){
+//设置width/height/font/color/line-height;
+@mixin whflc($width,$height,$font,$line-height,$color){
 	@include w($width);
 	@include h($height);
-	@include line($line-height);
 	@include f($font);
+	@include line($line-height);
 	@include c($color);
+}
+
+//设置width/height/font/color/line-height;
+@mixin whflcb($width,$height,$font,$line-height,$color,$bg){
+	@include w($width);
+	@include h($height);
+	@include f($font);
+	@include line($line-height);
+	@include c($color);
+	@include bgc($bg);
 }
 
 //设置height/line-height;
