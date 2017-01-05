@@ -3,60 +3,50 @@
 
 //////////////////////////////////////////////////////////////////////////
 // 定位:                                       							//             
-//  例子 : @include position(absolute,(top:10px,left:0px,z-index:5));   //
+//  例子 : @include position(absolute,(t:10px,l:0px,z:5));   //
 //////////////////////////////////////////////////////////////////////////
-@mixin position($position,$args){
+@mixin position($position,$args:false){
 	position: $position;
-	$parameter :top,right,bottom,left,z-index;
-	@each $o, $s in $args {
-	  $i: index($parameter, $o);
-	  @if( $i and type-of( $i ) == number and type-of($s) == number){
-		 #{$o}: $s;	
-	  }	
-	}
+	@include position_each( $args );
 }
 
 //////////////////////////////////////////////////////////////////////////
 // 绝对定位:                                   							//             
-//  例子 : @include abs((top:10px,left:0px,z-index:5));                 //
+//  例子 : @include abs((t:10px,l:0px,z:5));                 //
 //////////////////////////////////////////////////////////////////////////
 @mixin abs($args:false){
 	position: absolute;
-	$parameter :top,right,bottom,left,z-index;
-	@each $o, $s in $args {
-	  $i: index($parameter, $o);
-	  @if( $i and type-of( $i ) == number and type-of($s) == number){
-		 #{$o}: $s;	
-	  }	
-	}
+	@include position_each( $args );
 }
+
+
 
 //////////////////////////////////////////////////////////////////////////
 // 相对定位:                                   							//             
-//  例子 : @include rel((top:10px,left:0px,z-index:5));                 //
+//  例子 : @include rel((t:10px,l:0px,z:5));                 //
 //////////////////////////////////////////////////////////////////////////
-@mixin rel($args:0){
+@mixin rel($args:false){
 	position: relative;
-	$parameter :top,right,bottom,left,z-index;
-	@each $o, $s in $args {
-	  $i: index($parameter, $o);
-	  @if( $i and type-of( $i ) == number and type-of($s) == number){
-		 #{$o}: $s;	
-	  }	
-	}
+	@include position_each( $args );
 }
 
 //////////////////////////////////////////////////////////////////////////
 // 固定定位:                                   							//             
-//  例子 : @include fixed((top:10px,left:0px,z-index:5));               //
+//  例子 : @include fixed((t:10px,l:0px,z:5));               //
 //////////////////////////////////////////////////////////////////////////
-@mixin fixed($args:0){
+@mixin fixed($args:false){
 	position: fixed;
-	$parameter :top,right,bottom,left,z-index;
+	@include position_each( $args );
+}
+
+//遍历定位属性:top\right\bottom\left\z-index\width\height;
+@mixin position_each( $args ){
+	$parameter  :t,r,b,l,z,w,h;
+	$parameter2 :(t:top,r:right,b:bottom,l:left,z:z-index,w:width,h:height);
 	@each $o, $s in $args {
 	  $i: index($parameter, $o);
 	  @if( $i and type-of( $i ) == number and type-of($s) == number){
-		 #{$o}: $s;	
+		 #{map-get($parameter2,$o)} : $s;
 	  }	
 	}
 }
@@ -167,3 +157,4 @@
 @mixin z( $num ){
   z-index:$num;
 }
+
