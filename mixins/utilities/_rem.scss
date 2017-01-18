@@ -3,28 +3,52 @@
 
 //移动端rem单位函数、配合hotcss.js一起用同时设置$designWidth的PSD宽度值(https://r.mzmoney.com/topic/lead3/hotcss.js);
 ////////////////////////////////////////////////////////////////////////////// 
-// rem:                                       							    //             
+// 转换rem: $px:数值,$important:权限最高      							    //             
 //  例子 :                                                                  //   
 //		    $designWidth : 640;                                             //
 //			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }    //
 //////////////////////////////////////////////////////////////////////////////
-@function px2rem( $px ){
-	@return $px*320/$designWidth/20 + rem;
+@function px2rem( $px , $important:false ){
+	//判断是否有单位;
+	@if( not unitless($px) ){
+		//是否最高权限;
+		@if( $important ){
+			@return strip-units($px)*320/$designWidth/20 + rem + !important;
+		}
+		@return strip-units($px)*320/$designWidth/20 + rem;
+	}@else{
+		//是否最高权限;
+		@if( $important ){
+			@return $px*320/$designWidth/20 + rem + !important;
+		}
+		@return $px*320/$designWidth/20 + rem;
+	}
+	
 }
 
 //微信小程序rpx单位函数同时设置$wxDesignWidth的PSD宽度;
 //////////////////////////////////////////////////////////////////////////////
-// rem:                                       							    //             
+// 转换rpx: $px:数值,$important:权限最高      							    //            
 //  例子 :                                                                  //   
 //			$wxDesignWidth : 750;                                           //
 //			.a{ width : px2rpx(100); } /  .a{ @include w(px2rpx(100)); }    //
 //////////////////////////////////////////////////////////////////////////////
-@function px2rpx( $px ){
+@function px2rpx( $px , $important:false ){
+	
 	//判断是否有单位;
-	@if( not unitless($px) ){		
+	@if( not unitless($px) ){
+		//是否最高权限;
+		@if( $important ){
+			@return strip-units($px)*(750/$wxDesignWidth) + rpx + !important;
+		}
 		@return strip-units($px)*(750/$wxDesignWidth) + rpx;
+	}@else{
+		//是否最高权限;
+		@if( $important ){
+			@return strip-units($px)*(750/$wxDesignWidth) + rpx + !important;
+		}
+		@return $px*(750/$wxDesignWidth) + rpx;
 	}
-	@return $px*(750/$wxDesignWidth) + rpx;
 }
 
 //去单位函数;

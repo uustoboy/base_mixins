@@ -3,12 +3,12 @@
 
 //设置width;
 @mixin w( $width ){
-	width: $width;
+	width: addUnits($width);
 }
 
 //设置height;
 @mixin h( $height ){
-	height: $height;
+	height: addUnits($height);
 }
 
 //设置width/height;

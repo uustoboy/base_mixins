@@ -46,7 +46,7 @@
 	@each $o, $s in $args {
 	  $i: index($parameter, $o);
 	  @if( $i and type-of( $i ) == number and type-of($s) == number){
-		 #{map-get($parameter2,$o)} : $s;
+		 #{map-get($parameter2,$o)} : addUnits($s);
 	  }	
 	}
 }

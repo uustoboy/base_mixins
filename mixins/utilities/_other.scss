@@ -37,9 +37,18 @@
 //取消截断;
 @mixin ofv{overflow:visible !important;}
 
+//鼠标手;
 @mixin cur{ cursor: pointer; }
+//鼠标默认;
 @mixin def{ cursor:default;}
 
+//透明度;
+@mixin opacity($opacity:.8,$support-for-ie:true) {
+  opacity: $opacity;
+  @if $support-for-ie{
+    filter: alpha(opacity=$opacity-ie); //IE8
+  }
+}
 
 
 

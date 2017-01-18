@@ -45,3 +45,16 @@
         } 
     }
 }
+
+//添加单位;
+@function addUnits( $num ){
+    @if( str-index('#{$num}',!important) or str-index('#{$num}',rem) or str-index('#{$num}',rpx)){
+        @return $num;
+    }@else{
+        @if( unitless($num) ){
+            @return $num+$unit;
+        }@else{
+            @return $num;  
+        }
+    }
+}

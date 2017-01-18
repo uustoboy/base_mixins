@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+// Function @minxin;
+@import "utilities/_function.scss";
+
 //动画 @minxin;
 @import "utilities/_animation.scss";
 
@@ -15,11 +18,11 @@
 // 浮动 @minxin;
 @import "utilities/_clear.scss";
 
-// 透明度 @minxin;
-@import "utilities/_opacity.scss";
-
 // 定位 @minxin;
 @import "utilities/_position.scss";
+
+// 字体 @minxin;
+@import "utilities/_fonts.scss";
 
 // 宽高缩写 @minxin;
 @import "utilities/_size.scss";
@@ -30,23 +33,17 @@
 // 块 @minxin;
 @import "utilities/_block.scss";
 
-// 字体 @minxin;
-@import "utilities/_fonts.scss";
-
 // rem @minxin;
 @import "utilities/_rem.scss";
 
 // 背景图 @minxin;
 @import "utilities/_background.scss";
 
-// Function @minxin;
-@import "utilities/_function.scss";
-
-// reset打包;
-@import "utilities/_resetpack.scss";
-
 // 清除标签 @minxin;
 @import "utilities/_normalize.scss";
 
 //其他 @minxin;
-@import "utilities/_basis.scss";
+@import "utilities/_other.scss";
+
+// reset打包;
+@import "utilities/_resetpack.scss";

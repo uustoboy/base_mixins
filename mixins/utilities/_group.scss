@@ -41,6 +41,14 @@
 	@include line($line-height);
 }
 
+//设置height/font-size/line-height/color;
+@mixin hflc($height,$font,$line-height,$color){
+	@include h($height);
+	@include f($font);
+	@include line($line-height);
+	@include c($color);
+}
+
 //设置width/line-height;
 @mixin wl($width,$line-height:$height){
 	@include w($width);
