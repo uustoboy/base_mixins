@@ -8,7 +8,7 @@
 	@include line($line-height);
 }
 
-//设置width/height/line-height/font-size;
+//设置width/height/font-size/line-height;
 @mixin whfl($width,$height,$line-height,$font){
 	@include w($width);
 	@include h($height);
@@ -16,7 +16,7 @@
 	@include f($font);
 }
 
-//设置width/height/font/color/line-height;
+//设置width/height/font-size/line-height/color;
 @mixin whflc($width,$height,$font,$line-height,$color){
 	@include w($width);
 	@include h($height);
@@ -25,7 +25,7 @@
 	@include c($color);
 }
 
-//设置width/height/font/color/line-height;
+//设置width/height/font-size/line-height/color/background;
 @mixin whflcb($width,$height,$font,$line-height,$color,$bg){
 	@include w($width);
 	@include h($height);

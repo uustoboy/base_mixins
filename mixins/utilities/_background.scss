@@ -25,7 +25,7 @@
 	background-origin:$value;
 }
 
-//设置background-size;
+//设置background-position;
 @mixin bgposition( $value:center center ){
 	background-position:$value;
 }

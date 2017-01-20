@@ -22,7 +22,7 @@
 }
 
 //文字加粗;
-@mixin b( $value:bold ){
+@mixin fb( $value:bold ){
 	font-weight: $value;
 }
 

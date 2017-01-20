@@ -1,5 +1,5 @@
 @charset "UTF-8";
-// 圆形的混合宏(mixin);
+//三角形的混合宏(mixin);
 
 %wh{
 	width:0;
@@ -15,7 +15,7 @@
 }
 
 //下三角圆形 $w:宽,$h:高,$color:颜色;
-@mixin triangle-up($w,$h,$color){
+@mixin triangle-bottom($w,$h,$color){
     @extend %wh;
     border-left: $h solid transparent;
     border-right: $h solid transparent;

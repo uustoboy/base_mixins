@@ -1,12 +1,12 @@
 @charset "UTF-8";
 // 块的混合宏(mixin);
 
-//块
+//块;
 @mixin block{
     display:block;
 }
 
-//inline-block;
+//inline;
 @mixin inline{
     display:inline;
 }

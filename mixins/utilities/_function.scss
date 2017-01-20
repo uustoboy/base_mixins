@@ -25,7 +25,7 @@
     }
 }
 
-//判断是否为字符串
+//判断是否为字符串;
 @function returnStr( $str,$value ){
     @if( $value ){
        @if( ( type-of( $num1 ) == number ) and ( $num1 == $value) ){
