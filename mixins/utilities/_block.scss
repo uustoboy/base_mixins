@@ -6,6 +6,11 @@
     display:block;
 }
 
+//显示;
+@mixin show{
+    @include block;
+}
+
 //inline;
 @mixin inline{
     display:inline;
@@ -38,6 +43,11 @@
 
 //none;
 @mixin hide{ 
+	@include none;
+}
+
+//none;
+@mixin none{ 
 	display:none;  
 }
 

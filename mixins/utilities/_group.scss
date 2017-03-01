@@ -61,6 +61,12 @@
 	@include line( $line );
 }
 
+//设置font-size//color;
+@mixin fc( $font,$line,$color ){
+	@include f( $font );
+	@include c( $color );
+}
+
 //设置font-size/line-height/color;
 @mixin flc( $font,$line,$color ){
 	@include f( $font );
