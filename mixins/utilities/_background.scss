@@ -10,23 +10,28 @@
 	}
 }
 
+//设置图片背景;
+@mixin bg-img($img:false,$repeat:no-repeat,$position:0 0 ){
+	background:url($img) $repeat $position;
+}
+
 //设置background-size;
-@mixin bgsize( $value:cover ){
+@mixin bg-size( $value:cover ){
 	background-size:$value;
 }
 
 //设置background-clip;
-@mixin bgclip( $value:content-box ){
+@mixin bg-clip( $value:content-box ){
 	background-clip:$value;
 }
 
 //设置background-origin;
-@mixin bgorigin( $value:content-box ){	
+@mixin bg-origin( $value:content-box ){	
 	background-origin:$value;
 }
 
 //设置background-position;
-@mixin bgposition( $value:center center ){
+@mixin bg-position( $value:center center ){
 	background-position:$value;
 }
 

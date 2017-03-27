@@ -74,6 +74,10 @@
   text-align: $direction;
 }
 
+//取消下划线;
+@mixin no-line{
+  text-decoration: blink;
+}
 
 
 
