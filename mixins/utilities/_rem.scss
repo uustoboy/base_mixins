@@ -26,6 +26,15 @@
 	
 }
 
+//简单rem多值转行;
+@function gpx2rem( $px... ){
+   $arr:null;
+   @each $arg in $px {
+     $arr : $arr px2rem( $arg );  
+   }
+   @return $arr;
+}
+
 //微信小程序rpx单位函数同时设置$wxDesignWidth的PSD宽度;
 //////////////////////////////////////////////////////////////////////////////
 // 转换rpx: $px:数值,$important:权限最高      							    //            
@@ -49,6 +58,15 @@
 		}
 		@return $px*(750/$wxDesignWidth) + rpx;
 	}
+}
+
+//简单rpx多值转行;
+@function gpx2rpx( $px... ){
+   $arr:null;
+   @each $arg in $px {
+     $arr : $arr px2rpx( $arg );  
+   }
+   @return $arr;
 }
 
 //去单位函数;

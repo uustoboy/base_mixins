@@ -3,12 +3,12 @@
 
 //设置margin;
 @mixin mar( $size... ){
-	margin-top: addUnits($size);
+	margin: addUnits($size...);
 }
 
 //设置padding;
-@mixin mar( $size... ){
-	padding: addUnits($size);
+@mixin pad( $size... ){
+	padding: addUnits($size...);
 }
 
 

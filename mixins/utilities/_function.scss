@@ -47,14 +47,26 @@
 }
 
 //添加单位;
-@function addUnits( $num ){
-    @if( str-index('#{$num}',!important) or str-index('#{$num}',rem) or str-index('#{$num}',rpx)){
-        @return $num;
+@function addUnits( $args... ){
+   $arr:null;
+   @each $arg in $args {
+     $arr : $arr testUnit( $arg );  
+   }
+   @return $arr;
+}
+
+//检验单位;
+@function testUnit( $args ){
+    @if( str-index('#{$args}',!important) or str-index('#{$args}',rem) or str-index('#{$args}',rpx)){
+        @return $args;
     }@else{
-        @if( unitless($num) ){
-            @return $num+$unit;
+        @if( unitless($args) ){
+            @return $args+$global-unit;
         }@else{
-            @return $num;  
+            @return $args;  
         }
     }
 }
+
+
+

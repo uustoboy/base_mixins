@@ -16,7 +16,7 @@ $prefixOpera      :          true !default;   //opera前缀:o前缀
 $prefixNo         :          false !default;  //默认;
 
 //单位;
-$unit             :           px;
+$global-unit      :           px;
 //移动端默认单位大小;
 $designWidth 	  :           640; 
 //微信小程序默认单位大小;
