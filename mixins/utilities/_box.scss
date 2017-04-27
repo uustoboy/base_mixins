@@ -64,7 +64,7 @@
 }
 
 //设置margin-left && margin-right;
-@mixin mtb( $size1,$size2:$size1 ){
+@mixin mlr( $size1,$size2:$size1 ){
 	@if ($size1 == $size2) {
 		margin-left: addUnits($size1);
 		margin-right: addUnits($size2);
@@ -85,8 +85,8 @@
 	}
 }
 
-//设置margin-left && margin-right;
-@mixin ptb( $size1,$size2:$size1 ){
+//设置padding-left && padding-right;
+@mixin prl( $size1,$size2:$size1 ){
 	@if ($size1 == $size2) {
 		padding-left: addUnits($size1);
 		padding-right: addUnits($size2);

@@ -62,7 +62,7 @@
 }
 
 //css3过渡;
-@mixin transition($properties...) {
+@mixin trs($properties...) {
   @if length($properties) >= 1 {
     @include css3(transition, $properties);
   }@else {
@@ -72,37 +72,33 @@
 }
 
 //过度属性;
-@mixin transition-property($properties...) {
+@mixin trs-p($properties...) {
   @include css3(transition-property, $properties...);
 }
 
 //过度时间;
-@mixin transition-duration($times...) {
+@mixin trs-dur($times...) {
   @include css3(transition-duration, $times);
 }
 
 //过渡效果;
-@mixin transition-timing-function($motions...) {
+@mixin trs-tf($motions...) {
   @include css3(transition-timing-function, $motions);
 }
 
 //过度延迟时间;
-@mixin transition-delay($times...) {
+@mixin trs-del($times...) {
   @include css3(transition-delay, $times);
 }
 
 //css3圆角;
-@mixin border-radius($radius: 5px) {
+@mixin bdrs($radius: 5px) {
   @include css3( border-radius,$radius );
 }
 
-//边框图片;
-@mixin border-image($image){
-  @include css3(border-image, $image);
-}
 
 //阴影;
-@mixin box-shadow($shadow...) {
+@mixin box-s($shadow...) {
   @if length($shadow) >= 1 {
     @include css3(box-shadow, $shadow);
   } @else{
@@ -112,43 +108,53 @@
 }
 
 //去除阴影;
-@mixin no-box-shadow($noshadow:none){
+@mixin no-box-s($noshadow:none){
   @include css3(box-shadow,$noshadow);
 }
 
 //是否允许用户选中文本;
-@mixin user-select($arg: text) {
+@mixin usr-s($arg: text) {
   @include css3(user-select, $arg);
 }
 
 //transform;
-@mixin transform($property...) {
+@mixin trf($property...) {
   @include css3(transform, $property);
 }
 
 //元素的基点位置;
-@mixin transform-origin($axes) {
+@mixin trf-o($axes) {
   @include css3(transform-origin, $axes );
 }
 
 //3D 转换;
-@mixin transform-style($style: preserve-3d) {
+@mixin trf-s($style: preserve-3d) {
   @include css3(transform-style, $style );
 }
 
 //隐藏被旋转的 div 元素的背面;
-@mixin backface-visibility($visibility:hidden){
+@mixin bv($visibility:hidden){
   @include css3(backface-visibility, $visibility);
 }
 
 //设置元素被查看位置的视图;
-@mixin perspective($depth: none) {
+@mixin pec($depth: none) {
   @include css3(perspective, $depth );
 }
 
 //设置 3D 元素的基点位置;
-@mixin perspective-origin($value: 50% 50%) {
+@mixin pec-o($value: 50% 50%) {
   @include css3(perspective-origin, $value );
+}
+
+//设置 3D 元素的基点X位置;
+@mixin pec-ox($value: 50%) {
+  @include css3(perspective-origin-x, $value );
+}
+
+//设置 3D 元素的基点Y位置;
+@mixin pec-oy($value: 50%) {
+  @include css3(perspective-origin-y, $value );
 }
 
 //旋转;

@@ -64,9 +64,9 @@
     .cursor{ @include cur; }
     .def{ @include def; }
     /* 。。。。 */
-    .ellipsis{ @include text-overflow; }
+    .ellipsis{ @include tofl; }
     /* 强制折行 */
-    .break#{$format}word{ @include break-word; }
+    .break#{$format}word{ @include bword; }
     /* 默认颜色 */
     .colr#{$format}red{color: $red;}
     .colr#{$format}blue{color: $blue;}

@@ -11,12 +11,12 @@
 }
 
 //设置图片背景;
-@mixin bg-img($img:false,$repeat:no-repeat,$position:0 0 ){
+@mixin bgi($img:false,$repeat:no-repeat,$position:0 0 ){
 	background:url($img) $repeat $position;
 }
 
 //设置background-size;
-@mixin bg-size( $value:cover ){
+@mixin bgz( $value:cover ){
 	background-size:$value;
 }
 
@@ -26,12 +26,12 @@
 }
 
 //设置background-origin;
-@mixin bg-origin( $value:content-box ){	
+@mixin bgo( $value:content-box ){	
 	background-origin:$value;
 }
 
 //设置background-position;
-@mixin bg-position( $value:center center ){
+@mixin bgp( $value:center center ){
 	background-position:$value;
 }
 
