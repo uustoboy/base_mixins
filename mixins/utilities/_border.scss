@@ -31,8 +31,8 @@
 }
 
 //边框图片;
-@mixin bdi($image){
-  @include css3(border-image, $image);
+@mixin bdi($image...){
+  @include css3(border-image, $image...);
 }
 
 
