@@ -35,4 +35,27 @@
   @include css3(border-image, $image...);
 }
 
+//取消边框;
+@mixin no-bd{
+	border:none;
+}
 
+//取消边框;
+@mixin no-bdt{
+	border-top:none;
+}
+
+//取消上边框;
+@mixin no-bdr{
+	border-right:none;
+}
+
+//取消右边框;
+@mixin no-bdb{
+	border-bottom:none;
+}
+
+//取消左边框;
+@mixin no-bdl{
+	border-left:none;
+}

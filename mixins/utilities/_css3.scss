@@ -93,7 +93,7 @@
 
 //css3圆角;
 @mixin bdrs($radius: 5px) {
-  @include css3( border-radius,$radius );
+  @include css3( border-radius,addUnits($radius) );
 }
 
 

@@ -50,5 +50,10 @@
   }
 }
 
+//禁止textarea拖动大小;
+@mixin no-resize{
+  resize: none;
+}
+
 
 
