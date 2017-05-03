@@ -44,7 +44,7 @@
 
 //设置padding-bottom;
 @mixin pb( $size ){
-	padding-left: addUnits($size);
+	padding-bottom: addUnits($size);
 }
 
 //设置padding-left;
