@@ -86,7 +86,7 @@
 }
 
 //设置padding-left && padding-right;
-@mixin prl( $size1,$size2:$size1 ){
+@mixin plr( $size1,$size2:$size1 ){
 	@if ($size1 == $size2) {
 		padding-left: addUnits($size1);
 		padding-right: addUnits($size1);

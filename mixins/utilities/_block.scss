@@ -2,13 +2,17 @@
 // 块的混合宏(mixin);
 
 //块;
-@mixin block{
-    display:block;
+@mixin block($args:false){
+	@if( $args ){
+		display:block !important;
+	}@else{
+		display:block;
+	}
 }
 
 //显示;
-@mixin show{
-    @include block;
+@mixin show($args:false){
+    @include block($args);
 }
 
 //inline;
@@ -42,13 +46,17 @@
 }
 
 //none;
-@mixin hide{ 
-	@include none;
+@mixin hide($args:false){ 
+	@include none($args);
 }
 
 //none;
-@mixin none{ 
-	display:none;  
+@mixin none($args:false){  
+	@if( $args ){
+		display:none !important;
+	}@else{
+		display:none;
+	}
 }
 
 //怪异盒模型;

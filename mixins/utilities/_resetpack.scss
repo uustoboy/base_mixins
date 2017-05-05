@@ -48,8 +48,8 @@
     .fr{ @include fr; }
     .fn-clear{ @include clear; }
     /* 显示隐藏 */
-    .hide{ @include hide; }
-    .show{ @include block; }
+    .hide{ @include hide(true); }
+    .show{ @include block(true); }
     /* 文本方向 */
     .tal{ @include tal; }
     .tar{ @include tar; }
