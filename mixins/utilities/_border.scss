@@ -2,36 +2,58 @@
 // border的混合宏(mixin);
 
 //border;
-@mixin bd($args...) {
+@mixin bd( $args... ) {
 	border:$args;
 }
 
 //border-top;
-@mixin bdt($args...) {
+@mixin bdt( $args... ) {
 	border-top:$args;
 }
 //border-right;
-@mixin bdr($args...) {
+@mixin bdr( $args... ) {
 	border-right:$args;
 }
 
 //border-bottom;
-@mixin bdb($args...) {
+@mixin bdb( $args... ) {
 	border-bottom:$args;
 }
 
 //border-left;
-@mixin bdl($args...) {
+@mixin bdl( $args... ) {
 	border-left:$args;
 }
 
+//border-top && border-bottom;
+@mixin bdtb( $args1,$args2:false ){
+	@if( $args2 ){
+		border-top:$args1;
+		border-bottom:$args2;
+	}@else{
+		border-top:$args1;
+		border-bottom:$args1;
+	}
+}
+
+//border-right && border-left;
+@mixin bdrl( $args1,$args2:false ){
+	@if( $args2 ){
+		border-right:$args1;
+		border-left:$args2;
+	}@else{
+		border-right:$args1;
+		border-left:$args1;
+	}
+}
+
 //border-color;
-@mixin bdc($args...) {
+@mixin bdc( $args... ) {
 	border-color:$args;
 }
 
 //边框图片;
-@mixin bdi($image...){
+@mixin bdi( $image... ){
   @include css3(border-image, $image...);
 }
 
