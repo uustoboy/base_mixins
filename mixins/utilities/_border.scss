@@ -81,3 +81,17 @@
 @mixin no-bdl{
 	border-left:none;
 }
+
+//取消上边框&&下边框;
+@mixin no-bdtb{
+	border-top:none;
+	border-bottom:none;
+}
+
+//取消右边框&&左边框;
+@mixin no-bdrl{
+	border-right:none;
+	border-left:none;
+}
+
+
