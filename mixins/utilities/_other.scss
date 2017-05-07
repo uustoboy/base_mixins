@@ -38,9 +38,19 @@
 @mixin ofv{overflow:visible !important;}
 
 //鼠标手;
-@mixin cur{ cursor: pointer; }
+@mixin cur{ 
+  @include cursor;
+}
+
 //鼠标默认;
-@mixin def{ cursor:default;}
+@mixin def{ 
+  @include cursor(default);
+}
+
+//设置鼠标手;
+@mixin cursor( $args:pointer ){
+  cursor:$args
+}
 
 //透明度;
 @mixin opa($opacity:.8,$support-for-ie:true) {
