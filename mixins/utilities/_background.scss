@@ -6,7 +6,7 @@
 	@if( $img ){
 		background:url($img) $color $repeat $position;
 	}@else{
-		background:url($color);
+		background:$color;
 	}
 }
 
