@@ -6,8 +6,13 @@
 	@if( $img ){
 		background:url($img) $color $repeat $position;
 	}@else{
-		background:url($color) $repeat $position;
+		background:url($color);
 	}
+}
+
+//取消背景;
+@mixin no-bg{
+	background:none;
 }
 
 //设置图片背景;
