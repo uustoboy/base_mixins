@@ -57,7 +57,7 @@
 
 //检验单位;
 @function testUnit( $args ){
-    @if( str-index('#{$args}',!important) or str-index('#{$args}',rem) or str-index('#{$args}',rpx)){
+    @if( str-index('#{$args}',!important) or str-index('#{$args}',rem) or str-index('#{$args}',rpx) or str-index('#{$args}',auto)){
         @return $args;
     }@else{
         @if( unitless($args) ){
