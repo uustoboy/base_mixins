@@ -57,14 +57,16 @@
 
 //检验单位;
 @function testUnit( $args ){
-    @if( str-index('#{$args}',!important) or str-index('#{$args}',rem) or str-index('#{$args}',rpx) or str-index('#{$args}',auto)){
-        @return $args;
-    }@else{
-        @if( unitless($args) ){
-            @return $args+$global-unit;
-        }@else{
-            @return $args;  
+    $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax;
+    @each $o in $filter-units {
+        @if( str-index('#{$args}',$o) ){
+            @return $args;
         }
+    }
+    @if( unitless($args) ){
+        @return $args+$global-unit;
+    }@else{
+        @return $args;  
     }
 }
 
