@@ -57,22 +57,22 @@
 
 //定位top值;
 @mixin t($top:0){
-	top:$top;
+	top:addUnits($top);
 }
 
 //定位left值;
 @mixin l($left:0){
-	left:$left;
+	left:addUnits($left);
 }
 
 //定位bottom值;
 @mixin b($bottom:0){
-	bottom:$bottom;
+	bottom:addUnits($bottom);
 }
 
 //定位right值;
 @mixin r($right:0){
-	right:$right;
+	right:addUnits($right);
 }
 
 //定位top/left值;
