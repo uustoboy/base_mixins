@@ -172,7 +172,7 @@
 
 //flex-basis属性允许单个项目有与其他项目不一样的对齐方式;
 @mixin as( $args:1px ){
-	@include css3(align-self,addUnits($args)):;
+	@include css3(align-self,addUnits($args));
 }
 
 //判断水平属性;
@@ -225,20 +225,20 @@
 
 //order排列顺序:数值越小,排列越靠前,默认为0;
 @mixin odr( $args:1 ){
-	@include css3(order,$args):;
+	@include css3(order,$args);
 }
 
 //flex-grow项目的放大比例,默认为0;
 @mixin fx-g( $args:1 ){
-	@include css3(flex-grow,$args):;
+	@include css3(flex-grow,$args);
 }
 
 //flex-shrink项目的缩小比例,默认为1;
 @mixin fx-s( $args:1 ){
-	@include css3(flex-shrink,$args):;
+	@include css3(flex-shrink,$args);
 }
 
 //flex-basis定义了在分配多余空间之前，项目占据的主轴空间;
 @mixin fx-b( $args:1px ){
-	@include css3(flex-basis,addUnits($args)):;
+	@include css3(flex-basis,addUnits($args));
 }
