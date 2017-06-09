@@ -94,4 +94,34 @@
 	border-left:none;
 }
 
+//描边;
+@mixin oln( $args... ){
+	outline:$args;
+}
+
+//描边的颜色
+@mixin oln-c( $args... ){
+	outline-color:$args;
+}
+
+//描边的圆角
+@mixin oln-r( $args... ){
+	outline-radius:addUnits($args);
+}
+
+//描边的样式
+@mixin oln-s( $args:solid ){
+	outline-style:$args;
+}
+
+//边框的宽度
+@mixin oln-w( $args...){
+	outline-width:addUnits($args);
+}
+
+//描边的偏移;
+@mixin oln-o( $args ){
+	outline-offset:addUnits( $args );
+}
+
 
