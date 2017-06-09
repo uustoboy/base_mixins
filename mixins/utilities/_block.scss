@@ -25,20 +25,10 @@
     display:inline-block;
 }
 
-//flex(新版本的弹性盒模型);
-@mixin flex{
-    @include css3(display,flex,false,true);
-}
-
 //box(老版本的弹性盒模型);
 @mixin box{
     @include css3(display,box,false,true);
 }
-
-//flex(据说最新~新版本的弹性盒模型);
-// @mixin flexbox{
-//     display:flexbox;
-// }
 
 //table;
 @mixin table{
@@ -123,4 +113,132 @@
 	//			  baseline(如果 box-orient 是inline-axis或horizontal，所有子元素均与其基线对齐)		   |
 	//			  stretch(拉伸子元素以填充包含块);
 	@include css3(box-align,$value,true,false);
+}
+
+//flex(新版本的弹性盒模型);
+@mixin flex{
+    @include css3(display,flex,false,true);
+}
+
+//flex(据说最新~新版本的弹性盒模型);
+@mixin flexbox{
+    display:flexbox;
+}
+
+//
+@mixin inflex{
+    @include css3(display,inline-flex,false,true);
+}
+
+//flex分大小;
+@mixin fx( $args:1 ){
+	@include css3(flex,$args);
+}
+
+//flex主轴方向:
+@mixin fx-dir( $args:row ){
+	@include css3(flex-direction,$args);
+}
+
+//flex水平方向;
+@mixin fx-row{
+	@include fx-dir(row);	
+}
+
+//flex换行设置;
+@mixin fx-w( $args:wrap ){
+	@include css3(flex-wrap,$args);
+}
+
+//flex的fx-row&&flex-wrap组合;
+@mixin fx-f( $args:row wrap ){
+	@include css3(flex-flow,$args);
+}
+
+//flex的主轴上的对齐方式;
+@mixin jc( $args:flex-start ){
+	@include css3(justify-content,$args);
+}
+
+//flex的交叉轴上对齐方式;
+@mixin ai( $args:flex-start ){
+	@include css3(align-items,$args);
+}
+
+//flex的多根轴线的对齐方式;
+@mixin ac( $args:flex-start ){
+	@include css3(align-content,$args);
+}
+
+//flex-basis属性允许单个项目有与其他项目不一样的对齐方式;
+@mixin as( $args:1px ){
+	@include css3(align-self,addUnits($args)):;
+}
+
+//判断水平属性;
+@mixin _if-fxdir( $args:jc,$args2:flex-start ){
+	@if( $args == 'jc' ){
+		@include jc($args2);
+	}@else if( $args == 'ai' ){
+		@include ai($args2);
+	}@else if( $args == 'ac' ){
+		@include ac($args2);
+	}@else if( $args == 'as' ){
+		@include as($args2);
+	}
+}
+
+//默认水平从左到右;
+@mixin fx-start( $args:jc ){
+	@include _if-fxdir($args,flex-start);
+}
+
+//水平从右到左;
+@mixin fx-end( $args:jc ){
+	@include _if-fxdir($args,flex-end);
+}
+
+//水平居中;
+@mixin fx-center( $args:jc ){
+	@include _if-fxdir($args,center);
+}
+
+//水平两端对齐,项目之间的间隔都相等;
+@mixin fx-between( $args:jc ){
+	@include _if-fxdir($args,space-between);
+}
+
+//水平每个项目两侧的间隔相等;
+@mixin fx-around( $args:jc ){
+	@include _if-fxdir($args,space-around);
+}
+
+//垂直项目的第一行文字的基线对齐;
+@mixin fx-baseline{
+	@include ai(baseline);
+}
+
+//垂直默认值项目的第一行文字的基线对齐;
+@mixin fx-stretch( $args:ac ){
+	@include _if-fxdir($args,stretch);
+}
+
+//order排列顺序:数值越小,排列越靠前,默认为0;
+@mixin odr( $args:1 ){
+	@include css3(order,$args):;
+}
+
+//flex-grow项目的放大比例,默认为0;
+@mixin fx-g( $args:1 ){
+	@include css3(flex-grow,$args):;
+}
+
+//flex-shrink项目的缩小比例,默认为1;
+@mixin fx-s( $args:1 ){
+	@include css3(flex-shrink,$args):;
+}
+
+//flex-basis定义了在分配多余空间之前，项目占据的主轴空间;
+@mixin fx-b( $args:1px ){
+	@include css3(flex-basis,addUnits($args)):;
 }
