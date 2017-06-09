@@ -125,7 +125,7 @@
     display:flexbox;
 }
 
-//
+//flex行内元素也可以使用 Flex 布局;
 @mixin inflex{
     @include css3(display,inline-flex,false,true);
 }
@@ -135,7 +135,7 @@
 	@include css3(flex,$args);
 }
 
-//flex主轴方向:
+//flex主轴方向;
 @mixin fx-dir( $args:row ){
 	@include css3(flex-direction,$args);
 }
