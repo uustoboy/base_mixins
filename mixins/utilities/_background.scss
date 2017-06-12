@@ -12,7 +12,7 @@
 
 //取消背景;
 @mixin no-bg{
-	background:none;
+	background:none!important;
 }
 
 //设置图片背景;
@@ -53,4 +53,9 @@
 	}@else{
 		background-color:unquote($color);
 	}
+}
+
+//css3背景渐变;
+@mixin linear-gradient( $args... ){
+	@include css3(background,linear-gradient($args),false,true);
 }
