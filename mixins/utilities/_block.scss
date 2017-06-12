@@ -325,6 +325,6 @@
 
 //网格自身对齐方式;
 @mixin js( $args... ){
-	justify-self:$args; 
+	justify-self:$args;
 }
 
