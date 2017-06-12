@@ -242,3 +242,89 @@
 @mixin fx-b( $args:1px ){
 	@include css3(flex-basis,addUnits($args));
 }
+
+//网格;
+@mixin gd{
+	display:grid;
+}
+
+//网格行;
+@mixin gd-t-cols( $args... ){
+	grid-template-columns:$args;
+}
+
+//网格列;
+@mixin gd-t-rows( $args... ){
+	grid-template-rows:$args;
+}
+
+//网格列与列的间距;
+@mixin gd-row-gap( $args... ){
+	grid-row-gap:$args;
+}
+
+//网格行与行的间距;
+@mixin gd-column-gap( $args... ){
+	grid-column-gap:$args;
+}
+
+//网格行&&列的间距;
+@mixin gd-gap( $args... ){
+	grid-gap:$args;
+}
+
+//网格线行向定位开始;
+@mixin gd-col-start( $args... ){
+	grid-column-start:$args; 
+}
+
+//网格线行向定位结束;
+@mixin gd-col-end( $args... ){
+	grid-column-end:$args; 
+}
+
+//网格线列向定位开始&&结束;
+@mixin gd-col( $args... ){
+	grid-column:$args; 
+}
+
+//网格线列向定位开始;
+@mixin gd-row-start( $args... ){
+	grid-row-start:$args; 
+}
+
+//网格线列向定位结束;
+@mixin gd-row-end( $args... ){
+	grid-row-end:$args; 
+}
+
+//网格线列向定位开始&&结束;
+@mixin gd-row( $args... ){
+	grid-row:$args; 
+}
+
+//隐式网格的行;
+@mixin gd-auto-row( $args... ){
+	grid-auto-row:$args;
+}
+
+//创建网格区域名称;
+@mixin gd-area( $args... ){
+	grid-area:$args; 
+}
+
+//创建多个网格名称;
+@mixin gd-t-areas( $args... ){
+	grid-template-areas:$args;
+}
+
+//网格水平开始位置;
+@mixin ji( $args... ){
+	justify-items:$args;
+}
+
+//网格自身对齐方式;
+@mixin js( $args... ){
+	justify-self:$args;
+}
+
