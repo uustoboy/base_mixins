@@ -74,12 +74,37 @@
   text-align: $direction;
 }
 
-//取消下划线;
-@mixin no-line{
-  text-decoration: blink;
+//上下划线;
+@mixin td( $args:line-through ){
+  text-decoration : $args;
 }
 
+//上划线;
+@mixin line-over{
+  @mixin td(overline);
+}
 
+//删除线;
+@mixin line-del{
+  @mixin td(line-through);
+}
+
+//下划线;
+@mixin line-underline{
+  @mixin td(underline);
+}
+
+//闪烁;
+@mixin line-blink{
+   @mixin td(blink);
+}
+
+//取消下划线;
+@mixin no-line{
+  @mixin td(none !important);
+}
+
+ 
 
 
 
