@@ -81,27 +81,27 @@
 
 //上划线;
 @mixin line-over{
-  @mixin td(overline);
+  @include td(overline);
 }
 
 //删除线;
 @mixin line-del{
-  @mixin td(line-through);
+  @include td(line-through);
 }
 
 //下划线;
 @mixin line-underline{
-  @mixin td(underline);
+  @include td(underline);
 }
 
 //闪烁;
 @mixin line-blink{
-   @mixin td(blink);
+   @include td(blink);
 }
 
 //取消下划线;
 @mixin no-line{
-  @mixin td(none !important);
+  @include td(none !important);
 }
 
  
