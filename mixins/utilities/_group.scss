@@ -62,7 +62,7 @@
 }
 
 //设置font-size//color;
-@mixin fc( $font,$line,$color ){
+@mixin fc( $font,$color ){
 	@include f( $font );
 	@include c( $color );
 }
