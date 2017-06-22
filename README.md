@@ -14,6 +14,7 @@ $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
 ### 动画混合宏(_animation.scss):
+
 keyframes ( @keyframes 规则 )<br>
 ```
 css3动画,只能写在调用页面,配合.css3( @style,@frames )使用    
@@ -65,7 +66,7 @@ ani-play ( animation动画"播放"或"暂停" )<br>
 ```
 ani-del ( animation动画延迟时间设置 )<br>
 ```
-    例子 : (不传参数默认0.2s)
+例子 : (不传参数默认0.2s)
    .className{ @include ani-del(0.2s); }  
 ```
 ani-fill ( animation动画运动完成后的状态设置 )<br>
@@ -103,3 +104,33 @@ bg-clip ( 设置background-clip )<br>
 例子 : (不传参数默认content-box)
    .className{ @include bg-clip(content-box); }  
 ```
+bgo ( 设置background-origin )<br>
+```
+例子 : (不传参数默认content-box)
+   .className{ @include bgo(content-box); }  
+```
+bgp ( 设置background-position )<br>
+```
+例子 : (不传参数默认center center)
+   .className{ @include bgp(center center); }  
+```
+bgc  ( 设置背景颜色 )<br>
+```
+例子 : 
+   参数1 $color:为颜色;
+   参数2 $support-for-ie:默认为true 是否兼容rgba兼容ie;
+   .className{ @include bgc(#fff); } 
+   或者
+   .className{ @include bgc(rgba(0,0,0,0.2)); }  
+```
+
+### 块混合宏(_block.scss):
+block ( 块 )<br>
+```
+例子 : 
+    参数: $args:false(默认) 是否加!important;
+   .className{ @include block; } 
+   或者
+   .className{ @include block(true); }  
+```
+
