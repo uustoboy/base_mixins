@@ -1,8 +1,17 @@
 @charset "utf-8";
 //关于字体的混合宏(mixin);
 
-//设置字体;
-@mixin f( $font:12 ){	
+//设置所有字体属性;
+@mixin f( $font... ){	
+	@if( length($font) >= 2 ){
+		font:$font;
+	}@else{
+		font-size:addUnits(nth($font,1));
+	}
+}
+
+//设置字号;
+@mixin fz( $font:12 ){
 	font-size:addUnits($font); 
 }
 
@@ -42,6 +51,6 @@
 }
 
 //设置line-height;
-@mixin line( $line ){
+@mixin lh( $line ){
 	line-height:addUnits($line);
 }

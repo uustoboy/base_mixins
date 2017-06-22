@@ -63,7 +63,7 @@
 
 //css3过渡;
 @mixin trs($properties...) {
-  @if length($properties) >= 1 {
+  @if( length($properties) >= 1  ){
     @include css3(transition, $properties);
   }@else {
     $properties: all 0.3s ease;
@@ -98,7 +98,7 @@
 
 //阴影;
 @mixin box-s($shadow...) {
-  @if length($shadow) >= 1 {
+  @if( length($shadow) >= 1 ){
     @include css3(box-shadow, $shadow);
   } @else{
     $shadow:0 0 4px rgba(0,0,0,.3);

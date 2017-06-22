@@ -5,23 +5,23 @@
 @mixin whl($width,$height,$line-height:$height){
 	@include w($width);
 	@include h($height);
-	@include line($line-height);
+	@include lh($line-height);
 }
 
 //设置width/height/font-size/line-height;
 @mixin whfl($width,$height,$line-height,$font){
 	@include w($width);
 	@include h($height);
-	@include line($line-height);
-	@include f($font);
+	@include lh($line-height);
+	@include fz($font);
 }
 
 //设置width/height/font-size/line-height/color;
 @mixin whflc($width,$height,$font,$line-height,$color){
 	@include w($width);
 	@include h($height);
-	@include f($font);
-	@include line($line-height);
+	@include fz($font);
+	@include lh($line-height);
 	@include c($color);
 }
 
@@ -29,8 +29,8 @@
 @mixin whflcb($width,$height,$font,$line-height,$color,$bg){
 	@include w($width);
 	@include h($height);
-	@include f($font);
-	@include line($line-height);
+	@include fz($font);
+	@include lh($line-height);
 	@include c($color);
 	@include bgc($bg);
 }
@@ -38,47 +38,47 @@
 //设置height/line-height;
 @mixin hl($height,$line-height:$height){
 	@include h($height);
-	@include line($line-height);
+	@include lh($line-height);
 }
 
 //设置height/font-size/line-height/color;
 @mixin hflc($height,$font,$line-height,$color){
 	@include h($height);
-	@include f($font);
-	@include line($line-height);
+	@include fz($font);
+	@include lh($line-height);
 	@include c($color);
 }
 
 //设置width/line-height;
 @mixin wl($width,$line-height:$height){
 	@include w($width);
-	@include line($line-height);
+	@include lh($line-height);
 }
 
 //设置font-szie/line-height;
 @mixin fline( $font,$line ){
-	@include f( $font );
-	@include line( $line );
+	@include fz( $font );
+	@include lh( $line );
 }
 
 //设置font-size//color;
 @mixin fc( $font,$color ){
-	@include f( $font );
+	@include fz( $font );
 	@include c( $color );
 }
 
 //设置font-size/line-height/color;
 @mixin flc( $font,$line,$color ){
-	@include f( $font );
-	@include line( $line );
+	@include fz( $font );
+	@include lh( $line );
 	@include c( $color );
 }
 
 //设置family/font-size/line-height/color;
 @mixin faflc( $family,$font,$line,$color ){
 	@include fa( $family );
-	@include f( $font );
-	@include line( $line );
+	@include fz( $font );
+	@include lh( $line );
 	@include c( $color );
 }
 
