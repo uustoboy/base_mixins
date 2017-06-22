@@ -16,7 +16,7 @@ $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 ### 动画:
 keyframes ( @keyframes 规则 )<br>
 ```
-    css3动画,只能写在调用页面,配合.css3( @style,@frames )使用<br>     
+    css3动画,只能写在调用页面,配合.css3( @style,@frames )使用    
     例子 :                                                                
       @include keyframes(animation-name) {                                                
           0% {                                                             
@@ -28,9 +28,48 @@ keyframes ( @keyframes 规则 )<br>
        }                                                                    
       .className{ @include css3(animation,animation-name 5s infinite); }
 ``` 
-ani ( animation动画 )<br/>
+ani ( animation动画 )<br>
 ```
    例子 :
    .className{ @include ani(keyframes 5s infinite); }    
 ```
-
+ani-name ( animation动画名称 )<br>
+```
+    例子 :
+   .className{ @include ani-name(keyframes-name); }  
+```
+ani-dur ( animation动画成一个周期所需要的时间 )<br>
+```
+    例子 :
+   .className{ @include ani-dur(0.2s); }  
+```
+ani-time ( animation动画速度形式 )<br>
+```
+    例子 :
+   .className{ @include ani-time(linear); }  
+```
+ani-itc ( animation动画播放次数 )<br>
+```
+    例子 :
+   .className{ @include ani-itc(1); }  
+```
+ani-dir ( animation动画轮流反向播放动画 )<br>
+```
+    例子 :
+   .className{ @include ani-dir(alternate); }  
+```
+ani-play ( animation动画"播放"或"暂停" )<br>
+```
+    例子 :
+   .className{ @include ani-play(running); }  
+```
+ani-del ( animation动画延迟时间设置 )<br>
+```
+    例子 :
+   .className{ @include ani-del(0.2s); }  
+```
+ani-fill ( animation动画运动完成后的状态设置 )<br>
+```
+    例子 :
+   .className{ @include ani-fill(forwards); }  
+```
