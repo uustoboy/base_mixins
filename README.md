@@ -14,7 +14,7 @@ $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
 ### 动画:
-keyframes<br>
+keyframes ( @keyframes 规则 )<br>
 ```
     css3动画,只能写在调用页面,配合.css3( @style,@frames )使用<br>     
     例子 :                                                                
@@ -27,12 +27,10 @@ keyframes<br>
           }                                                                
        }                                                                    
       .className{ @include css3(animation,animation-name 5s infinite); }
-```               
-    
-
-
-
-
-
-
+``` 
+ani ( animation动画 )<br/>
+```
+   例子 :
+   .className{ @include ani(keyframes 5s infinite); }    
+```
 
