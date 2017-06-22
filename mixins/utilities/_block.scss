@@ -50,7 +50,7 @@
 }
 
 //怪异盒模型;
-@mixin box-sizing( $type: border-box ) {
+@mixin box-sz( $type: border-box ) {
   @include css3( box-sizing, $type );
 }
 

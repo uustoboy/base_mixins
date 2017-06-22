@@ -125,12 +125,213 @@ bgc  ( 设置背景颜色 )<br>
 ```
 
 ### 块混合宏(_block.scss):
+
 block ( 块 )<br>
 ```
 例子 : 
-    参数: $args:false(默认) 是否加!important;
+   参数: $args:false(默认) 是否加!important;
    .className{ @include block; } 
    或者
    .className{ @include block(true); }  
 ```
+inline ( inline )<br>
+```
+例子 : 
+   .className{ @include inline; }  
+```
+inblock ( inline-block )<br>
+```
+例子 : 
+   .className{ @include inblock; }  
+```
+box ( box )<br>
+```
+例子 : 
+   .className{ @include box; }  
+```
+table ( table )<br>
+```
+例子 : 
+   .className{ @include table; }  
+```
+none ( none )<br>
+```
+例子 : 
+   参数: $args:false(默认) 是否加!important;
+   .className{ @include none; } 
+   或者
+   .className{ @include none(true); }  
+```
+show ( 显示 )<br>
+```
+例子 : 
+   .className{ @include show(); }  
+```
+hide ( 隐藏 )<br>
+```
+例子 : 
+   .className{ @include hide; }  
+```
+box-sz ( 怪异盒模型 )<br>
+```
+例子 :  (不传参数默认border-box)
+   .className{ @include box-sz( border-box ); }  
+```
+box-fx ( 设置元素可伸缩其尺寸 )<br>
+```
+例子 :  (不传参数默认1)
+   .className{ @include box-fx(1); }  
+```
+box-o ( 设置子元素应该被水平或垂直排列 )<br>
+```
+例子 :  (不传参数默认horizontal)
+   .className{ @include box-o(horizontal); }  
+```
+horizontal ( 设置子元素水平排列 )<br>
+```
+例子 : 
+   .className{ @include horizontal; }  
+```
+vertical ( 设置子元素垂直排列 )<br>
+```
+例子 : 
+   .className{ @include vertical; }  
+```
+box-dir ( 规定框元素的子元素方向排列 )<br>
+```
+例子 : (不传参数默认reverse)
+   .className{ @include box-dir( reverse ); }  
+```
+reverse  ( 反方向排列 )<br>
+```
+例子 :
+   .className{ @include reverse; }  
+```
+no-box-dir  ( 默认方向方向排列 )<br>
+```
+例子 :
+   .className{ @include no-box-dir; }  
+```
+
+### 浮动混合宏(_clear.scss):
+
+fl  ( 左浮动 )<br>
+```
+例子 :
+   .className{ @include fl; }  
+```
+fr  ( 右浮动 )<br>
+```
+例子 :
+   .className{ @include fl; }  
+```
+clear  ( 清浮动 )<br>
+```
+例子 :
+   .className{ @include clear; }  
+```
+
+### 文本的混合宏(_text.scss):
+
+tofl  ( 超出一行.... )<br>
+```
+例子 :
+   .className{ @include tofl; }  
+```
+erow  ( 多行显示... )<br>
+```
+例子 : (不传参数默认2行)
+   .className{ @include erow(2); }  
+```
+bword  ( 强制折行 )<br>
+```
+例子 : 
+   .className{ @include bword; }  
+```
+wdw  ( 断行 )<br>
+```
+例子 : 
+   .className{ @include wdw; }  
+```
+hide-text  ( 隐藏文字 )<br>
+```
+例子 : (不传参数默认101%)
+   .className{ @include hide-text(); }  
+```
+hide-text  ( text-indent )<br>
+```
+例子 : (不传参数默认2em)
+   .className{ @include ti(2em); }  
+```
+replace-text  ( text-indent  )<br>
+```
+例子 : 
+   参数1 $image: 图片路径;
+   参数2 $x: 图片x轴;
+   参数3 $y: 图片y轴;
+   .className{ @include replace-text(2em); }  
+``` 
+tal  ( 文字居左对齐 )<br>
+```
+例子 :
+   .className{ @include tal; }  
+```
+tar  ( 文字居右对齐 )<br>
+```
+例子 :
+   .className{ @include tar; }  
+```
+tac  ( 文字居中对齐 )<br>
+```
+例子 :
+   .className{ @include tac; }  
+```
+line-over ( 上划线 )<br>
+```
+例子 :
+   .className{ @include line-over; }  
+```
+line-del ( 删除线 )<br>
+```
+例子 :
+   .className{ @include line-del; }  
+```
+line-underline ( 下划线 )<br>
+```
+例子 :
+   .className{ @include line-underline; }  
+```
+line-blink ( 闪烁 )<br>
+```
+例子 :
+   .className{ @include line-blink; }  
+```
+no-line ( 取消下划线 )<br>
+```
+例子 :
+   .className{ @include no-line; }  
+```
+
+### 设置宽高的混合宏(_size.scss):
+
+w ( 设置width )<br>
+```
+例子 :
+   .className{ @include w(12); }  
+```
+h ( 设置height )<br>
+```
+例子 :
+   .className{ @include h(12); }  
+```
+size ( 设置width/height )<br>
+```
+例子 :
+    参数1 width
+    参数2 height (可不写,width等于height值) 
+   .className{ @include wh(12,30); }
+   或者
+   .className{ @include wh(12); }  
+```
+
 
