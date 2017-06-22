@@ -13,11 +13,11 @@ $global-unit      : px;  ( 默认补全单位 )<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
-### 动画:
+### 动画混合宏(_animation.scss):
 keyframes ( @keyframes 规则 )<br>
 ```
-    css3动画,只能写在调用页面,配合.css3( @style,@frames )使用    
-    例子 :                                                                
+css3动画,只能写在调用页面,配合.css3( @style,@frames )使用    
+例子 :                                                                
       @include keyframes(animation-name) {                                                
           0% {                                                             
              #{$browser}transform: translate3d(100%, 0, 0);                
@@ -30,46 +30,76 @@ keyframes ( @keyframes 规则 )<br>
 ``` 
 ani ( animation动画 )<br>
 ```
-   例子 :
+例子 :
    .className{ @include ani(keyframes 5s infinite); }    
 ```
 ani-name ( animation动画名称 )<br>
 ```
-    例子 :
+例子 :
    .className{ @include ani-name(keyframes-name); }  
 ```
 ani-dur ( animation动画成一个周期所需要的时间 )<br>
 ```
-    例子 :
+例子 : (不传参数默认0.2s)
    .className{ @include ani-dur(0.2s); }  
 ```
 ani-time ( animation动画速度形式 )<br>
 ```
-    例子 :
+例子 : (不传参数默认linear)
    .className{ @include ani-time(linear); }  
 ```
 ani-itc ( animation动画播放次数 )<br>
 ```
-    例子 :
+例子 : (不传参数默认1)
    .className{ @include ani-itc(1); }  
 ```
 ani-dir ( animation动画轮流反向播放动画 )<br>
 ```
-    例子 :
+例子 : (不传参数默认alternate)
    .className{ @include ani-dir(alternate); }  
 ```
 ani-play ( animation动画"播放"或"暂停" )<br>
 ```
-    例子 :
+例子 : (不传参数默认running)
    .className{ @include ani-play(running); }  
 ```
 ani-del ( animation动画延迟时间设置 )<br>
 ```
-    例子 :
+    例子 : (不传参数默认0.2s)
    .className{ @include ani-del(0.2s); }  
 ```
 ani-fill ( animation动画运动完成后的状态设置 )<br>
 ```
-    例子 :
+例子 : (不传参数默认forwards)
    .className{ @include ani-fill(forwards); }  
+```
+
+### 背景图片混合宏(_background.scss):
+
+bg ( 设置背景颜色和图片 )<br>
+```
+例子 :
+   .className{ @include bg(#fff,'../i/a.jpg'); }  
+   或
+   .className{ @include bg(#fff); }  
+```
+no-bg ( 取消背景 )<br>
+```
+例子 :
+   .className{ @include no-bg; }   
+```
+bgi ( 设置图片背景 )<br>
+```
+例子 :
+   .className{ @include bgi('../i/new-close.gif',$position:center center); }  
+```
+bgz ( 设置background-size )<br/>
+```
+例子 : (不传参数默认cover)
+   .className{ @include bgz(cover); }  
+```
+bg-clip ( 设置background-clip )<br>
+```
+例子 : (不传参数默认content-box)
+   .className{ @include bg-clip(content-box); }  
 ```
