@@ -335,3 +335,199 @@ size ( 设置width/height )<br>
 ```
 
 
+
+
+
+
+
+### 完整例子展示:
+```
+@charset "UTF-8";
+@import "./base_mixins/_base_mixins.scss";
+$BG_ULR :"../i/";//路径;
+
+/*
+ * 谁看过弹层
+ * Author tq
+ * Date:20170616
+ */
+
+body{font-size:12px;color:#333;font-family:'Microsoft Yahei','宋体','黑体',Arial, Helvetica, sans-serif;}
+body,div,h1,h2,h3,h4,h5,h6,ul,ol,dl,dt,dd,table,td,p,input,button{margin:0px;padding:0px;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+ul,ol{list-style-type:none;}
+.fl{float:left;}
+.fr{float:right;}
+.cf:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.cf{zoom:1;}
+.hide{display:none;}
+img{border:none;vertical-align:top;}
+.f_12{font-size:12px;}
+.f_14{font-size:14px;}
+.f_16{font-size:16px;}
+.f_18{font-size:18px;}
+.f_20{font-size:20px;}
+.f_22{font-size:22px;}
+.f_YH{font-family:'microsoft yahei';}
+.f_italic{font-style:italic;}
+.color_000{color:#000;}
+.color_333{color:#333;}
+.color_666{color:#666;}
+.color_999{color:#999;}
+.color_4d97ef{color:#4d97ef;}
+.color_2c81d6{color:#2c81d6;}
+.color_e7417f{color:#e7417f;}
+.color_ff546a{color:#ff546a;}
+.txt_underline{text-decoration:underline;}
+.mr_10{margin-right:10px;}
+
+.seeMe-main{
+    @include wh(820,482);
+    @include bgc(#fff);
+}
+.seeMe-head{
+    @include rel;
+    @include h(52);
+    @include flc(20,52,#fff);
+    @include ti(30);
+    @include bdb(1px solid #e9e9e9);
+    @include bgi('#{$BG_ULR}new-head-bg.jpg');
+}
+.seeMe-close{
+    @include abs((t:5,r:5,w:20,h:20));
+    @include over;
+    @include bgi('#{$BG_ULR}new-close.gif',$position:center center);
+}
+
+.seeMe-body{
+    @include pad(19,0,0,29);
+    @include h(410);
+}
+
+.seeMe-left{
+    @include fl;
+    @include w(311);
+}
+
+.seeMe-right{
+    @include fl;
+    @include w(450);
+}
+.seeMe-one{
+    @include flc(18,30,#333);
+    @include fb;
+}
+.seeMe-two{
+    @include h(39);
+    @include flc(16,32,#333)
+}
+.seeMe-three{
+    @include f(0);
+    @include mb(12);
+}
+.seeMe-four{
+    @include flc(14,35,#666);
+    .color_ff546a{
+        @include fb;
+    }
+}
+
+.seeMe-five{
+    @include flc(16,35,#333);
+    @include fb;
+}
+.seeMe-a{
+    @include fc(14,#2c84dd);
+    @include ml(25);
+    @include no-b; 
+    @include line-underline;
+    &:hover{
+        @include no-line;
+    }
+}
+
+.seeMe-per{
+    @include f(20);
+    @include fb;
+    @include vic;
+    @include c(#ff546a);
+}
+%txt{
+    @include inblock;
+    @include wh(66,22);
+    @include ti(11);
+    @include flc(14,22,#666);
+    @include mr(6);
+    @include over;
+}
+.seeMe-shut{
+    @extend %txt;
+    @include bgi('#{$BG_ULR}new-shut-bg.jpg');
+}
+.seeMe-open{
+    @extend %txt;
+    @include c(#ff546a);
+    @include bgi('#{$BG_ULR}new-open-bg.jpg');
+}
+
+.seeMe-2code{
+    @include wh(346-156,208-20);
+    @include pad(20,0,0,156);
+    @include mt(6);
+    @include ml(32);
+    @include bgi('#{$BG_ULR}new-people.jpg');
+}
+
+.seeMe-2codeImg{
+    @include wh(170);
+}
+
+.seeMe-picMain{
+    @include pt(11);
+    @include bgi('#{$BG_ULR}new-use-bg.jpg');
+}
+
+.seeMe-pics{
+    @include rel;
+    @include mar(0,0,0,11);
+    @include wh(260);
+    @include over;
+}
+.seeMe-ul{
+    @include pad(36,0,0,0);
+    li{
+        @include fl;
+        @include wh(62);
+        @include mr(8);
+        @include over;
+        @include bd(1px solid #e6e6e6);
+        @include cur;
+    }
+}
+
+.seeMe-praise{
+    @include abs((t:0,r:0,w:80,h:32,z:10));
+    @include tac;
+    @include bdrs(5);
+    @include bgc(#ff5470);
+    @include cur;
+    .praise-txt{
+        @include inblock;
+        @include h(32);
+        @include flc(18,32,#fff);
+        @include pl(30);
+        @include bgi('#{$BG_ULR}new-heart-ico.png',$position:0 center);
+    }
+
+}
+.praise-like{
+    .praise-txt{
+        @include f(14);
+    }
+    .a{
+        @include bgc(rgba(0,0,0,0.2));
+    }
+}
+```
