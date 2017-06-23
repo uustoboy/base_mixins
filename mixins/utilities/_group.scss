@@ -25,14 +25,14 @@
 	@include c($color);
 }
 
-//设置width/height/font-size/line-height/color/background;
-@mixin whflcb($width,$height,$font,$line-height,$color,$bg){
+//设置width/height/font-size/line-height/color/font-weight;
+@mixin whflcb($width,$height,$font,$line-height,$color,$fb:bold){
 	@include w($width);
 	@include h($height);
 	@include fz($font);
 	@include lh($line-height);
 	@include c($color);
-	@include bgc($bg);
+	@include fb($fb);
 }
 
 //设置height/line-height;
@@ -56,12 +56,12 @@
 }
 
 //设置font-szie/line-height;
-@mixin fline( $font,$line ){
+@mixin flh( $font,$line ){
 	@include fz( $font );
 	@include lh( $line );
 }
 
-//设置font-size//color;
+//设置font-size/color;
 @mixin fc( $font,$color ){
 	@include fz( $font );
 	@include c( $color );

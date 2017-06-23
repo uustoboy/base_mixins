@@ -112,7 +112,7 @@
 }
 
 //定位top/left/bottom/right值;
-@mixin tlbr($top:0,$left:0,$bottom:0,$right:0,$zindex:false){
+@mixin trbl($top:0,$left:0,$bottom:0,$right:0,$zindex:false){
 	@include t($top);
 	@include l($left);
 	@include b($bottom);

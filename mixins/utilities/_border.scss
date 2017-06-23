@@ -62,17 +62,17 @@
 	border:none;
 }
 
-//取消边框;
+//取消上边框;
 @mixin no-bdt{
 	border-top:none;
 }
 
-//取消上边框;
+//取消右边框;
 @mixin no-bdr{
 	border-right:none;
 }
 
-//取消右边框;
+//取消下边框;
 @mixin no-bdb{
 	border-bottom:none;
 }
@@ -99,22 +99,22 @@
 	outline:$args;
 }
 
-//描边的颜色
+//描边的颜色;
 @mixin oln-c( $args... ){
 	outline-color:$args;
 }
 
-//描边的圆角
+//描边的圆角;
 @mixin oln-r( $args... ){
 	outline-radius:addUnits($args);
 }
 
-//描边的样式
+//描边的样式;
 @mixin oln-s( $args:solid ){
 	outline-style:$args;
 }
 
-//边框的宽度
+//边框的宽度;
 @mixin oln-w( $args...){
 	outline-width:addUnits($args);
 }

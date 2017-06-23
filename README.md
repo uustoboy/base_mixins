@@ -334,6 +334,511 @@ size ( 设置width/height )<br>
    .className{ @include wh(12); }  
 ```
 
+### px转rem的混合宏(_rem.scss);
+px2rem ( px转rem )<br>
+```
+例子 :
+    参数1 $px : 转换数字,px单位可不写
+    参数2 $important : false(默认)/true 是否加!important
+    $designWidth : 640;   
+    .className{ @include w(px2rem(100)); }
+    或
+    .className{ @include w(px2rem(100,true)); }
+```
+gpx2rem ( 简单rem多值转行 )<br>
+```
+例子 :
+   .className{ @include pal(12,12,12,12); }  
+```
+px2rpx ( 微信小程序rpx单位函数 )<br>
+```
+例子 :
+   .className{ width : px2rem(100); }
+   或
+   .className{ @include w(px2rpx(100,true)); } 
+```
+gpx2rpx ( 简单rpx多值转行 )<br>
+```
+例子 :
+   .className{ @include pal(gpx2rpx(10,10,10,10)); }  
+```
+
+### 定位的混合宏(_position.scss);
+
+position ( 定位 )<br>
+```
+例子 :
+   参数1 $position : position的属性;
+   参数2 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
+   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
+```
+abs ( 绝对定位 )<br>
+```
+例子 :
+   参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
+   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
+```
+rel ( 相对定位 )<br>
+```
+例子 :
+   参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
+   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
+```
+fixed ( 固定定位 )<br>
+```
+例子 :
+   参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
+   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
+```
+t ( 定位top值 )<br>
+```
+例子 :
+   可不传参数单位 
+   .className{ @include t(10); }  
+```
+l ( 定位left值 )<br>
+```
+例子 :
+   可不传参数单位 
+   .className{ @include l(10); }  
+```
+b ( 定位bottom值 )<br>
+```
+例子 :
+   可不传参数单位 
+   .className{ @include b(10); }  
+```
+r ( 定位right值 )<br>
+```
+例子 :
+   可不传参数单位 
+   .className{ @include r(10); }  
+```
+tl ( 定位top/left值 )<br>
+```
+例子 :
+   参数1 $top : top值;
+   参数2 $left : left值;
+   参数3 $zindex : z-index值;
+   .className{ @include tl(10,10,10); }
+   或
+   .className{ @include tl(10,10,10); }  
+```
+rl ( 定位right/left值 )<br>
+```
+例子 :
+   参数1 $right : right值;
+   参数2 $left : left值;
+   参数3 $zindex : z-index值;
+   .className{ @include rl(10,10,10); }
+   或
+   .className{ @include rl(10,10,10); }  
+```
+bl ( 定位bottom/left值 )<br>
+```
+例子 :
+   参数1 $bottom : bottom值;
+   参数2 $left : left值;
+   参数3 $zindex : z-index值;
+   .className{ @include bl(10,10,10); }
+   或
+   .className{ @include bl(10,10,10); }  
+```
+br ( 定位bottom/right值 )<br>
+```
+例子 :
+   参数1 $bottom : bottom值;
+   参数2 $right : left值;
+   参数3 $zindex : z-index值;
+   .className{ @include br(10,10,10); }
+   或
+   .className{ @include br(10,10,10); }  
+```
+trbl ( 定位top/left/bottom/right值 )<br>
+```
+例子 :
+   参数1 $top : top值;
+   参数2 $right : right值;
+   参数3 $bottom : bottom值;
+   参数4 $left : left值;
+   参数5 $zindex : z-index值;
+   .className{ @include br(10,10,10,10); }
+   或
+   .className{ @include br(10,10,10,10,10); }  
+```
+z ( z-index层级 )<br>
+```
+例子 :
+   .className{ @include z(10); }  
+```
+z1 ( z-index层级为10 )<br>
+```
+例子 :
+   .className{ @include z1; }  
+```
+z2 ( z-index层级为20 )<br>
+```
+例子 :
+   .className{ @include z2; }  
+```
+z3 ( z-index层级为30 )<br>
+```
+例子 :
+   .className{ @include z3; }  
+```
+z4 ( z-index层级为40 )<br>
+```
+例子 :
+   .className{ @include z4; }  
+```
+z5 ( z-index层级为50 )<br>
+```
+例子 :
+   .className{ @include z5; }  
+```
+z6 ( z-index层级为60 )<br>
+```
+例子 :
+   .className{ @include z6; }  
+```
+z-max ( z-index最高层级9999 )<br>
+```
+例子 :
+   .className{ @include z-max; }  
+```
+
+### 字体的混合宏(_fonts.scss);
+
+f ( 设置所有字体属性 )<br>
+```
+例子 :
+  默认为 font 如果参数为一个数值则 设置 font-size;
+  .className{ @include f(italic bold 12px/20px arial,sans-serif); }  
+   或
+  .className{ @include f(10); }  
+```
+fz ( 设置font-size )<br>
+```
+例子 :
+  .className{ @include fz(10); }  
+``` 
+fa ( 设置font-family )<br>
+```
+例子 :
+  默认参数为'Microsoft Yahei';
+  .className{ @include fa(); }  
+``` 
+c ( 设置color )<br>
+```
+例子 :
+  .className{ @include c(#fff); }  
+``` 
+fs ( 设置font-style )<br>
+```
+例子 :
+  .className{ @include fs(bold); }  
+```
+fb ( 设置font-weight )<br>
+```
+例子 :
+  .className{ @include fb(); }  
+```
+no-b ( 去掉font-weight )<br>
+```
+例子 :
+  .className{ @include no-b; }  
+```
+ita ( 文字斜体 )<br>
+```
+例子 :
+  .className{ @include ita; }  
+```
+no-fs ( 去掉文字风格 )<br>
+```
+例子 :
+  .className{ @include no-fs; }  
+```
+lh ( 设置line-height )<br>
+```
+例子 :
+  .className{ @include lh(10); }  
+```
+
+### border的混合宏(_border.scss);
+
+bd ( 设置border )<br>
+```
+例子 :
+   .className{ @include bd(1px solid #fff); }  
+```
+bdt ( 设置border-top )<br>
+```
+例子 :
+   .className{ @include bdt(1px solid #fff); }  
+```
+bdr ( 设置border-right )<br>
+```
+例子 :
+   .className{ @include bdr(1px solid #fff); }  
+```
+bdb ( 设置border-bottom )<br>
+```
+例子 :
+   .className{ @include bdb(1px solid #fff); }  
+```
+bdl ( 设置border-left )<br>
+```
+例子 :
+   .className{ @include bdl(1px solid #fff); }  
+```
+bdtb ( 设置border-top\border-bottom )<br>
+```
+例子 :
+  第二参数不填 border-bottom == border-top 值一样
+   .className{ @include bdtb(1px solid #fff); }
+   或
+   .className{ @include bdtb(1px solid #fff,1px solid #000); }  
+```
+bdrl ( 设置border-right\border-left )<br>
+```
+例子 :
+  第二参数不填 border-left == border-right 值一样
+   .className{ @include bdrl(1px solid #fff); }
+   或
+   .className{ @include bdrl(1px solid #fff,1px solid #000); }  
+```
+bdc ( 设置border-color )<br>
+```
+例子 :
+   .className{ @include bdc(#000); }  
+```
+bdi ( 设置border-image )<br>
+```
+例子 :
+   .className{ @include bdi(url(border.png) 30 30 round); }  
+```
+no-bd ( 取消边框 )<br>
+```
+例子 :
+   .className{ @include no-bd; }  
+```
+no-bdt ( 取消上边框 )<br>
+```
+例子 :
+   .className{ @include no-bdt; }  
+``` 
+no-bdr ( 取消右边框 )<br>
+```
+例子 :
+   .className{ @include no-bdr; }  
+``` 
+no-bdb ( 取消下边框 )<br>
+```
+例子 :
+   .className{ @include no-bdb; }  
+``` 
+no-bdl ( 取消左边框 )<br>
+```
+例子 :
+   .className{ @include no-bdl; }  
+``` 
+no-bdtb ( 取消上边框&&下边框 )<br>
+```
+例子 :
+   .className{ @include no-bdtb; }  
+``` 
+no-bdrl ( 取消右边框/左边框 )<br>
+```
+例子 :
+   .className{ @include no-bdrl; }  
+``` 
+oln ( 设置outline )<br>
+```
+例子 :
+   .className{ @include oln(#00FF00 dotted thick); }  
+```
+oln-c ( 设置outline-color )<br>
+```
+例子 :
+   .className{ @include oln-c(#00FF00); }  
+```
+oln-r ( 设置outline-radius )<br>
+```
+例子 :
+   .className{ @include oln-r(30); }  
+```
+oln-s ( 设置outline-style )<br>
+```
+例子 :
+   .className{ @include oln-s(solid); }  
+```
+oln-w ( 设置outline-width )<br>
+```
+例子 :
+   .className{ @include oln-w(30); }  
+```
+oln-o ( 设置outline-offset )<br>
+```
+例子 :
+   .className{ @include oln-w(30); }  
+```
+
+### 打包默认(_resetpack.scss);
+
+base ( 设置width/height/line-height )<br>
+```
+例子 :
+  参数1 $content:number 设置 .content 的宽度;
+  参数2 $unit:px 设置默认单位;
+  参数3 $orange:#f60 设置默认橙色文字颜色、默认背景颜色;
+  参数4 $yellow:$fff000 设置默认黄色文字颜色、默认背景颜色;
+  参数5 $blue:#5fb3d2 设置默认蓝色文字颜色、默认背景颜色;
+  参数6 $red:#ff546a 设置默认红色文字颜色、默认背景颜色;
+  参数7 $gray:#ccc 设置默认灰色文字颜色、默认背景颜色;
+  参数8 $disabled:#ccc 设置默认禁止颜色;
+  参数9 $bor_color:#ccc 设置默认边框颜色;
+  参数10 $format:- 设置默认连接-;
+   @include base(1000);
+```
+
+### 清楚标签默认样式(_normalize.scss);
+
+.className{ @include label; } 
+
+### 混合缩写的混合宏(_group.scss);
+
+whl ( 设置width/height/line-height )<br>
+```
+例子 :
+   .className{ @include whl(10,10,10); }  
+```
+whfl ( 设置width/height/font-size/line-height )<br>
+```
+例子 :
+   .className{ @include whfl(10,10,10,10); }  
+```
+whflc ( 设置width/height/font-size/line-height/color )<br>
+```
+例子 :
+   .className{ @include whflc(10,10,10,10,#fff); }  
+```
+whflcb ( 设置width/height/font-size/line-height/color/font-weight )<br>
+```
+例子 :
+   最后一个 font-weight 可不传参数默认 bold;
+   .className{ @include whflcb(10,10,10,10,#fff); }  
+```
+hl ( 设置height/line-height )<br>
+```
+例子 :
+   第二参数不传 line-height == height 
+   .className{ @include hl(10); }
+   或
+   .className{ @include hl(10,10); }  
+```
+hflc ( 设置height/font-size/line-height/color )<br>
+```
+例子 :
+   .className{ @include hflc(10,10,10,#fff); } 
+```
+wl ( 设置width/line-height )<br>
+```
+例子 :
+   .className{ @include wl(10,10); } 
+```
+flh ( 设置font-szie/line-height )<br>
+```
+例子 :
+   .className{ @include flh(10,10); } 
+```
+fc ( 设置font-size/color )<br>
+```
+例子 :
+   .className{ @include flh(10,#fff); } 
+```
+flc ( 设置font-size/line-height/color )<br>
+```
+例子 :
+   .className{ @include flc(10,10,#fff); } 
+```
+faflc ( 设置family/font-size/line-height/color = font )<br>
+```
+例子 :
+   .className{ @include flc('宋体',10,10,#fff); } 
+```
+
+### 其他scss的混合宏(_other.scss);
+
+vit ( vertical-align:top )<br>
+```
+例子 :
+   .className{ @include vit; } 
+```
+vic ( vertical-align:middle )<br>
+```
+例子 :
+   .className{ @include vic; } 
+```
+vib ( vertical-align:bottom )<br>
+```
+例子 :
+   .className{ @include vib; } 
+```
+vertical-align ( 设置vertical-align )<br>
+```
+例子 :
+   .className{ @include vertical-align(top); } 
+```
+over ( overflow:hidden; )<br>
+```
+例子 :
+   .className{ @include over; } 
+```
+ofv ( overflow:visible !important; )<br>
+```
+例子 :
+   .className{ @include ofv; } 
+```
+cur ( 鼠标手 )<br>
+```
+例子 :
+   .className{ @include cur; } 
+```
+$support-for-iecur ( 鼠标默认 )<br>
+```
+例子 :
+   .className{ @include def; } 
+```
+cursor ( 设置鼠标手 )<br>
+```
+例子 :
+   .className{ @include cursor(pointer); } 
+```
+opa ( 设置opacity )<br>
+```
+例子 :
+   参数1 number 0~1透明度;
+   参数2 true(默认)/false 是否兼容ie,默认兼容ie;
+   .className{ @include opa(0.8); }
+   或
+   .className{ @include opa(0.8,false); }
+```
+no-resize ( 禁止textarea拖动大小 )<br>
+```
+例子 :
+   .className{ @include no-resize; } 
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -351,37 +856,6 @@ $BG_ULR :"../i/";//路径;
  * Author tq
  * Date:20170616
  */
-
-body{font-size:12px;color:#333;font-family:'Microsoft Yahei','宋体','黑体',Arial, Helvetica, sans-serif;}
-body,div,h1,h2,h3,h4,h5,h6,ul,ol,dl,dt,dd,table,td,p,input,button{margin:0px;padding:0px;}
-h1,h2,h3,h4,h5,h6{font-size:100%;}
-a{text-decoration:none;}
-a:hover{text-decoration:underline;}
-ul,ol{list-style-type:none;}
-.fl{float:left;}
-.fr{float:right;}
-.cf:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
-.cf{zoom:1;}
-.hide{display:none;}
-img{border:none;vertical-align:top;}
-.f_12{font-size:12px;}
-.f_14{font-size:14px;}
-.f_16{font-size:16px;}
-.f_18{font-size:18px;}
-.f_20{font-size:20px;}
-.f_22{font-size:22px;}
-.f_YH{font-family:'microsoft yahei';}
-.f_italic{font-style:italic;}
-.color_000{color:#000;}
-.color_333{color:#333;}
-.color_666{color:#666;}
-.color_999{color:#999;}
-.color_4d97ef{color:#4d97ef;}
-.color_2c81d6{color:#2c81d6;}
-.color_e7417f{color:#e7417f;}
-.color_ff546a{color:#ff546a;}
-.txt_underline{text-decoration:underline;}
-.mr_10{margin-right:10px;}
 
 .seeMe-main{
     @include wh(820,482);
