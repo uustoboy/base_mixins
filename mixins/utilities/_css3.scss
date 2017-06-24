@@ -162,9 +162,9 @@
 }
 
 //改变默认选中颜色
-@mixin selection( $bg:#00F,$color:#fff,$obj:0 ){
+@mixin selection( $bg:#00F,$color:#fff,$obj:false ){
   
-    @if( type-of($obj) == number ){
+    @if( $obj ){
         ::selection {
             background:$bg; 
             color:$color;

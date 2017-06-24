@@ -8,174 +8,217 @@ $prefixWebkit     : true!default(默认)/false   ( 开启谷歌前缀 )<br>
 $prefixMozilla    : true !default(默认)/false; ( 火狐前缀:moz前缀 )<br>
 $prefixMicrosoft  : true!default(默认)/false;  ( IE前缀:ms前缀 )<br>
 $prefixOpera      : true!default(默认)/false;  ( opera前缀:o前缀 )<br>
-$prefixNo         : false!default(默认)/false; ( 默认 )<br>
+$prefixNo         : false!default(默认)/true; ( 默认 )<br>
 $global-unit      : px;  ( 默认补全单位 )<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
 ### 动画混合宏(_animation.scss):
 
-keyframes ( @keyframes 规则 )<br>
-```
-css3动画,只能写在调用页面,配合.css3( @style,@frames )使用    
-例子 :                                                                
-      @include keyframes(animation-name) {                                                
-          0% {                                                             
-             #{$browser}transform: translate3d(100%, 0, 0);                
-          }                                                                
-          100% {                                                           
-              #{$browser}transform: translate3d(0%, 0, 0);                 
-          }                                                                
-       }                                                                    
-      .className{ @include css3(animation,animation-name 5s infinite); }
+keyframes ( 设置@keyframes 规则 )<br>
 ``` 
-ani ( animation动画 )<br>
+例子 :
+   css3动画,只能写在调用页面,配合.css3( @style,@frames )使用            
+   @include keyframes(animation-name) {                                   
+      0% {                                                             
+         #{$browser}transform: translate3d(100%, 0, 0);                
+      }                                                                
+      100% {                                                           
+          #{$browser}transform: translate3d(0%, 0, 0);                 
+        }                                                                
+   }                                                                    
+  .className{ @include css3(animation,animation-name 5s infinite); }
+``` 
+ani ( 设置animation )<br>
 ```
 例子 :
    .className{ @include ani(keyframes 5s infinite); }    
 ```
-ani-name ( animation动画名称 )<br>
+ani-name ( 设置animation-name )<br>
 ```
 例子 :
    .className{ @include ani-name(keyframes-name); }  
 ```
-ani-dur ( animation动画成一个周期所需要的时间 )<br>
+ani-dur ( 设置animation-duration )<br>
 ```
-例子 : (不传参数默认0.2s)
-   .className{ @include ani-dur(0.2s); }  
+例子 : 
+   不传参数默认'0.2s';
+   .className{ @include ani-dur(); } 
+   或
+   .className{ @include ani-dur(0.5s); }  
 ```
-ani-time ( animation动画速度形式 )<br>
+ani-time ( 设置animation-timing-function )<br>
 ```
-例子 : (不传参数默认linear)
+例子 : 
+   不传参数默认'linear';
+   .className{ @include ani-time(); }
+   或 
    .className{ @include ani-time(linear); }  
 ```
-ani-itc ( animation动画播放次数 )<br>
+ani-itc ( 设置animation-iteration-count )<br>
 ```
-例子 : (不传参数默认1)
-   .className{ @include ani-itc(1); }  
+例子 : 
+   不传参数默认'1';
+   .className{ @include ani-itc(); } 
+   或
+   .className{ @include ani-itc(infinite); } 
 ```
-ani-dir ( animation动画轮流反向播放动画 )<br>
+ani-dir ( 设置animation-direction )<br>
 ```
-例子 : (不传参数默认alternate)
-   .className{ @include ani-dir(alternate); }  
+例子 : 
+   不传参数默认’alternate';
+   .className{ @include ani-dir(); } 
+   或
+   .className{ @include ani-dir(normal); }  
 ```
-ani-play ( animation动画"播放"或"暂停" )<br>
+ani-play ( 设置animation-play-state )<br>
 ```
-例子 : (不传参数默认running)
-   .className{ @include ani-play(running); }  
+例子 : 
+   不传参数默认'running';
+   .className{ @include ani-play(); }
+   或 
+   .className{ @include ani-play(paused); }   
 ```
-ani-del ( animation动画延迟时间设置 )<br>
+ani-del ( 设置animation-delay )<br>
 ```
-例子 : (不传参数默认0.2s)
-   .className{ @include ani-del(0.2s); }  
+例子 : 
+   不传参数默认'0.2s';
+   .className{ @include ani-del(); }
+   或
+   .className{ @include ani-del(0.5s); }  
 ```
-ani-fill ( animation动画运动完成后的状态设置 )<br>
+ani-fill ( 设置animation-fill-mode )<br>
 ```
-例子 : (不传参数默认forwards)
-   .className{ @include ani-fill(forwards); }  
+例子 : 
+   不传参数默认'forwards';
+   .className{ @include ani-fill(); }
+   或
+   .className{ @include ani-fill(backwards); }  
 ```
 
 ### 背景图片混合宏(_background.scss):
 
-bg ( 设置背景颜色和图片 )<br>
+bg ( 设置background )<br>
 ```
 例子 :
+   参数1 $color : 颜色值（没有默认颜色）;
+   参数2 $img : 图片路径;
+   参数3 $repeat : 'no-repeat'(默认) 设置background-repeat;
+   参数4 $position : '0 0'(默认) 设置background-position;
    .className{ @include bg(#fff,'../i/a.jpg'); }  
    或
    .className{ @include bg(#fff); }  
 ```
-no-bg ( 取消背景 )<br>
+no-bg ( 取消背景background:none!important )<br>
 ```
 例子 :
    .className{ @include no-bg; }   
 ```
-bgi ( 设置图片背景 )<br>
+bgi ( 设置background-image )<br>
 ```
 例子 :
-   .className{ @include bgi('../i/new-close.gif',$position:center center); }  
+  参数1 $img : 图片路径;
+  参数2 $repeat : 'no-repeat'(默认) 设置background-repeat;
+  参数3 $position : '0 0'(默认) 设置background-position;
+  .className{ @include bgi('../i/new-close.gif',$position:center center); }  
 ```
 bgz ( 设置background-size )<br/>
 ```
-例子 : (不传参数默认cover)
-   .className{ @include bgz(cover); }  
+例子 : 
+   不传参数默认'cover';
+   .className{ @include bgz(); }
+   或  
+   .className{ @include bgz(contain); }  
 ```
 bg-clip ( 设置background-clip )<br>
 ```
-例子 : (不传参数默认content-box)
-   .className{ @include bg-clip(content-box); }  
+例子 :
+   不传参数默认'content-box';
+   .className{ @include bg-clip(); }  
+   或
+   .className{ @include bg-clip(padding-box); }  
 ```
 bgo ( 设置background-origin )<br>
 ```
-例子 : (不传参数默认content-box)
-   .className{ @include bgo(content-box); }  
+例子 : 
+   不传参数默认'content-box';
+   .className{ @include bgo(); } 
+   或
+   .className{ @include bgo(border-box); }  
 ```
 bgp ( 设置background-position )<br>
 ```
-例子 : (不传参数默认center center)
+例子 : 
+   不传参数默认'center cente';
+   .className{ @include bgp(); }
+   或
    .className{ @include bgp(center center); }  
 ```
 bgc  ( 设置背景颜色 )<br>
 ```
 例子 : 
    参数1 $color:为颜色;
-   参数2 $support-for-ie:默认为true 是否兼容rgba兼容ie;
+   参数2 $support-for-ie:true(默认为)/false 是否兼容rgba兼容ie;
    .className{ @include bgc(#fff); } 
-   或者
+   或
    .className{ @include bgc(rgba(0,0,0,0.2)); }  
 ```
 
 ### 块混合宏(_block.scss):
 
-block ( 块 )<br>
+block ( 设置display:block )<br>
 ```
 例子 : 
-   参数: $args:false(默认) 是否加!important;
+   参数: $args:false(默认)/true 是否加!important;
    .className{ @include block; } 
-   或者
+   或
    .className{ @include block(true); }  
 ```
-inline ( inline )<br>
+inline ( 设置display:inline )<br>
 ```
 例子 : 
    .className{ @include inline; }  
 ```
-inblock ( inline-block )<br>
+inblock ( 设置inline-block )<br>
 ```
 例子 : 
    .className{ @include inblock; }  
 ```
-box ( box )<br>
+box ( 设置display:box )<br>
 ```
 例子 : 
    .className{ @include box; }  
 ```
-table ( table )<br>
+table ( 设置display:table )<br>
 ```
 例子 : 
    .className{ @include table; }  
 ```
-none ( none )<br>
+none ( 设置display:none )<br>
 ```
 例子 : 
-   参数: $args:false(默认) 是否加!important;
+   参数: $args:false(默认)/true 是否加!important;
    .className{ @include none; } 
    或者
    .className{ @include none(true); }  
 ```
-show ( 显示 )<br>
+show ( 设置display:block )<br>
 ```
 例子 : 
-   .className{ @include show(); }  
+   .className{ @include show; }  
 ```
-hide ( 隐藏 )<br>
+hide ( 设置display:none )<br>
 ```
 例子 : 
    .className{ @include hide; }  
 ```
-box-sz ( 怪异盒模型 )<br>
+box-sz ( 设置box-sizing )<br>
 ```
-例子 :  (不传参数默认border-box)
-   .className{ @include box-sz( border-box ); }  
+例子 :  
+   不传参数默认'border-box';
+   .className{ @include box-sz(); } 
+   或
+   .className{ @include box-sz(content-box); }  
 ```
 box-fx ( 设置元素可伸缩其尺寸 )<br>
 ```
@@ -202,7 +245,7 @@ box-dir ( 规定框元素的子元素方向排列 )<br>
 例子 : (不传参数默认reverse)
    .className{ @include box-dir( reverse ); }  
 ```
-reverse  ( 反方向排列 )<br>
+reverse ( 反方向排列 )<br>
 ```
 例子 :
    .className{ @include reverse; }  
@@ -215,98 +258,278 @@ no-box-dir  ( 默认方向方向排列 )<br>
 
 ### 浮动混合宏(_clear.scss):
 
-fl  ( 左浮动 )<br>
+fl ( float:left )<br>
 ```
 例子 :
    .className{ @include fl; }  
 ```
-fr  ( 右浮动 )<br>
+fr ( float:left )<br>
 ```
 例子 :
-   .className{ @include fl; }  
+   .className{ @include fr; }  
 ```
-clear  ( 清浮动 )<br>
+clear ( 清浮动clear )<br>
 ```
 例子 :
    .className{ @include clear; }  
 ```
 
+### css3属性的混合宏(_css3.scss):
+
+css3  ( css3前缀 )<br>
+```
+例子 :
+   css3前缀:            
+    $style     :  css属性;  
+    $frames    :  css属性内容;                 
+    $prefix    :  true(默认)/false 是否添加样式前缀,默认开启;
+    $suffix    :  true/false(默认) 是否添加样式后缀,默认关闭; 
+  .className{ @include css3(display,box); } 
+   或
+  .className{ @include css3(display,box,false,true); }  
+```
+trs ( 设置transition )<br>
+```
+例子 :
+   可不传参数默认‘all 0.3s ease’;
+   .className{ @include trs(); }  
+   或
+   .className{ @include trs(all 0.7s ease); }  
+```
+trs-p ( 设置transition-property )<br>
+```
+例子 :
+   .className{ @include trs-p(width); }  
+```
+trs-dur ( 设置transition-property )<br>
+```
+例子 :
+   .className{ @include trs-dur(0.2s); }  
+```
+trs-tf ( 设置transition-timing-function )<br>
+```
+例子 :
+   .className{ @include trs-tf(linear); }  
+```
+trs-del ( 设置transition-delay )<br>
+```
+例子 :
+   .className{ @include trs-del(0.2s); }  
+```
+bdrs ( 设置border-radius )<br>
+```
+例子 :
+   不传参数默认5px;
+   .className{ @include bdrs(); }
+   或  
+   .className{ @include bdrs(50); }
+```
+box-s ( 设置box-shadow )<br>
+```
+例子 :
+   不传参数默认'0 0 4px rgba(0,0,0,.3)';
+   .className{ @include box-s(); }
+   或  
+   .className{ @include box-s(10px 10px 4px rgba(0,0,0,.3)); }
+```
+no-box-s ( 设置box-shadow:none )<br>
+```
+例子 :
+   .className{ @include no-box-s; }  
+```
+usr-s ( 设置user-select )<br>
+```
+例子 :
+   不传参数默认'text';
+   .className{ @include usr-s(); }
+   或
+   .className{ @include usr-s(); }  
+```
+trf ( 设置transform )<br>
+```
+例子 :
+   .className{ @include trf(rotate(7deg)); }  
+```
+trf-o ( 设置transform-origin )<br>
+```
+例子 :
+   .className{ @include trf-o(20% 40%); }  
+```
+trf-s ( 设置transform-style; )<br>
+```
+例子 :
+   不传参数默认'preserve-3d';
+   .className{ @include trf-s(); }
+   或
+   .className{ @include trf-s(flat); }  
+```
+bv ( 设置backface-visibility )<br>
+```
+例子 :
+   不传参数默认'hidden';
+   .className{ @include bv(); }
+   或
+   .className{ @include bv(visible); }  
+```
+pec ( 设置perspective )<br>
+```
+例子 :
+   不传参数默认'none';
+   .className{ @include pec(); }
+   或
+   .className{ @include pec(500); }  
+```
+pec-o ( 设置perspective-origin )<br>
+```
+例子 :
+   不传参数默认'50% 50%';
+   .className{ @include pec-o(); }
+   或
+   .className{ @include pec-o(30% 60%); }  
+```
+pec-ox ( 设置perspective-origin-x )<br>
+```
+例子 :
+   不传参数默认'50%';
+   .className{ @include pec-ox(); }
+   或
+   .className{ @include pec-ox(30%); }  
+```
+pec-oy ( 设置perspective-origin-y )<br>
+```
+例子 :
+   不传参数默认'50%';
+   .className{ @include pec-oy(); }
+   或
+   .className{ @include pec-oy(30%); }  
+```
+rotate ( 设置transform:rotate )<br>
+```
+例子 :
+   .className{ @include rotate(50deg); }  
+```
+selection ( 设置transform:rotate )<br>
+```
+例子 :
+   .className{ @include rotate(50deg); }  
+``` 
+scrollbar ( 设置css3滚动条 )<br>
+```
+例子 :
+   例子 :                                                                //
+    @include scrollbar(scrollbar-track){                                 //
+       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,0.3);              //
+       background-color: #F5F5F5;                                         //
+    };                                                                   //
+    @include scrollbar(scrollbar){                                       //
+       width: 12px;                                                       //
+    };                                                                   //
+    @include scrollbar(scrollbar-thumb){                                 //
+       #{$browser}border-radius: 10px;                                    //
+       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,.3);               //
+       background-color: #fbd0c9;                                         //
+    };          
+```
+
+
 ### 文本的混合宏(_text.scss):
 
-tofl  ( 超出一行.... )<br>
+tofl ( 超出一行.... )<br>
 ```
 例子 :
    .className{ @include tofl; }  
 ```
-erow  ( 多行显示... )<br>
+erow ( 多行显示... )<br>
 ```
-例子 : (不传参数默认2行)
-   .className{ @include erow(2); }  
+例子 : 
+   不传参数默认2行;
+   .className{ @include erow(); }  
+   或
+   .className{ @include erow(3); }  
 ```
-bword  ( 强制折行 )<br>
+bword ( 强制折行 )<br>
 ```
 例子 : 
    .className{ @include bword; }  
 ```
-wdw  ( 断行 )<br>
+wdw ( 断行 )<br>
 ```
 例子 : 
    .className{ @include wdw; }  
 ```
-hide-text  ( 隐藏文字 )<br>
+hide-text ( 隐藏文字 )<br>
 ```
-例子 : (不传参数默认101%)
+例子 : 
    .className{ @include hide-text(); }  
 ```
-hide-text  ( text-indent )<br>
+ti ( 设置text-indent )<br>
 ```
-例子 : (不传参数默认2em)
-   .className{ @include ti(2em); }  
+例子 : 
+   不传参数默认'2em';
+   .className{ @include ti(); } 
+   或
+   .className{ @include ti(4px); }   
 ```
-replace-text  ( text-indent  )<br>
+replace-text ( 设置text-indent  )<br>
 ```
 例子 : 
    参数1 $image: 图片路径;
-   参数2 $x: 图片x轴;
-   参数3 $y: 图片y轴;
-   .className{ @include replace-text(2em); }  
+   参数2 $x: 50%(默认) 图片x轴;
+   参数3 $y: 50%(默认) 图片y轴;
+   .className{ @include replace-text('../i/a.jpg',10px,220px); }  
 ``` 
-tal  ( 文字居左对齐 )<br>
+tal ( text-align:left )<br>
 ```
 例子 :
    .className{ @include tal; }  
 ```
-tar  ( 文字居右对齐 )<br>
+tar ( text-align:right )<br>
 ```
 例子 :
    .className{ @include tar; }  
 ```
-tac  ( 文字居中对齐 )<br>
+tac ( text-align:center )<br>
 ```
 例子 :
    .className{ @include tac; }  
 ```
-line-over ( 上划线 )<br>
+text-align ( 设置text-align )<br>
+```
+例子 :
+   不传参数默认'left';
+   .className{ @include text-align()}; 
+   或
+   .className{ @include text-align(right); }  
+```
+td ( 设置text-decoration )<br>
+```
+例子 :
+   不传参数默认'line-through';
+   .className{ @include td()}; 
+   或
+   .className{ @include td(overline); }  
+```
+line-over ( text-decoration:overline )<br>
 ```
 例子 :
    .className{ @include line-over; }  
 ```
-line-del ( 删除线 )<br>
+line-del ( text-decoration:line-through )<br>
 ```
 例子 :
    .className{ @include line-del; }  
 ```
-line-underline ( 下划线 )<br>
+line-underline ( text-decoration:underline )<br>
 ```
 例子 :
    .className{ @include line-underline; }  
 ```
-line-blink ( 闪烁 )<br>
+line-blink ( text-decoration:blink )<br>
 ```
 例子 :
    .className{ @include line-blink; }  
 ```
-no-line ( 取消下划线 )<br>
+no-line ( text-decoration:none !important )<br>
 ```
 例子 :
    .className{ @include no-line; }  
@@ -327,8 +550,8 @@ h ( 设置height )<br>
 size ( 设置width/height )<br>
 ```
 例子 :
-    参数1 width
-    参数2 height (可不写,width等于height值) 
+    参数1 $width 
+    参数2 $height (可不写,width等于height值) 
    .className{ @include wh(12,30); }
    或者
    .className{ @include wh(12); }  
@@ -339,7 +562,7 @@ px2rem ( px转rem )<br>
 ```
 例子 :
     参数1 $px : 转换数字,px单位可不写
-    参数2 $important : false(默认)/true 是否加!important
+    参数2 $important : true/false(默认) 是否加!important
     $designWidth : 640;   
     .className{ @include w(px2rem(100)); }
     或
@@ -353,6 +576,9 @@ gpx2rem ( 简单rem多值转行 )<br>
 px2rpx ( 微信小程序rpx单位函数 )<br>
 ```
 例子 :
+   参数1 $px : 转换数字,px单位可不写
+   参数2 $important : true/false(默认) 是否加!important
+   $designWidth : 640;  
    .className{ width : px2rem(100); }
    或
    .className{ @include w(px2rpx(100,true)); } 
@@ -360,91 +586,89 @@ px2rpx ( 微信小程序rpx单位函数 )<br>
 gpx2rpx ( 简单rpx多值转行 )<br>
 ```
 例子 :
-   .className{ @include pal(gpx2rpx(10,10,10,10)); }  
+   .className{ @include pal(gpx2rpx(10,10,10,10)); } 
+   或
+   .className{ @include margin:gpx2rpx(10,10,10,10); } 
 ```
 
 ### 定位的混合宏(_position.scss);
 
-position ( 定位 )<br>
+position ( 设置position )<br>
 ```
 例子 :
    参数1 $position : position的属性;
-   参数2 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
+   参数2 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)7个值 
    .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
 ```
-abs ( 绝对定位 )<br>
+abs ( position: absolute )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
    .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
 ```
-rel ( 相对定位 )<br>
+rel ( position: relative )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
    .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
 ```
-fixed ( 固定定位 )<br>
+fixed ( position: fixed )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值 
    .className{ @include position(absolute,(t:10px,l:0px,z:5)); }  
 ```
-t ( 定位top值 )<br>
+t ( 设置top值 )<br>
 ```
 例子 :
-   可不传参数单位 
    .className{ @include t(10); }  
 ```
-l ( 定位left值 )<br>
+l ( 设置left值 )<br>
 ```
 例子 :
-   可不传参数单位 
    .className{ @include l(10); }  
 ```
-b ( 定位bottom值 )<br>
+b ( 设置bottom值 )<br>
 ```
 例子 :
-   可不传参数单位 
    .className{ @include b(10); }  
 ```
-r ( 定位right值 )<br>
+r ( 设置right值 )<br>
 ```
 例子 :
-   可不传参数单位 
    .className{ @include r(10); }  
 ```
-tl ( 定位top/left值 )<br>
+tl ( 设置top & left值 )<br>
 ```
 例子 :
    参数1 $top : top值;
    参数2 $left : left值;
    参数3 $zindex : z-index值;
-   .className{ @include tl(10,10,10); }
+   .className{ @include tl(10,10); }
    或
    .className{ @include tl(10,10,10); }  
 ```
-rl ( 定位right/left值 )<br>
+rl ( 设置right & left值 )<br>
 ```
 例子 :
    参数1 $right : right值;
    参数2 $left : left值;
    参数3 $zindex : z-index值;
-   .className{ @include rl(10,10,10); }
+   .className{ @include rl(10,10); }
    或
    .className{ @include rl(10,10,10); }  
 ```
-bl ( 定位bottom/left值 )<br>
+bl ( 设置bottom & left值 )<br>
 ```
 例子 :
    参数1 $bottom : bottom值;
    参数2 $left : left值;
    参数3 $zindex : z-index值;
-   .className{ @include bl(10,10,10); }
+   .className{ @include bl(10,10); }
    或
    .className{ @include bl(10,10,10); }  
 ```
-br ( 定位bottom/right值 )<br>
+br ( 设置bottom & right值 )<br>
 ```
 例子 :
    参数1 $bottom : bottom值;
@@ -454,7 +678,7 @@ br ( 定位bottom/right值 )<br>
    或
    .className{ @include br(10,10,10); }  
 ```
-trbl ( 定位top/left/bottom/right值 )<br>
+trbl ( 设置top & left & bottom & right值 )<br>
 ```
 例子 :
    参数1 $top : top值;
@@ -466,42 +690,42 @@ trbl ( 定位top/left/bottom/right值 )<br>
    或
    .className{ @include br(10,10,10,10,10); }  
 ```
-z ( z-index层级 )<br>
+z ( 设置z-index )<br>
 ```
 例子 :
    .className{ @include z(10); }  
 ```
-z1 ( z-index层级为10 )<br>
+z1 ( z-index:10 )<br>
 ```
 例子 :
    .className{ @include z1; }  
 ```
-z2 ( z-index层级为20 )<br>
+z2 ( z-index:20 )<br>
 ```
 例子 :
    .className{ @include z2; }  
 ```
-z3 ( z-index层级为30 )<br>
+z3 ( z-index:30 )<br>
 ```
 例子 :
    .className{ @include z3; }  
 ```
-z4 ( z-index层级为40 )<br>
+z4 ( z-index:40 )<br>
 ```
 例子 :
    .className{ @include z4; }  
 ```
-z5 ( z-index层级为50 )<br>
+z5 ( z-index:50 )<br>
 ```
 例子 :
    .className{ @include z5; }  
 ```
-z6 ( z-index层级为60 )<br>
+z6 ( z-index:60 )<br>
 ```
 例子 :
    .className{ @include z6; }  
 ```
-z-max ( z-index最高层级9999 )<br>
+z-max ( z-index:9999 )<br>
 ```
 例子 :
    .className{ @include z-max; }  
@@ -509,10 +733,10 @@ z-max ( z-index最高层级9999 )<br>
 
 ### 字体的混合宏(_fonts.scss);
 
-f ( 设置所有字体属性 )<br>
+f ( 设置font || font-size )<br>
 ```
 例子 :
-  默认为 font 如果参数为一个数值则 设置 font-size;
+  默认为 font 如果参数为一个数值则设置 font-size;
   .className{ @include f(italic bold 12px/20px arial,sans-serif); }  
    或
   .className{ @include f(10); }  
@@ -543,17 +767,17 @@ fb ( 设置font-weight )<br>
 例子 :
   .className{ @include fb(); }  
 ```
-no-b ( 去掉font-weight )<br>
+no-b ( font-weight: normal )<br>
 ```
 例子 :
   .className{ @include no-b; }  
 ```
-ita ( 文字斜体 )<br>
+ita ( font-style:italic )<br>
 ```
 例子 :
   .className{ @include ita; }  
 ```
-no-fs ( 去掉文字风格 )<br>
+no-fs ( font-style:normal )<br>
 ```
 例子 :
   .className{ @include no-fs; }  
@@ -591,18 +815,20 @@ bdl ( 设置border-left )<br>
 例子 :
    .className{ @include bdl(1px solid #fff); }  
 ```
-bdtb ( 设置border-top\border-bottom )<br>
+bdtb ( 设置border-top & border-bottom )<br>
 ```
 例子 :
-  第二参数不填 border-bottom == border-top 值一样
+   参数1 $args1 
+   参数2 $args2 (可不写,border-bottom == border-top)
    .className{ @include bdtb(1px solid #fff); }
    或
    .className{ @include bdtb(1px solid #fff,1px solid #000); }  
 ```
-bdrl ( 设置border-right\border-left )<br>
+bdrl ( 设置border-right & border-left )<br>
 ```
 例子 :
-  第二参数不填 border-left == border-right 值一样
+   参数1 $args1 
+   参数2 $args2 (可不写,border-right == border-left)
    .className{ @include bdrl(1px solid #fff); }
    或
    .className{ @include bdrl(1px solid #fff,1px solid #000); }  
@@ -617,37 +843,37 @@ bdi ( 设置border-image )<br>
 例子 :
    .className{ @include bdi(url(border.png) 30 30 round); }  
 ```
-no-bd ( 取消边框 )<br>
+no-bd ( 取消边框border:none )<br>
 ```
 例子 :
    .className{ @include no-bd; }  
 ```
-no-bdt ( 取消上边框 )<br>
+no-bdt ( 取消上边框border-top:none )<br>
 ```
 例子 :
    .className{ @include no-bdt; }  
 ``` 
-no-bdr ( 取消右边框 )<br>
+no-bdr ( 取消右边框border-right:none )<br>
 ```
 例子 :
    .className{ @include no-bdr; }  
 ``` 
-no-bdb ( 取消下边框 )<br>
+no-bdb ( 取消下边框border-bottom:none )<br>
 ```
 例子 :
    .className{ @include no-bdb; }  
 ``` 
-no-bdl ( 取消左边框 )<br>
+no-bdl ( 取消左边框border-left:none )<br>
 ```
 例子 :
    .className{ @include no-bdl; }  
 ``` 
-no-bdtb ( 取消上边框&&下边框 )<br>
+no-bdtb ( 取消上边框 & 下边框 border-top:none & border-bottom:none  )<br>
 ```
 例子 :
    .className{ @include no-bdtb; }  
 ``` 
-no-bdrl ( 取消右边框/左边框 )<br>
+no-bdrl ( 取消右边框 & 左边框 border-right:none & border-left:none )<br>
 ```
 例子 :
    .className{ @include no-bdrl; }  
@@ -685,7 +911,7 @@ oln-o ( 设置outline-offset )<br>
 
 ### 打包默认(_resetpack.scss);
 
-base ( 设置width/height/line-height )<br>
+base ( 设置项目初始化 )<br>
 ```
 例子 :
   参数1 $content:number 设置 .content 的宽度;
@@ -698,37 +924,39 @@ base ( 设置width/height/line-height )<br>
   参数8 $disabled:#ccc 设置默认禁止颜色;
   参数9 $bor_color:#ccc 设置默认边框颜色;
   参数10 $format:- 设置默认连接-;
-   @include base(1000);
+  @include base(1000);
 ```
 
 ### 清楚标签默认样式(_normalize.scss);
-
-.className{ @include label; } 
+label ( 清楚标签默认属性 )<br>
+```
+例子 :
+   @include label; 
+```
 
 ### 混合缩写的混合宏(_group.scss);
-
-whl ( 设置width/height/line-height )<br>
+whl ( 设置width & height & line-height )<br>
 ```
 例子 :
    .className{ @include whl(10,10,10); }  
 ```
-whfl ( 设置width/height/font-size/line-height )<br>
+whfl ( 设置width & height & font-size & line-height )<br>
 ```
 例子 :
    .className{ @include whfl(10,10,10,10); }  
 ```
-whflc ( 设置width/height/font-size/line-height/color )<br>
+whflc ( 设置width & height & font-size & line-height & color )<br>
 ```
 例子 :
    .className{ @include whflc(10,10,10,10,#fff); }  
 ```
-whflcb ( 设置width/height/font-size/line-height/color/font-weight )<br>
+whflcb ( 设置width & height & font-size & line-height & color & font-weight )<br>
 ```
 例子 :
-   最后一个 font-weight 可不传参数默认 bold;
+   最后一个 font-weight 可不传参数默认'bold';
    .className{ @include whflcb(10,10,10,10,#fff); }  
 ```
-hl ( 设置height/line-height )<br>
+hl ( 设置height & line-height )<br>
 ```
 例子 :
    第二参数不传 line-height == height 
