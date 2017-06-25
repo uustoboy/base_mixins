@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
-// Function @minxin;
+// 函数 @minxin;
 @import "utilities/_function.scss";
 
-//动画 @minxin;
+// 动画 @minxin;
 @import "utilities/_animation.scss";
 
-//css3 @minxin;
+// css3 @minxin;
 @import "utilities/_css3.scss";
 
-// txt文本 @minxin;
+// 文本 @minxin;
 @import "utilities/_text.scss";
 
-// animation @minxin;
+// 动画 @minxin;
 @import "utilities/_animation.scss";
 
 // 浮动 @minxin;
@@ -36,20 +36,20 @@
 // rem @minxin;
 @import "utilities/_rem.scss";
 
-// 背景图 @minxin;
+// 背景 @minxin;
 @import "utilities/_background.scss";
 
 // 清除标签 @minxin;
 @import "utilities/_normalize.scss";
 
-// margin/padding @minxin;
+// 边距 @minxin;
 @import "utilities/_box.scss";
 
-// 博爱买辆 @minxin;
+// 边框 @minxin;
 @import "utilities/_border.scss";
-
-//其他 @minxin;
-@import "utilities/_other.scss";
 
 // reset打包;
 @import "utilities/_resetpack.scss";
+
+// 其他 @minxin;
+@import "utilities/_other.scss";

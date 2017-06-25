@@ -1,5 +1,5 @@
 @charset "UTF-8";
-//三角形的混合宏(mixin);
+// 三角形的混合宏(mixin);
 
 %wh{
 	width:0;
@@ -9,59 +9,59 @@
 //上三角圆形 $w:宽,$h:高,$color:颜色;
 @mixin triangle-up($w,$h,$color){
 	@extend %wh;
-    border-left: $h solid transparent;
-    border-right: $h solid transparent;
-    border-bottom: $w solid $color;
-}
-
-//下三角圆形 $w:宽,$h:高,$color:颜色;
-@mixin triangle-bottom($w,$h,$color){
-    @extend %wh;
-    border-left: $h solid transparent;
-    border-right: $h solid transparent;
-    border-top: $w solid $color;
-}
-	
-//左三角圆形 $w:宽,$h:高,$color:颜色;
-@mixin triangle-left($w,$h,$color){
-    @extend %wh;
-    border-top: $h solid transparent;
-    border-right: $w solid $color;
-    border-bottom: $h solid transparent;
+    border-left: addUnits($h) solid transparent;
+    border-right: addUnits($h) solid transparent;
+    border-bottom: addUnits($w) solid $color;
 }
 
 //右三角圆形 $w:宽,$h:高,$color:颜色;
 @mixin triangle-right($w,$h,$color){
     @extend %wh;
-    border-top: $h solid transparent;
-    border-left: $w solid $color;
-    border-bottom: $h solid transparent;
+    border-top: addUnits($h) solid transparent;
+    border-left: addUnits($w) solid $color;
+    border-bottom: addUnits($h) solid transparent;
 }
 
-//左上三角圆形 $w:宽,$h:高,$color:颜色;
+//下三角圆形 $w:宽,$h:高,$color:颜色;
+@mixin triangle-bottom($w,$h,$color){
+    @extend %wh;
+    border-left: addUnits($h) solid transparent;
+    border-right: addUnits($h) solid transparent;
+    border-top: addUnits($w) solid $color;
+}
+	
+//左三角圆形 $w:宽,$h:高,$color:颜色;
+@mixin triangle-left($w,$h,$color){
+    @extend %wh;
+    border-top: addUnits($h) solid transparent;
+    border-right: addUnits($w) solid $color;
+    border-bottom: addUnits($h) solid transparent;
+}
+
+//左上三角圆形 $size:边框线,$color:颜色;
 @mixin triangle-topleft($size,$color){
     @extend %wh;
-    border-top: $size solid $color;
-    border-right: $size solid transparent;
+    border-top: addUnits($size) solid $color;
+    border-right: addUnits($size) solid transparent;
 }
 
-//右上三角圆形  $size:大小,$color:颜色;
+//右上三角圆形  $size:边框线,$color:颜色;
 @mixin triangle-topright($size,$color){
     @extend %wh;
-    border-top: $size solid $color;
-    border-left: $size solid transparent; 
+    border-top: addUnits($size) solid $color;
+    border-left: addUnits($size) solid transparent; 
 }
 
-//左下三角圆形 $size:大小,$color:颜色;
+//左下三角圆形 $size:边框线,$color:颜色;
 @mixin triangle-bottomleft($size,$color){
     @extend %wh;
-    border-bottom: $size solid $color;
-    border-right: $size solid transparent;
+    border-bottom: addUnits($size) solid $color;
+    border-right: addUnits($size) solid transparent;
 }
 
-//右下三角圆形 $size:大小,$color:颜色;
+//右下三角圆形 $size:边框线,$color:颜色;
 @mixin triangle-bottomright($size,$color){
     @extend %wh;
-    border-bottom: $size solid $color;
-    border-left: $size solid transparent;
+    border-bottom: addUnits($size) solid $color;
+    border-left: addUnits($size) solid transparent;
 }

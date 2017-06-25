@@ -3,15 +3,15 @@
 
 //圆形;
 @mixin round($size){
-	width:$size;
-	height:$size;
+	width:addUnits($size);
+	height:addUnits($size);
 	@include css3(border-radius,100%);
 }
 
 //圆形加背景色;
 @mixin roundc($size,$color){
-	width:$size;
-	height:$size;
+	width:addUnits($size);
+	height:addUnits($size);
 	@include css3(border-radius,100%);
 	background-color:$color;
 }

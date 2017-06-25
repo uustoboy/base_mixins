@@ -1,5 +1,5 @@
 @charset "UTF-8";
-//关于背景图的混合宏(mixin);
+// 背景的混合宏(mixin);
 
 //设置背景;
 @mixin bg( $color,$img:false,$repeat:no-repeat,$position:0 0 ){
@@ -53,9 +53,4 @@
 	}@else{
 		background-color:unquote($color);
 	}
-}
-
-//css3背景渐变;
-@mixin linear-gradient( $args... ){
-	@include css3(background,linear-gradient($args),false,true);
 }

@@ -89,15 +89,15 @@
 	@include css3(box-orient,vertical,true,false);
 }
 
+//反方向排列;
+@mixin reverse{
+	@include css3(box-direction,reverse,true,false);
+}
+
 //规定框元素的子元素方向排列;
 @mixin box-dir( $value:reverse ){
 	//normal(默认方向) | reverse(反方向) | inherit(应该从子元素继承 box-direction 属性的值)
 	@include css3(box-direction,$value,true,false);
-}
-
-//反方向排列;
-@mixin reverse{
-	@include css3(box-direction,reverse,true,false);
 }
 
 //默认方向方向排列;
@@ -304,8 +304,8 @@
 }
 
 //隐式网格的行;
-@mixin gd-auto-row( $args... ){
-	grid-auto-row:$args;
+@mixin gd-auto-rows( $args... ){
+	grid-auto-rows:$args;
 }
 
 //创建网格区域名称;

@@ -1,9 +1,8 @@
 @charset "UTF-8";
-//关于Function的混合宏(mixin);
+// 函数的混合宏(mixin);
 
 //判断是否为数字;
 @function TestNum( $num1,$num2 ){
-    
     @if ( not unitless($num1) or not unitless($num2) ){
         @debug "其中数值有单位";
         @return false;

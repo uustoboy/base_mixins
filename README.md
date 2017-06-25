@@ -8,12 +8,12 @@ $prefixWebkit     : true!default(默认)/false   ( 开启谷歌前缀 )<br>
 $prefixMozilla    : true !default(默认)/false; ( 火狐前缀:moz前缀 )<br>
 $prefixMicrosoft  : true!default(默认)/false;  ( IE前缀:ms前缀 )<br>
 $prefixOpera      : true!default(默认)/false;  ( opera前缀:o前缀 )<br>
-$prefixNo         : false!default(默认)/true; ( 默认 )<br>
-$global-unit      : px;  ( 默认补全单位 )<br>
+$prefixNo         : true/false!default(默认); ( 默认前缀关闭 )<br>
+$global-unit      : px;  ( 全局默认补全单位 )<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
-### 动画混合宏(_animation.scss):
+### 动画的混合宏(_animation.scss):
 
 keyframes ( 设置@keyframes 规则 )<br>
 ``` 
@@ -96,7 +96,7 @@ ani-fill ( 设置animation-fill-mode )<br>
    .className{ @include ani-fill(backwards); }  
 ```
 
-### 背景图片混合宏(_background.scss):
+### 背景的混合宏(_background.scss):
 
 bg ( 设置background )<br>
 ```
@@ -164,7 +164,7 @@ bgc  ( 设置背景颜色 )<br>
    .className{ @include bgc(rgba(0,0,0,0.2)); }  
 ```
 
-### 块混合宏(_block.scss):
+### 块的混合宏(_block.scss):
 
 block ( 设置display:block )<br>
 ```
@@ -220,40 +220,326 @@ box-sz ( 设置box-sizing )<br>
    或
    .className{ @include box-sz(content-box); }  
 ```
-box-fx ( 设置元素可伸缩其尺寸 )<br>
+box-fx ( 设置box-flex:1 )<br>
 ```
-例子 :  (不传参数默认1)
-   .className{ @include box-fx(1); }  
+例子 :  
+   不传参数默认'1';
+   .className{ @include box-fx(1); }
+   或
+   .className{ @include box-fx(3); }  
 ```
-box-o ( 设置子元素应该被水平或垂直排列 )<br>
+box-o ( 设置box-orient:block-axis )<br>
 ```
-例子 :  (不传参数默认horizontal)
-   .className{ @include box-o(horizontal); }  
+例子 :  
+   不传参数默认'horizontal';
+   .className{ @include box-o(); } 
+   或
+   .className{ @include box-o(block-axis); }  
 ```
-horizontal ( 设置子元素水平排列 )<br>
+horizontal ( box-orient:horizontal )<br>
 ```
 例子 : 
    .className{ @include horizontal; }  
 ```
-vertical ( 设置子元素垂直排列 )<br>
+vertical ( box-orient:vertical )<br>
 ```
 例子 : 
    .className{ @include vertical; }  
 ```
-box-dir ( 规定框元素的子元素方向排列 )<br>
-```
-例子 : (不传参数默认reverse)
-   .className{ @include box-dir( reverse ); }  
-```
-reverse ( 反方向排列 )<br>
+reverse ( box-direction:reverse )<br>
 ```
 例子 :
    .className{ @include reverse; }  
 ```
-no-box-dir  ( 默认方向方向排列 )<br>
+box-dir ( 设置box-direction )<br>
+```
+例子 : 
+   不传参数默认'reverse';
+   .className{ @include box-dir(); } 
+   或 
+   .className{ @include box-dir( inherit ); }  
+```
+no-box-dir  ( 默认方向方向排列box-direction:normal )<br>
 ```
 例子 :
    .className{ @include no-box-dir; }  
+```
+box-a ( 设置box-align )<br>
+```
+例子 :
+   不传参数默认'center';
+   .className{ @include box-a(); } 
+   或
+   .className{ @include box-a( baseline ); }  
+```
+flex ( display:flex )<br>
+```
+例子 :
+   .className{ @include flex; }  
+```
+flexbox ( display:flexbox )<br>
+```
+例子 :
+   .className{ @include flexbox; }  
+```
+inflex ( display:inline-flex )<br>
+```
+例子 :
+   .className{ @include inflex; }  
+```
+fx ( 设置flex )<br>
+```
+例子 :
+   不传参数默认'1';
+   .className{ @include fx(); } 
+   或
+   .className{ @include fx(2); }  
+```
+fx-dir ( 设置flex-direction )<br>
+```
+例子 :
+   不传参数默认'row';
+   .className{ @include fx-dir(); } 
+   或
+   .className{ @include fx-dir( column ); }  
+```
+fx-row ( flex-direction:row )<br>
+```
+例子 :
+   .className{ @include fx-row(); }  
+```
+fx-w ( 设置flex-wrap )<br>
+```
+例子 :
+   不传参数默认'wrap';
+   .className{ @include fx-w(); } 
+   或
+   .className{ @include fx-w( wrap-reverse ); }  
+```
+fx-f ( 设置flex-flow )<br>
+```
+例子 :
+   不传参数默认'row wrap';
+   .className{ @include fx-f(); } 
+   或
+   .className{ @include fx-f( row wrap-reverse ); }  
+```
+jc ( 设置justify-content )<br>
+```
+例子 :
+   不传参数默认'flex-start';
+   .className{ @include jc(); } 
+   或
+   .className{ @include jc( flex-end ); }  
+```
+ai ( 设置align-items )<br>
+```
+例子 :
+   不传参数默认'flex-start';
+   .className{ @include ai(); } 
+   或
+   .className{ @include ai( flex-end ); }  
+```
+ac ( 设置align-content )<br>
+```
+例子 :
+   不传参数默认'flex-start';
+   .className{ @include ac(); } 
+   或
+   .className{ @include ac( flex-end ); }  
+```
+as ( 设置align-self )<br>
+```
+例子 :
+   不传参数默认'1px';
+   .className{ @include as(); } 
+   或
+   .className{ @include as( 2 ); }  
+```
+fx-start ( 设置flex-start )<br>
+```
+例子 :
+   不传参数默认'jc';
+   .className{ @include fx-start(); } 
+   或
+   .className{ @include fx-start( ai ); }  
+   或
+   .className{ @include fx-start( ac ); } 
+   或
+   .className{ @include fx-start( as ); } 
+```
+fx-end ( 设置flex-end )<br>
+```
+例子 :
+   不传参数默认'jc';
+   .className{ @include fx-end(); } 
+   或
+   .className{ @include fx-end( ai ); }  
+   或
+   .className{ @include fx-end( ac ); } 
+   或
+   .className{ @include fx-end( as ); } 
+```
+fx-center ( 设置flex-end )<br>
+```
+例子 :
+   不传参数默认'jc';
+   .className{ @include fx-center(); } 
+   或
+   .className{ @include fx-center( ai ); }  
+   或
+   .className{ @include fx-center( ac ); } 
+   或
+   .className{ @include fx-center( as ); } 
+```
+fx-between ( 设置space-between )<br>
+```
+例子 :
+   不传参数默认'jc';
+   .className{ @include fx-between(); } 
+   或
+   .className{ @include fx-between( ai ); }  
+   或
+   .className{ @include fx-between( ac ); } 
+   或
+   .className{ @include fx-between( as ); } 
+```
+fx-around ( 设置space-between )<br>
+```
+例子 :
+   不传参数默认'jc';
+   .className{ @include fx-around(); } 
+   或
+   .className{ @include fx-around( ai ); }  
+   或
+   .className{ @include fx-around( ac ); } 
+   或
+   .className{ @include fx-around( as ); } 
+```
+fx-baseline ( align-items:baseline )<br>
+```
+例子 :
+   .className{ @include fx-baseline; }  
+```
+fx-stretch ( 设置stretch )<br>
+```
+例子 :
+   不传参数默认'ac';
+   .className{ @include fx-stretch(); }
+   或 
+   .className{ @include fx-stretch( ai ); }  
+```
+odr ( 设置order )<br>
+```
+例子 :
+   不传参数默认'1';
+   .className{ @include odr(); }
+   或 
+   .className{ @include odr( 2 ); }  
+```
+fx-g ( 设置flex-grow )<br>
+```
+例子 :
+   不传参数默认'1';
+   .className{ @include fx-g(); }
+   或 
+   .className{ @include fx-g( 2 ); }  
+```
+fx-s ( 设置flex-shrink )<br>
+```
+例子 :
+   不传参数默认'1';
+   .className{ @include fx-s(); }
+   或 
+   .className{ @include fx-s( 2 ); }  
+```
+fx-b ( 设置flex-basis )<br>
+```
+例子 :
+   不传参数默认'1';
+   .className{ @include fx-b(); }
+   或 
+   .className{ @include fx-b( 2 ); }  
+```
+gd ( display:grid )<br>
+```
+例子 :
+   .className{ @include gd; } 
+```
+gd-t-cols ( 设置grid-template-columns )<br>
+```
+例子 :
+   .className{ @include gd-t-cols( 150px 1fr ); } 
+```
+gd-t-rows ( 设置grid-template-rows )<br>
+```
+例子 :
+   .className{ @include gd-t-rows( 50px 1fr 30px ); } 
+```
+gd-row-gap ( 设置grid-row-gap )<br>
+```
+例子 :
+   .className{ @include gd-row-gap( 20px ); } 
+```
+gd-column-gap ( 设置grid-column-gap )<br>
+```
+例子 :
+   .className{ @include gd-column-gap( 20px ); } 
+```
+gd-gap ( 设置grid-gap )<br>
+```
+例子 :
+   .className{ @include gd-gap( 20px ); } 
+```
+gd-col-start ( 设置grid-column-start )<br>
+```
+例子 :
+   .className{ @include gd-col-start( 1 ); } 
+```
+gd-col-end ( 设置grid-column-end )<br>
+```
+例子 :
+   .className{ @include gd-col-end( auto ); } 
+```
+gd-col ( 设置grid-column )<br>
+```
+例子 :
+   .className{ @include gd-col( 50% 200px ); } 
+```
+gd-row-start ( 设置grid-row-start )<br>
+```
+例子 :
+   .className{ @include gd-row-start( 2 ); } 
+```
+gd-row-end ( 设置grid-row-end )<br>
+```
+例子 :
+   .className{ @include gd-row-end( 2 ); } 
+```
+gd-row ( 设置grid-row )<br>
+```
+例子 :
+   .className{ @include gd-row( 100px (30px 60px) ); } 
+```
+gd-auto-rows ( 设置grid-auto-rows )<br>
+```
+例子 :
+   .className{ @include gd-auto-rows( 1fr ); } 
+```
+gd-t-areas ( 设置grid-template-areas )<br>
+```
+例子 :
+   .className{ @include gd-t-areas( none ); } 
+```
+ji ( 设置justify-items )<br>
+```
+例子 :
+   .className{ @include ji( center ); } 
+```
+js ( 设置justify-self )<br>
+```
+例子 :
+   .className{ @include js( flex-start ); } 
 ```
 
 ### 浮动混合宏(_clear.scss):
@@ -274,7 +560,7 @@ clear ( 清浮动clear )<br>
    .className{ @include clear; }  
 ```
 
-### css3属性的混合宏(_css3.scss):
+### css3的混合宏(_css3.scss):
 
 css3  ( css3前缀 )<br>
 ```
@@ -431,7 +717,6 @@ scrollbar ( 设置css3滚动条 )<br>
     };          
 ```
 
-
 ### 文本的混合宏(_text.scss):
 
 tofl ( 超出一行.... )<br>
@@ -535,7 +820,7 @@ no-line ( text-decoration:none !important )<br>
    .className{ @include no-line; }  
 ```
 
-### 设置宽高的混合宏(_size.scss):
+### 宽高的混合宏(_size.scss):
 
 w ( 设置width )<br>
 ```
@@ -788,7 +1073,7 @@ lh ( 设置line-height )<br>
   .className{ @include lh(10); }  
 ```
 
-### border的混合宏(_border.scss);
+### 边框的混合宏(_border.scss);
 
 bd ( 设置border )<br>
 ```
@@ -818,8 +1103,8 @@ bdl ( 设置border-left )<br>
 bdtb ( 设置border-top & border-bottom )<br>
 ```
 例子 :
-   参数1 $args1 
-   参数2 $args2 (可不写,border-bottom == border-top)
+   参数1 $args1 : 设置border-top;
+   参数2 $args2 : 设置border-bottom(可不写,border-bottom == border-top);
    .className{ @include bdtb(1px solid #fff); }
    或
    .className{ @include bdtb(1px solid #fff,1px solid #000); }  
@@ -827,8 +1112,8 @@ bdtb ( 设置border-top & border-bottom )<br>
 bdrl ( 设置border-right & border-left )<br>
 ```
 例子 :
-   参数1 $args1 
-   参数2 $args2 (可不写,border-right == border-left)
+   参数1 $args1 : 设置border-right;
+   参数2 $args2 : 设置border-left(可不写,border-left == border-right);
    .className{ @include bdrl(1px solid #fff); }
    或
    .className{ @include bdrl(1px solid #fff,1px solid #000); }  
@@ -909,25 +1194,25 @@ oln-o ( 设置outline-offset )<br>
    .className{ @include oln-w(30); }  
 ```
 
-### 打包默认(_resetpack.scss);
+### reset打包的混合宏(_resetpack.scss);
 
 base ( 设置项目初始化 )<br>
 ```
 例子 :
   参数1 $content:number 设置 .content 的宽度;
-  参数2 $unit:px 设置默认单位;
-  参数3 $orange:#f60 设置默认橙色文字颜色、默认背景颜色;
-  参数4 $yellow:$fff000 设置默认黄色文字颜色、默认背景颜色;
-  参数5 $blue:#5fb3d2 设置默认蓝色文字颜色、默认背景颜色;
-  参数6 $red:#ff546a 设置默认红色文字颜色、默认背景颜色;
-  参数7 $gray:#ccc 设置默认灰色文字颜色、默认背景颜色;
-  参数8 $disabled:#ccc 设置默认禁止颜色;
-  参数9 $bor_color:#ccc 设置默认边框颜色;
-  参数10 $format:- 设置默认连接-;
+  参数2 $unit : px 设置默认单位;
+  参数3 $orange : #f60 设置默认橙色文字颜色、默认背景颜色;
+  参数4 $yellow : $fff000 设置默认黄色文字颜色、默认背景颜色;
+  参数5 $blue : #5fb3d2 设置默认蓝色文字颜色、默认背景颜色;
+  参数6 $red : #ff546a 设置默认红色文字颜色、默认背景颜色;
+  参数7 $gray : #ccc 设置默认灰色文字颜色、默认背景颜色;
+  参数8 $disabled : #ccc 设置默认禁止颜色;
+  参数9 $bor_color : #ccc 设置默认边框颜色;
+  参数10 $format : - 设置默认连接-;
   @include base(1000);
 ```
 
-### 清楚标签默认样式(_normalize.scss);
+### 清除标签的混合宏(_normalize.scss);
 label ( 清楚标签默认属性 )<br>
 ```
 例子 :
@@ -959,44 +1244,44 @@ whflcb ( 设置width & height & font-size & line-height & color & font-weight )<
 hl ( 设置height & line-height )<br>
 ```
 例子 :
-   第二参数不传 line-height == height 
+   参数1 $height : 设置height
+   参数2 $line-height 设置line-height(可不写,line-height == height)
    .className{ @include hl(10); }
    或
    .className{ @include hl(10,10); }  
 ```
-hflc ( 设置height/font-size/line-height/color )<br>
+hflc ( 设置height & font-size & line-height & color )<br>
 ```
 例子 :
    .className{ @include hflc(10,10,10,#fff); } 
 ```
-wl ( 设置width/line-height )<br>
+wl ( 设置width & line-height )<br>
 ```
 例子 :
    .className{ @include wl(10,10); } 
 ```
-flh ( 设置font-szie/line-height )<br>
+flh ( 设置font-szie & line-height )<br>
 ```
 例子 :
    .className{ @include flh(10,10); } 
 ```
-fc ( 设置font-size/color )<br>
+fc ( 设置font-size & color )<br>
 ```
 例子 :
    .className{ @include flh(10,#fff); } 
 ```
-flc ( 设置font-size/line-height/color )<br>
+flc ( 设置font-size & line-height & color )<br>
 ```
 例子 :
    .className{ @include flc(10,10,#fff); } 
 ```
-faflc ( 设置family/font-size/line-height/color = font )<br>
+faflc ( 设置family & font-size & line-height & color ≈ font )<br>
 ```
 例子 :
    .className{ @include flc('宋体',10,10,#fff); } 
 ```
 
-### 其他scss的混合宏(_other.scss);
-
+### 其他的混合宏(_other.scss);
 vit ( vertical-align:top )<br>
 ```
 例子 :
@@ -1051,27 +1336,86 @@ opa ( 设置opacity )<br>
    或
    .className{ @include opa(0.8,false); }
 ```
-no-resize ( 禁止textarea拖动大小 )<br>
+no-resize ( 禁止textarea拖动大小resize: none )<br>
 ```
 例子 :
    .className{ @include no-resize; } 
 ```
 
+### 圆形的混合宏(_round.scss);
+round ( 设置圆形 )<br>
+```
+例子 :
+   .className{ @include round(30); } 
+```
+roundc ( 设置圆形 & 背景色 )<br>
+```
+例子 :
+   .className{ @include roundc(30,#000); } 
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 三角形的混合宏(_triangle.scss);
+triangle-up ( 上三角圆形 )<br>
+```
+例子 :
+  参数1 $w : 宽度;
+  参数2 $h : 高度;
+  参数3 $color : 颜色;
+  .className{ @include triangle-up( 10,10,#000 ); } 
+```
+triangle-right ( 右三角圆形 )<br>
+```
+例子 :
+  参数1 $w : 宽度;
+  参数2 $h : 高度;
+  参数3 $color : 颜色;
+  .className{ @include triangle-right( 10,10,#000 ); } 
+```
+triangle-bottom ( 下三角圆形 )<br>
+```
+例子 :
+  参数1 $w : 宽度;
+  参数2 $h : 高度;
+  参数3 $color : 颜色;
+  .className{ @include triangle-bottom( 10,10,#000 ); } 
+```
+triangle-left ( 左三角圆形 )<br>
+```
+例子 :
+  参数1 $w : 宽度;
+  参数2 $h : 高度;
+  参数3 $color : 颜色;
+  .className{ @include triangle-left( 10,10,#000 ); } 
+```
+triangle-topleft ( 左上三角圆形 )<br>
+```
+例子 :
+  参数1 $size : 边框线;
+  参数2 $color : 颜色;
+  .className{ @include triangle-topleft( 10,#000 ); } 
+```
+triangle-topright ( 右上三角圆形 )<br>
+```
+例子 :
+  参数1 $size:边框线;
+  参数2 $color : 颜色;
+  .className{ @include triangle-topright( 10,#000 ); } 
+```
+triangle-bottomleft ( 左下三角圆形 )<br>
+```
+例子 :
+  参数1 $size:边框线;
+  参数2 $color : 颜色;
+  .className{ @include triangle-bottomleft( 10,#000 ); } 
+```
+triangle-bottomright ( 右下三角圆形 )<br>
+```
+例子 :
+  参数1 $size:边框线;
+  参数2 $color : 颜色;
+  .className{ @include triangle-bottomright( 10,#000 ); } 
+```
+---
 
 ### 完整例子展示:
 ```
