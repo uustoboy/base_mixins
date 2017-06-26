@@ -157,11 +157,12 @@ bgp ( 设置background-position )<br>
 bgc  ( 设置背景颜色 )<br>
 ```
 例子 : 
-   参数1 $color:为颜色;
-   参数2 $support-for-ie:true(默认为)/false 是否兼容rgba兼容ie;
+   参数1 $color : 为颜色;
+   参数2 $opacity : 开启rgba的透明度;
+   参数3 $support-for-ie : true(默认为)/false 是否兼容rgba兼容ie;
    .className{ @include bgc(#fff); } 
    或
-   .className{ @include bgc(rgba(0,0,0,0.2)); }  
+   .className{ @include bgc(#fff,0.3); }  
 ```
 
 ### 块的混合宏(_block.scss):

@@ -41,8 +41,9 @@
 }
 
 //设置背景颜色;
-@mixin bgc($color,$opacity:1,$support-for-ie:true){
-	@if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
+@mixin bgc($color,$opacity:false,$support-for-ie:true){
+	//@if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
+	@if( $opacity ){
 		background-color:rgba($color,$opacity);
 		@if $support-for-ie{
 			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str(rgba($color,$opacity))},endColorstr=#{ie-hex-str(rgba($color,$opacity))});
