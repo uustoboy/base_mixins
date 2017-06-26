@@ -1429,6 +1429,8 @@ $BG_ULR :"../i/";//路径;
  * Date:20170616
  */
 
+@include base();
+
 .seeMe-main{
     @include wh(820,482);
     @include bgc(#fff);
