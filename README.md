@@ -1397,21 +1397,21 @@ triangle-topleft ( 左上三角圆形 )<br>
 triangle-topright ( 右上三角圆形 )<br>
 ```
 例子 :
-  参数1 $size:边框线;
+  参数1 $size : 边框线;
   参数2 $color : 颜色;
   .className{ @include triangle-topright( 10,#000 ); } 
 ```
 triangle-bottomleft ( 左下三角圆形 )<br>
 ```
 例子 :
-  参数1 $size:边框线;
+  参数1 $size : 边框线;
   参数2 $color : 颜色;
   .className{ @include triangle-bottomleft( 10,#000 ); } 
 ```
 triangle-bottomright ( 右下三角圆形 )<br>
 ```
 例子 :
-  参数1 $size:边框线;
+  参数1 $size : 边框线;
   参数2 $color : 颜色;
   .className{ @include triangle-bottomright( 10,#000 ); } 
 ```
