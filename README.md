@@ -702,18 +702,18 @@ selection ( 设置transform:rotate )<br>
 scrollbar ( 设置css3滚动条 )<br>
 ```
 例子 :
-   例子 :                                                                //
-    @include scrollbar(scrollbar-track){                                 //
-       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,0.3);              //
-       background-color: #F5F5F5;                                         //
-    };                                                                   //
-    @include scrollbar(scrollbar){                                       //
-       width: 12px;                                                       //
-    };                                                                   //
-    @include scrollbar(scrollbar-thumb){                                 //
-       #{$browser}border-radius: 10px;                                    //
-       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,.3);               //
-       background-color: #fbd0c9;                                         //
+   例子 :                                                                
+    @include scrollbar(scrollbar-track){                                 
+       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,0.3);              
+       background-color: #F5F5F5;                                         
+    };                                                                   
+    @include scrollbar(scrollbar){                                       
+       width: 12px;                                                       
+    };                                                                   
+    @include scrollbar(scrollbar-thumb){                                 
+       #{$browser}border-radius: 10px;                                   
+       #{$browser}box-shadow: inset 0 0 6px rgba(0,0,0,.3);               
+       background-color: #fbd0c9;                                         
     };          
 ```
 
