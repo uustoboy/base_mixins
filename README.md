@@ -9,7 +9,7 @@ $prefixMozilla    : true !default(默认)/false; ( 火狐前缀:moz前缀 )<br>
 $prefixMicrosoft  : true!default(默认)/false;  ( IE前缀:ms前缀 )<br>
 $prefixOpera      : true!default(默认)/false;  ( opera前缀:o前缀 )<br>
 $prefixNo         : true/false!default(默认); ( 默认前缀关闭 )<br>
-$global-unit      : px;  ( 全局默认补全单位 )<br>
+$global-unit      : px;  ( 全局默认补全单位,如果设置默认单位为'rem'/'rpx'且不需要加'!important'可直接传值 )全部值会自动转换<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
 
