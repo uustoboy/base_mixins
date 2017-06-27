@@ -12,7 +12,7 @@
     @if( TestNum( $begin,$end ) ){
         @for $i from $begin through $end {
             @if( $i%2 == 0 ){
-                .f#{$format}#{$i}{ font-size:$i+$un; }
+                .f#{$format}#{$i}{ font-size:addUnits($i); }
             }
         }
     }
@@ -32,7 +32,7 @@
     @if( TestNum( $begin,$end ) ){
         @for $i from $begin through $end {
             @if( $i%$mult == 0 ){
-                .#{$name}#{$format}#{$i}{ #{$style}:$i+$un; }
+                .#{$name}#{$format}#{$i}{ #{$style}:addUnits($i); }
             }
             
         }
@@ -40,7 +40,8 @@
 }
 
 //打包默认样式;
-@mixin base($content:950,$unit:px,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-'){
+@mixin base($content:950,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-'){
+     //,$unit:px
      @include label();
     /* 默认浮动 */
     .fl{ @include fl; }
@@ -81,18 +82,18 @@
     /* 默认置灰 */
     .disabled{ background-color:$disabled; }
     /* 默认字体 */
-    @include base-fonts(32,$un:$unit,$format:$format);
+    @include base-fonts(32,$format:$format);
     /* margin  padding */
     .mt0 { margin-top: 0 !important; }
-    @include base-styles(mt,margin-top,30,5,$un:$unit,$format:$format);
+    @include base-styles(mt,margin-top,30,5,$format:$format);
     .mb0 { margin-bottom: 0 !important; }
-    @include base-styles(mb,margin-bottom,30,5,$un:$unit,$format:$format);
+    @include base-styles(mb,margin-bottom,30,5,$format:$format);
     .ml0 { margin-left: 0 !important; }
-    @include base-styles(ml,margin-left,30,5,$un:$unit,$format:$format);
+    @include base-styles(ml,margin-left,30,5,$format:$format);
     .mr0 { margin-right: 0 !important; }
-    @include base-styles(mr,margin-right,30,5,$un:$unit,$format:$format);
+    @include base-styles(mr,margin-right,30,5,$format:$format);
     /* 高度 */
-    @include base-styles(blk,height,50,5,$un:$unit,$format:$format);
+    @include base-styles(blk,height,50,5,$format:$format);
     /* 边框 */
     .bor#{$format}t{ border-top:solid 1px $bor_color;}
     .bor#{$format}l{ border-left:solid 1px $bor_color;}
@@ -106,5 +107,5 @@
     .bor#{$format}dot{ border:1px dotted $bor_color;}
     .border{ border:1px solid $bor_color;}
     /* box */
-    .content{ width: $content+$unit; margin:0 auto; }
+    .content{ width: addUnits($content); margin:0 auto; }
 }

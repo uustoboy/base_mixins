@@ -62,7 +62,11 @@
             @return $args;
         }
     }
-    @if( unitless($args) ){
+    @if( $global-unit == rem ){
+        @return px2rem( $args );
+    }@else if( $global-unit == rpx ){
+        @return px2rpx( $args );
+    }@else if( unitless( $args ) ){
         @return $args+$global-unit;
     }@else{
         @return $args;  
