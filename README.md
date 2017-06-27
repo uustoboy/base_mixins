@@ -2,7 +2,7 @@
 基于sass开发的简写、组合速写的混合宏<br>
 
 ### 全局设置参数:
-$support-for-ie   : true(默认)/false;  ( 兼容老版ie ) <br>
+$global-for-ie    : true(默认)/false;  ( 兼容老版ie ) <br>
 $vendors          : webkit moz ms o;  ( 设置css3前缀 )<br>
 $prefixWebkit     : true!default(默认)/false   ( 开启谷歌前缀 )<br>
 $prefixMozilla    : true !default(默认)/false; ( 火狐前缀:moz前缀 )<br>
@@ -159,10 +159,13 @@ bgc  ( 设置背景颜色 )<br>
 例子 : 
    参数1 $color : 为颜色;
    参数2 $opacity : 开启rgba的透明度;
-   参数3 $support-for-ie : true(默认为)/false 是否兼容rgba兼容ie;
+   参数3 $support-for-ie : true/false(默认为) 如果$global-for-ie:false 又想当前className的rgba兼容ie则传true;
    .className{ @include bgc(#fff); } 
    或
-   .className{ @include bgc(#fff,0.3); }  
+   .className{ @include bgc(#fff,0.3); }
+   或
+   $global-for-ie:false;
+   .className{ @include bgc(#fff,0.3,true); }
 ```
 
 ### 块的混合宏(_block.scss):
@@ -1331,11 +1334,12 @@ cursor ( 设置鼠标手 )<br>
 opa ( 设置opacity )<br>
 ```
 例子 :
-   参数1 number 0~1透明度;
-   参数2 true(默认)/false 是否兼容ie,默认兼容ie;
+   参数1 $opacity : 0.8(默认值) 0~1透明度;
+   参数2 $support-for-ie : true/false(默认)  如果$global-for-ie:false 又想当前className的opacity兼容ie则传true;
    .className{ @include opa(0.8); }
    或
-   .className{ @include opa(0.8,false); }
+   $global-for-ie:false;
+   .className{ @include opa(0.8,true); }
 ```
 no-resize ( 禁止textarea拖动大小resize: none )<br>
 ```

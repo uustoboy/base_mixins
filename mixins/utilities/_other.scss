@@ -53,9 +53,9 @@
 }
 
 //透明度;
-@mixin opa($opacity:.8,$support-for-ie:true) {
+@mixin opa($opacity:.8,$support-for-ie:false) {
   opacity: $opacity;
-  @if $support-for-ie{
+  @if( $global-for-ie or $support-for-ie){
     filter: alpha(opacity=$opacity*100); //IE8
   }
 }
