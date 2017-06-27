@@ -53,46 +53,26 @@
 
 //设置margin-top && margin-bottom;
 @mixin mtb( $size1,$size2:$size1 ){
-	@if ($size1 == $size2) {
-		margin-top: addUnits($size1);
-		margin-bottom: addUnits($size1);
-	}@else{
-		margin-top: addUnits($size1);
-		margin-bottom: addUnits($size2);
-	}
+	margin-top: addUnits($size1);
+	margin-bottom: addUnits($size2);
 }
 
 //设置margin-left && margin-right;
 @mixin mlr( $size1,$size2:$size1 ){
-	@if ($size1 == $size2) {
-		margin-left: addUnits($size1);
-		margin-right: addUnits($size1);
-	}@else{
-		margin-left: addUnits($size1);
-		margin-right: addUnits($size2);
-	}
+	margin-left: addUnits($size1);
+	margin-right: addUnits($size2);
 }
 
 //设置padding-top && padding-bottom;
 @mixin ptb( $size1,$size2:$size1 ){
-	@if ($size1 == $size2) {
-		padding-top: addUnits($size1);
-		padding-bottom: addUnits($size1);
-	}@else{
-		padding-top: addUnits($size1);
-		padding-bottom: addUnits($size2);
-	}
+	padding-top: addUnits($size1);
+	padding-bottom: addUnits($size2);
 }
 
 //设置padding-left && padding-right;
 @mixin plr( $size1,$size2:$size1 ){
-	@if ($size1 == $size2) {
-		padding-left: addUnits($size1);
-		padding-right: addUnits($size1);
-	}@else{
-		padding-left: addUnits($size1);
-		padding-right: addUnits($size2);
-	}
+	padding-left: addUnits($size1);
+	padding-right: addUnits($size2);
 }
 
 

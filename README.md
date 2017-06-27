@@ -1198,6 +1198,100 @@ oln-o ( 设置outline-offset )<br>
    .className{ @include oln-w(30); }  
 ```
 
+### 边距的混合宏(_box.scss);
+mar ( 设置margin )<br>
+```
+例子 :
+   .className{ @include mar(30); }  
+   或
+   多值情况:
+   .className{ @include mar(30,10,50,30); } 
+```
+pad ( 设置padding )<br>
+```
+例子 :
+   .className{ @include pad(30); }  
+   或
+   多值情况:
+   .className{ @include pad(30,10,50,30); } 
+```
+mt ( 设置margin-top )<br>
+```
+例子 :
+   .className{ @include mt(30); }  
+```
+mr ( 设置margin-right )<br>
+```
+例子 :
+   .className{ @include mr(30); }  
+```
+mb ( 设置margin-bottom )<br>
+```
+例子 :
+   .className{ @include mb(30); }  
+```
+ml ( 设置margin-left )<br>
+```
+例子 :
+   .className{ @include ml(30); }  
+```
+pt ( 设置padding-top )<br>
+```
+例子 :
+   .className{ @include pt(30); }  
+```
+pr ( 设置padding-right )<br>
+```
+例子 :
+   .className{ @include pr(30); }  
+```
+pb ( 设置padding-bottom )<br>
+```
+例子 :
+   .className{ @include pb(30); }  
+```
+pl ( 设置padding-left )<br>
+```
+例子 :
+   .className{ @include pl(30); }  
+```
+mtb ( 设置margin-top && margin-bottom )<br>
+```
+例子 :
+   参数1 $size1 : number 设置margin-top;
+   参数2 $size2 : number(默认margin-bottom = margin-top) 设置margin-bottom;
+   .className{ @include mtb(30); } 
+   或
+   .className{ @include mtb(30,10); } 
+```
+mlr ( 设置margin-left && margin-right )<br>
+```
+例子 :
+   参数1 $size1 : number 设置margin-left;
+   参数2 $size2 : number(默认margin-right = margin-left) 设置margin-right;
+   .className{ @include mlr(30); } 
+   或
+   .className{ @include mlr(30,10); } 
+```
+ptb ( 设置padding-top && padding-bottom )<br>
+```
+例子 :
+   参数1 $size1 : number 设置padding-top;
+   参数2 $size2 : number(默认padding-bottom = padding-top) 设置padding-bottom;
+   .className{ @include ptb(30); } 
+   或
+   .className{ @include ptb(30,10); } 
+```
+plr ( 设置padding-left && padding-right )<br>
+```
+例子 :
+   参数1 $size1 : number 设置padding-left;
+   参数2 $size2 : number(默认padding-right = padding-left) 设置padding-right;
+   .className{ @include plr(30); } 
+   或
+   .className{ @include plr(30,10); } 
+```
+
 ### reset打包的混合宏(_resetpack.scss);
 
 base ( 设置项目初始化 )<br>
