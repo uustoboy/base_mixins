@@ -4,10 +4,10 @@
 ### 全局设置参数:
 $global-for-ie    : true(默认)/false;  ( 兼容老版ie ) <br>
 $vendors          : webkit moz ms o;  ( 设置css3前缀 )<br>
-$prefixWebkit     : true!default(默认)/false   ( 开启谷歌前缀 )<br>
-$prefixMozilla    : true !default(默认)/false; ( 火狐前缀:moz前缀 )<br>
-$prefixMicrosoft  : true!default(默认)/false;  ( IE前缀:ms前缀 )<br>
-$prefixOpera      : true!default(默认)/false;  ( opera前缀:o前缀 )<br>
+$prefixWebkit     : true!default(默认)/false   ( 开启谷歌前缀:webkit前缀 )<br>
+$prefixMozilla    : true !default(默认)/false; ( 开启火狐前缀:moz前缀 )<br>
+$prefixMicrosoft  : true!default(默认)/false;  ( 开启IE前缀:ms前缀 )<br>
+$prefixOpera      : true!default(默认)/false;  ( 开启opera前缀:o前缀 )<br>
 $prefixNo         : true/false!default(默认); ( 默认前缀关闭 )<br>
 $global-unit      : px;  ( 全局默认补全单位,如果设置默认单位为'rem'/'rpx'且不需要加'!important'可直接传值 全部值会自动转换)<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
