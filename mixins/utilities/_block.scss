@@ -56,8 +56,12 @@
 
 //display;
 @mixin display( $block:block ){
-    @if( $block == 'flex' or $block == 'box' or $block == 'flexbox' ){
+    @if( $block == 'flex' ){
 		@include flex;
+    }@else if( $block == 'box' ){
+		@include box;
+    }@else if( $block == 'flexbox' ){
+		@include flexbox;
     }
     @else{
 		display:$block;
@@ -122,7 +126,7 @@
 
 //flex(据说最新~新版本的弹性盒模型);
 @mixin flexbox{
-    display:flexbox;
+    @include css3(display,flexbox,false,true);
 }
 
 //flex行内元素也可以使用 Flex 布局;
