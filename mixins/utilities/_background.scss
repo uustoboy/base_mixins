@@ -17,7 +17,7 @@
 
 //设置图片背景;
 @mixin bgi($img:false,$repeat:no-repeat,$position:0 0 ){
-	background-image:url($img) $repeat $position;
+	background:url($img) $repeat $position;
 }
 
 //设置background-size;
