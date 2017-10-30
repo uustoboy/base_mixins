@@ -1429,7 +1429,7 @@ flcb ( 设置font-size & line-height & color & font-weight )<br>
 例子 :
    .className{ @include flcb(10,10,#fff); } 
 ```
-faflc ( 设置family & font-size & line-height & color ≈ font )<br>
+faflc ( 设置family & font-size & line-height & color & font )<br>
 ```
 例子 :
    .className{ @include flc('宋体',10,10,#fff); } 
