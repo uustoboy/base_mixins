@@ -578,6 +578,14 @@ css3  ( css3前缀 )<br>
    或
   .className{ @include css3(display,box,false,true); }  
 ```
+cnt ( 设置content )<br>
+```
+例子 :
+   不传参数默认'';
+   .className{ @include cnt(); }
+   或  
+   .className{ @include cnt('123'); }
+```
 trs ( 设置transition )<br>
 ```
 例子 :
@@ -622,10 +630,23 @@ box-s ( 设置box-shadow )<br>
    或  
    .className{ @include box-s(10px 10px 4px rgba(0,0,0,.3)); }
 ```
+t-sh ( 设置text-shadow )<br>
+```
+例子 :
+   不传参数默认'0 0 4px rgba(0,0,0,.3)';
+   .className{ @include t-sh(); }
+   或  
+   .className{ @include t-sh(10px 10px 4px rgba(0,0,0,.3)); }
+```
 no-box-s ( 设置box-shadow:none )<br>
 ```
 例子 :
    .className{ @include no-box-s; }  
+```
+no-t-sh ( 设置text-shadow:none )<br>
+```
+例子 :
+   .className{ @include no-t-sh; }  
 ```
 usr-s ( 设置user-select )<br>
 ```
@@ -835,6 +856,26 @@ h ( 设置height )<br>
 ```
 例子 :
    .className{ @include h(12); }  
+```
+mah ( 设置max-height )<br>
+```
+例子 :
+   .className{ @include mah(12); }  
+```
+maw ( 设置max-width )<br>
+```
+例子 :
+   .className{ @include maw(12); }  
+```
+mih ( 设置min-height )<br>
+```
+例子 :
+   .className{ @include mih(12); }  
+```
+miw ( 设置min-width )<br>
+```
+例子 :
+   .className{ @include miw(12); }  
 ```
 size ( 设置width/height )<br>
 ```
@@ -1353,6 +1394,11 @@ hflc ( 设置height & font-size & line-height & color )<br>
 例子 :
    .className{ @include hflc(10,10,10,#fff); } 
 ```
+hflcb ( 设置height & font-size & line-height & color && font-weight )<br>
+```
+例子 :
+   .className{ @include hflc(10,10,10,#fff); } 
+```
 wl ( 设置width & line-height )<br>
 ```
 例子 :
@@ -1372,6 +1418,16 @@ flc ( 设置font-size & line-height & color )<br>
 ```
 例子 :
    .className{ @include flc(10,10,#fff); } 
+```
+fcb ( 设置font-size & color & font-weight )<br>
+```
+例子 :
+   .className{ @include fcb(10,#fff); } 
+```
+flcb ( 设置font-size & line-height & color & font-weight )<br>
+```
+例子 :
+   .className{ @include flcb(10,10,#fff); } 
 ```
 faflc ( 设置family & font-size & line-height & color ≈ font )<br>
 ```
