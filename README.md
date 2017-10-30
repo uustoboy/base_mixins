@@ -630,11 +630,11 @@ box-s ( 设置box-shadow )<br>
    或  
    .className{ @include box-s(10px 10px 4px rgba(0,0,0,.3)); }
 ```
-t-sh ( 设置text-shadow )<br>
+设置text-s ( 设置text-shadow )<br>
 ```
 例子 :
    不传参数默认'0 0 4px rgba(0,0,0,.3)';
-   .className{ @include t-sh(); }
+   .className{ @include text-s(); }
    或  
    .className{ @include t-sh(10px 10px 4px rgba(0,0,0,.3)); }
 ```
@@ -643,10 +643,10 @@ no-box-s ( 设置box-shadow:none )<br>
 例子 :
    .className{ @include no-box-s; }  
 ```
-no-t-sh ( 设置text-shadow:none )<br>
+no-text-s ( 设置text-shadow:none )<br>
 ```
 例子 :
-   .className{ @include no-t-sh; }  
+   .className{ @include no-text-s; }  
 ```
 usr-s ( 设置user-select )<br>
 ```

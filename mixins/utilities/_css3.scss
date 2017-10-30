@@ -131,7 +131,7 @@
 }
 
 //文字阴影;
-@mixin t-sh($shadow...) {
+@mixin text-s($shadow...) {
     @if( length($shadow) >=1) {
         @include css3(text-shadow, $shadow);
     }
@@ -147,7 +147,7 @@
 }
 
 //去除文字阴影;
-@mixin no-t-sh($noshadow:none) {
+@mixin no-text-s($noshadow:none) {
     @include css3(text-shadow, $noshadow);
 }
 
