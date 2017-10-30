@@ -31,7 +31,7 @@
     @include fz($font);
     @include lh($line-height);
     @include c($color);
-    @include fb($fb);
+    @include fb($bold);
 }
 
 //设置height & line-height;
@@ -54,7 +54,7 @@
     @include fz($font);
     @include lh($line-height);
     @include c($color);
-    @include fb($fb);
+    @include fb($bold);
 }
 
 //设置width & line-height;
