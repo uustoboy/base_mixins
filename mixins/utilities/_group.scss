@@ -90,7 +90,7 @@
 }
 
 //设置font-size & line-height & color & font-weight;
-@mixin flcb( $font, $color, $bold:bold) {
+@mixin flcb( $font, $color, $line, $bold:bold) {
     @include fz( $font);
     @include lh( $line);
     @include c( $color);
