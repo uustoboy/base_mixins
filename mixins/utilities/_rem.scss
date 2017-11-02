@@ -1,7 +1,8 @@
 @charset "utf-8";
 // px转rem的混合宏(mixin);
 
-//移动端rem单位函数、配合hotcss.js一起用同时设置$designWidth的PSD宽度值(https://r.mzmoney.com/topic/lead3/hotcss.js);
+//移动端rem单位函数、配合hotcss.js一起用同时设置$designWidth的PSD宽度值(https://github.com/imochen/hotcss/blob/master/src/hotcss.js);
+//感谢'墨尘(https://github.com/imochen)'开源的项目'hotcss(https://github.com/imochen/hotcss)'
 ////////////////////////////////////////////////////////////////////////////// 
 // 转换rem: $px:数值,$important:权限最高      							    //             
 //  例子 :                                                                  //   

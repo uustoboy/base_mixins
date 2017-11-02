@@ -163,6 +163,8 @@ bgc  ( 设置背景颜色 )<br>
    .className{ @include bgc(#fff); } 
    或
    .className{ @include bgc(#fff,0.3); }
+   或 
+   .className{ @include bgc(rgba(0,0,0,0.25),0.3); }
    或
    $global-for-ie:false;
    .className{ @include bgc(#fff,0.3,true); }
@@ -891,6 +893,7 @@ size ( 设置width/height )<br>
 px2rem ( px转rem )<br>
 ```
 例子 :
+    需要页面引入'https://github.com/imochen/hotcss/blob/master/src/hotcss.js';
     参数1 $px : 转换数字,px单位可不写
     参数2 $important : true/false(默认) 是否加!important
     $designWidth : 640;   
@@ -1733,4 +1736,12 @@ $BG_ULR :"../i/";//路径;
         @include bgc(rgba(0,0,0,0.2));
     }
 }
+```
+### 感谢
+```
+    [SassMagic](https://github.com/W3cplus/SassMagic)--感谢[W3cplus](https://github.com/W3cplus)
+    [mylus](https://github.com/linx4200/mylus)--感谢[liuxinran](https://github.com/linx4200)
+    [postcss-crip](https://github.com/johnie/postcss-crip)--感谢[Johnie Hjelm](https://github.com/johnie)
+    [hotcss](https://github.com/imochen/hotcss)--感谢[墨尘](https://github.com/imochen)
+    
 ```
