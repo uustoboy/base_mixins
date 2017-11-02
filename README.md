@@ -1738,10 +1738,8 @@ $BG_ULR :"../i/";//路径;
 }
 ```
 ### 感谢
-```
-    ![SassMagic](https://github.com/W3cplus/SassMagic)--感谢 ![W3cplus](https://github.com/W3cplus)
-    [mylus](https://github.com/linx4200/mylus)--感谢[liuxinran](https://github.com/linx4200)
-    [postcss-crip](https://github.com/johnie/postcss-crip)--感谢 ![Johnie Hjelm](https://github.com/johnie)
-    [hotcss](https://github.com/imochen/hotcss)--感谢 ![墨尘](https://github.com/imochen)
+- [SassMagic](https://github.com/W3cplus/SassMagic) -- 感谢 [W3cplus](https://github.com/W3cplus)
+- [mylus](https://github.com/linx4200/mylus) -- 感谢 [liuxinran](https://github.com/linx4200)
+- [postcss-crip](https://github.com/johnie/postcss-crip) -- 感谢 [Johnie Hjelm](https://github.com/johnie)
+- [hotcss](https://github.com/imochen/hotcss) -- 感谢 [墨尘](https://github.com/imochen)
     
-```
