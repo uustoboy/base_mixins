@@ -893,7 +893,7 @@ size ( 设置width/height )<br>
 px2rem ( px转rem )<br>
 ```
 例子 :
-    需要页面引入'https://github.com/imochen/hotcss/blob/master/src/hotcss.js';
+    需要页面引入'hotcss.js';
     参数1 $px : 转换数字,px单位可不写
     参数2 $important : true/false(默认) 是否加!important
     $designWidth : 640;   
