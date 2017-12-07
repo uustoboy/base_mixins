@@ -56,7 +56,7 @@
 
 //检验单位;
 @function testUnit( $args ){
-    $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax,fr;
+    $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax,fr,%;
     @each $o in $filter-units {
         @if( str-index('#{$args}',$o) ){
             @return $args;
