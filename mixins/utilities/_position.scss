@@ -45,7 +45,7 @@
 	$parameter2 :(t:top,r:right,b:bottom,l:left,z:z-index,w:width,h:height);
 	@each $o, $s in $args {
 	  $i: index($parameter, $o);
-		@if( $i and type-of( $i ) == number and type-of($s) == number){
+		@if( $i and type-of( $i ) == number ){
 		  	@if( $i == 5 ){
 				 #{map-get($parameter2,$o)} : $s;	
 		  	}@else{

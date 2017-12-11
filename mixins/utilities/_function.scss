@@ -56,13 +56,15 @@
 
 //检验单位;
 @function testUnit( $args ){
-    $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax,fr,%;
+    $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax,fr;
     @each $o in $filter-units {
         @if( str-index('#{$args}',$o) ){
             @return $args;
         }
     }
-    @if( $global-unit == rem ){
+    @if( unit( $args ) == '%' ){
+        @return $args;  
+    }@else if( $global-unit == rem ){
         @return px2rem( $args );
     }@else if( $global-unit == rpx ){
         @return px2rpx( $args );
