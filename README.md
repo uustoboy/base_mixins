@@ -1752,4 +1752,4 @@ $BG_ULR :"../i/";//路径;
 - [mylus](https://github.com/linx4200/mylus) -- 感谢 [liuxinran](https://github.com/linx4200)
 - [postcss-crip](https://github.com/johnie/postcss-crip) -- 感谢 [Johnie Hjelm](https://github.com/johnie)
 - [hotcss](https://github.com/imochen/hotcss) -- 感谢 [墨尘](https://github.com/imochen)
-    
+- [CSS常用Mixin封装](https://juejin.im/post/5a31f53f51882555cc41deda?utm_source=gold_browser_extension) -- 感谢 [白小明](https://juejin.im/user/593399e7a0bb9f0058d57801)  

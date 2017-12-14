@@ -23,11 +23,17 @@
 //设置min-height;
 @mixin mih($height) {
     min-height: addUnits($height);
+    @if( $global-for-ie or $global-unit == px ){
+        _height:addUnits($height);
+    }
 }
 
 //设置min-width;
 @mixin miw($width) {
     min-width: addUnits($width);
+    @if( $global-for-ie or $global-unit == px ){
+        _width:addUnits($height);
+    }
 }
 
 //设置width/height;

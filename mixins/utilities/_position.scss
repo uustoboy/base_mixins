@@ -36,6 +36,9 @@
 //////////////////////////////////////////////////////////////////////////
 @mixin fixed($args:false){
 	position: fixed;
+	@if( $global-for-ie or $global-unit == px ){
+		_position: absolute; *zoom: 1; 
+	}
 	@include position_each( $args );
 }
 

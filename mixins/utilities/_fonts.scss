@@ -21,8 +21,11 @@
 }
 
 //文字颜色;
-@mixin c( $color:#000 ){
+@mixin c( $color:#000,$hovercolor ){
 	color:$color;
+	@if( $hovercolor ){
+		&:hover { color: $hovercolor; }
+	}
 }
 
 //文字风格;
@@ -53,4 +56,16 @@
 //设置line-height;
 @mixin lh( $line ){
 	line-height:addUnits($line);
+}
+
+// 正常字体样式;
+@mixin normal-font() { 
+	font-weight: normal; 
+	font-style: normal; 
+}
+
+// 辅助性文字(灰色);
+@mixin assist-font( $color: #b0b0b0, $fz: 14px ) { 
+	@include c( $color );
+	@include fz( $fz );
 }
