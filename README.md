@@ -1355,10 +1355,20 @@ base ( 设置项目初始化 )<br>
 ```
 
 ### 清除标签的混合宏(_normalize.scss);
-label ( 清楚标签默认属性 )<br>
+label ( 清除标签默认属性 )<br>
 ```
 例子 :
    @include label; 
+```
+pc-label ( 清除pc标签默认属性 )<br>
+```
+例子 :
+   @include pc-label; 
+```
+mobile-label ( 清除mobile标签默认属性 )<br>
+```
+例子 :
+   @include mobile-label; 
 ```
 
 ### 混合缩写的混合宏(_group.scss);

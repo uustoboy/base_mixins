@@ -41,7 +41,7 @@
 
 //打包默认样式;
 @mixin base($content:950,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-'){
-     //,$unit:px
+     /* 清默认样式 */
      @include label();
     /* 默认浮动 */
     .fl{ @include fl; }
