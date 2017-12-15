@@ -46,6 +46,7 @@
 	@if( $opacity ){
 		background-color:rgba($color,$opacity);
 		@if( $global-for-ie or $support-for-ie ){
+			//ie-hex-str(rgba(0, 255, 0, 0.5)) => #8000FF00
 			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str(rgba($color,$opacity))},endColorstr=#{ie-hex-str(rgba($color,$opacity))});
 			:root & {
 				filter:none;
@@ -55,3 +56,27 @@
 		background-color:unquote($color);
 	}
 }
+
+//用max-width来防止图片撑破容器
+@mixin max-img{
+	@include block;
+	@include maw(100%);
+	@include h(auto);
+}
+
+// 2x 3x 背景图片;
+@mixin bg-image( $url ) {
+	background-image: url("$url + '@2x.png'");
+	@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+		background-image: url("$url + '@3x.png'");
+	}
+}
+
+//全屏大图背景;
+@mixin fullscreen-bg( $url ) {
+	@include wh(100%);
+	@include wh(100vw,100vh);
+	@include bgi($url,$position:50% 50%);
+	@include bgz;
+}
+

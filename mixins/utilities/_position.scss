@@ -19,8 +19,6 @@
 	@include position_each( $args );
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////
 // 相对定位:                                   							//             
 //  例子 : @include rel((t:10px,l:0px,z:5));                 //
@@ -36,7 +34,7 @@
 //////////////////////////////////////////////////////////////////////////
 @mixin fixed($args:false){
 	position: fixed;
-	@if( $global-for-ie or $global-unit == px ){
+	@if( compatibility() ){
 		_position: absolute; *zoom: 1; 
 	}
 	@include position_each( $args );

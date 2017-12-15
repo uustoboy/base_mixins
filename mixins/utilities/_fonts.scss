@@ -21,10 +21,13 @@
 }
 
 //文字颜色;
-@mixin c( $color:#000,$hovercolor ){
+@mixin c( $color:#000,$hovercolor){
 	color:$color;
 	@if( $hovercolor ){
-		&:hover { color: $hovercolor; }
+		&:hover { 
+			color: $hovercolor; 
+		
+		}
 	}
 }
 
@@ -68,4 +71,11 @@
 @mixin assist-font( $color: #b0b0b0, $fz: 14px ) { 
 	@include c( $color );
 	@include fz( $fz );
+}
+
+// 文字透明
+@mixin transparent-text() { 
+	font: 0/0 serif; 
+	text-shadow: none; 
+	color: transparent; 
 }

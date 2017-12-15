@@ -47,6 +47,11 @@
   @include cursor(default);
 }
 
+//隐藏鼠标手势;
+@mixin hide-cur() { 
+  cursor: none !important; 
+}
+
 //设置鼠标手;
 @mixin cursor( $args:pointer ){
   cursor:$args
@@ -55,7 +60,7 @@
 //透明度;
 @mixin opa($opacity:.8,$support-for-ie:false) {
   opacity: $opacity;
-  @if( $global-for-ie or $support-for-ie){
+  @if( compatibility() or $support-for-ie ){
     filter: alpha(opacity=$opacity*100); //IE8
   }
 }
@@ -65,5 +70,17 @@
   resize: none;
 }
 
+//首字下沉;
+@mixin first-letter($fz: 6em) {
+  &::first-letter{
+    @include fl;
+    @include flh($fz,1);
+  }
+}
 
-
+//特殊标记段落第一行
+@mixin first-line($color:red) {
+  &::first-line{
+    @include c($color);
+  }
+}

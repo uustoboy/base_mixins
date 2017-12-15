@@ -156,6 +156,11 @@
     @include css3(user-select, $arg);
 }
 
+//禁止文本被选择;
+@mixin user-s-ban() { 
+    @include usr-s(none);
+}
+
 //transform;
 @mixin trf($property...) {
     @include css3(transform, $property);
@@ -201,8 +206,67 @@
     @include css3(transform, rotate($degrees));
 }
 
-//改变默认选中颜色
-@mixin selection( $bg:#00F, $color:#fff, $obj:false) {
+// 禁用元素事件
+// 1. 阻止任何点击动作的执行
+// 2. 使链接显示为默认光标(cursor:default)
+// 3. 阻止触发hover和active状态
+// 4. 阻止JavaScript点击事件的触发
+@mixin pe( $arg:none ) { pointer-events: $arg; }
+
+//filter;
+@mixin filter( $arg ){
+    @include css3(filter,$arg);
+}
+
+//模糊;
+@mixin blur( $blur:10px ){
+    @include filter(blur(addUnits($blur)));
+    @if( compatibility() ){
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
+        *zoom: 1;
+    }
+    
+}
+
+//滤镜: 将彩色照片显示为黑白照片;
+@mixin grayscale( $args:100% ){
+	@include css3(filter,grayscale($args));
+}
+
+// 美化占位符 placeholder 样式
+@mixin beauty-placeholder($fz:12, $color: #999, $align: left) {
+    &:-moz-placeholder { 
+        @include fz($fz); 
+        @include c($color);
+        @include text-align($align); 
+    }
+    &:-ms-input-placeholder { 
+        @include fz($fz); 
+        @include c($color);
+        @include text-align($align); 
+    }
+    &::-webkit-input-placeholder { 
+        @include fz($fz); 
+        @include c($color);
+        @include text-align($align);  
+    }
+  }
+  
+  // 美化占位符 placeholder 样式(自定义属性和值)
+  @mixin beauty-placeholder2() {
+    &:-moz-placeholder { 
+        @content; 
+    }
+    &:-ms-input-placeholder { 
+        @content; 
+    }
+    &::-webkit-input-placeholder { 
+        @content; 
+    }
+  }
+  
+//美化选中文本
+@mixin beauty-select( $bg:#00F, $color:#fff, $obj:false) {
     @if( $obj) {
          ::selection {
             background: $bg;

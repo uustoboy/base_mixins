@@ -54,6 +54,15 @@
    @return $arr;
 }
 
+//检验全局兼容;
+@function compatibility(){
+    @if( $global-for-ie and $global-unit != rem ){
+        @return true;
+    }@else{
+        @return false;
+    }
+}
+
 //检验单位;
 @function testUnit( $args ){
     $filter-units : !important,rem,rpx,auto,vw,vh,vmin,vmax,fr;
@@ -74,6 +83,7 @@
         @return $args;  
     }
 }
+
 
 
 

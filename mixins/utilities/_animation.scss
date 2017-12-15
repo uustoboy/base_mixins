@@ -92,3 +92,9 @@ $browser: null;
   // none(默认值) | forwards(动画结束时的状态) | backwards(动画开始时的状态) | both(动画结束或开始的状态);
   @include css3( animation-fill-mode, $modes );
 }
+
+//三维闪动 bug 处理;
+@mixin trf-fix() { 
+  -webkit-backface-visibility: hidden; 
+  -webkit-transform-style: preserve-3d; 
+}

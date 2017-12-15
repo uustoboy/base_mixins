@@ -22,7 +22,10 @@
 
 //inline-block;
 @mixin inblock{
-    display:inline-block;
+	display:inline-block;
+	@if( compatibility() ){
+		*display: inline; *zoom: 1;
+	}
 }
 
 //box(老版本的弹性盒模型);

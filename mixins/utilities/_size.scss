@@ -23,7 +23,7 @@
 //设置min-height;
 @mixin mih($height) {
     min-height: addUnits($height);
-    @if( $global-for-ie or $global-unit == px ){
+    @if( compatibility() ){
         _height:addUnits($height);
     }
 }
@@ -31,8 +31,8 @@
 //设置min-width;
 @mixin miw($width) {
     min-width: addUnits($width);
-    @if( $global-for-ie or $global-unit == px ){
-        _width:addUnits($height);
+    @if( compatibility() ){
+        _width:addUnits($width);
     }
 }
 
@@ -48,4 +48,10 @@
         @include w($width);
         @include h($height);
     }
+}
+
+//设置pc居中容器;
+@mixin layout-page( $width:1000 ) { 
+    @include w($width);
+    @include mlr(auto); 
 }
