@@ -21,7 +21,7 @@
 }
 
 //文字颜色;
-@mixin c( $color:#000,$hovercolor){
+@mixin c( $color:#000,$hovercolor:false ){
 	color:$color;
 	@if( $hovercolor ){
 		&:hover { 
