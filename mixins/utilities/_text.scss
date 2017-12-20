@@ -56,22 +56,30 @@
   
 //文字居左对齐;
 @mixin tal{ 
-  @include text-align(left);
+  @include ta(left);
 }
 
 //文字居右对齐;
 @mixin tar{ 
-  @include text-align(right);
+  @include ta(right);
 }
 
 //文字居中对齐;
 @mixin tac{ 
-  @include text-align(center);
+  @include ta(center);
+}
+
+//齐行改变单词间的间隔(兼容ie);
+@mixin tj( $arg:auto ){
+  text-justify : $arg;
 }
 
 //设置文字对齐方式;
-@mixin text-align( $direction:left ){
+@mixin ta( $direction:left , $arg:false ){
   text-align: $direction;
+  @if( $arg and compatibility() ){
+    @include tj( $arg );
+  }
 }
 
 //上下划线;
