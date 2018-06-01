@@ -40,9 +40,9 @@
 }
 
 //打包默认样式;
-@mixin base($content:950,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-'){
+@mixin base($content:1000,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-',$label:false){
      /* 清默认样式 */
-     @include label();
+     @include label($label);
     /* 默认浮动 */
     .fl{ @include fl; }
     .fr{ @include fr; }
@@ -107,5 +107,17 @@
     .bor#{$format}dot{ border:1px dotted $bor_color;}
     .border{ border:1px solid $bor_color;}
     /* box */
+    .content{ width: addUnits($content); margin:0 auto; }
+}
+
+//简易打包默认样式;
+@mixin min-base($content:1000,$label:false){
+    /* 清默认样式 */
+     @include label($label);
+    /* 默认浮动 */
+    .fl{ @include fl; }
+    .fr{ @include fr; }
+    .fn-clear{ @include clear; }
+     /* box */
     .content{ width: addUnits($content); margin:0 auto; }
 }
