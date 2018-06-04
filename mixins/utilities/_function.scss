@@ -98,6 +98,10 @@
         @return px2rpx( $args );
     }@else if( unitless( $args ) ){
         @return $args+$global-unit;
+    }@else if( str-index('#{$args}',k) ){ //保持数字不变keep缩写k
+        $new-args : ''+$args+'';
+        $new-len : (str-length($new-args) - 1);
+        @return unquote(str-slice($new-args,1,$new-len));  
     }@else{
         @return $args;  
     }
