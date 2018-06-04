@@ -3,38 +3,38 @@
 
 //border;
 @mixin bd( $args... ) {
-	border:$args;
+	border:changeNths($args...);
 }
 
 //border-top;
 @mixin bdt( $args... ) {
-	border-top:$args;
+	border-top:changeNths($args...);
 }
 //border-right;
 @mixin bdr( $args... ) {
-	border-right:$args;
+	border-right:changeNths($args...);
 }
 
 //border-bottom;
 @mixin bdb( $args... ) {
-	border-bottom:$args;
+	border-bottom:changeNths($args...);
 }
 
 //border-left;
 @mixin bdl( $args... ) {
-	border-left:$args;
+	border-left:changeNths($args...);
 }
 
 //border-top && border-bottom;
 @mixin bdtb( $args1,$args2:$args1 ){
-	border-top:$args1;
-	border-bottom:$args2;
+	border-top:changeNths($args1);
+	border-bottom:changeNths($args2);
 }
 
 //border-right && border-left;
 @mixin bdrl( $args1,$args2:$args1 ){
-	border-right:$args1;
-	border-left:$args2;
+	border-right:changeNths($args1);
+	border-left:changeNths($args2);
 }
 
 //border-color;
