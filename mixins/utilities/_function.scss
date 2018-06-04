@@ -45,11 +45,30 @@
     }
 }
 
+//添加nth单位;
+@function changeNths( $args ){
+	$len : length($args);
+	$arr : null;
+	$new-arg:null;
+    @for $i from 1 through $len {
+		$new-arg : nth( $args , $i );
+		$arr : $arr addUnits( $new-arg );
+	}
+	@return $arr;
+}
+
 //添加单位;
 @function addUnits( $args... ){
-   $arr:null;
+   $arr : null;
+   $argUnit : null;
+
    @each $arg in $args {
-     $arr : $arr testUnit( $arg );  
+     @if( type-of($arg) == number ){
+        $argUnit : testUnit( $arg );
+        $arr : $arr $argUnit; 
+     }@else{
+         $arr : $arr $arg; 
+     }
    }
    @return $arr;
 }
