@@ -45,32 +45,26 @@
     }
 }
 
-//添加nth单位;
-@function changeNths( $args ){
-	$len : length($args);
+//添加单位;
+@function addUnits( $arg1,$arg2... ){
+    $new-args : join( $arg1,$arg2 );
+    $len : length($new-args );
 	$arr : null;
-	$new-arg:null;
+    $new-arg : null;
+    $argUnit : null;
+   
     @for $i from 1 through $len {
-		$new-arg : nth( $args , $i );
-		$arr : $arr addUnits( $new-arg );
+        $new-arg : nth( $new-args , $i );
+        @debug( $len );
+        @if( type-of($new-arg) == number ){
+
+            $argUnit : testUnit( $new-arg );
+            $arr : $arr $argUnit; 
+        }@else{
+            $arr : $arr $new-arg; 
+        }
 	}
 	@return $arr;
-}
-
-//添加单位;
-@function addUnits( $args... ){
-   $arr : null;
-   $argUnit : null;
-
-   @each $arg in $args {
-     @if( type-of($arg) == number ){
-        $argUnit : testUnit( $arg );
-        $arr : $arr $argUnit; 
-     }@else{
-         $arr : $arr $arg; 
-     }
-   }
-   @return $arr;
 }
 
 //检验全局兼容;
