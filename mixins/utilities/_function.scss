@@ -55,7 +55,6 @@
    
     @for $i from 1 through $len {
         $new-arg : nth( $new-args , $i );
-        @debug( $len );
         @if( type-of($new-arg) == number ){
 
             $argUnit : testUnit( $new-arg );
