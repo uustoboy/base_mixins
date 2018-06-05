@@ -34,6 +34,16 @@
 //超出截断;
 @mixin over{overflow:hidden; }
 
+//x轴截断;
+@mixin over-x($arg:hidden){
+  overflow-x:$arg;
+}
+
+//y轴截断;
+@mixin over-y($arg:hidden){
+  overflow-y:$arg;
+}
+
 //取消截断;
 @mixin ofv{overflow:visible !important;}
 
