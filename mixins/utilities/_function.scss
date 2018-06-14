@@ -87,7 +87,7 @@
             @return unquote(str-slice($new-args,1,$new-len));  
         }
     }
-    @if( unit( $args ) == '%' ){
+    @if( unit( $args ) == '%' or $args == 0 ){
         @return $args;  
     }@else if( $global-unit == rem ){
         @return px2rem( $args );
@@ -96,7 +96,7 @@
     }@else if( unitless( $args ) ){
         @return $args+$global-unit;
     }@else{
-        @return $args;  
+        @return $args;
     }
 }
 

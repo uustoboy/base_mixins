@@ -1,6 +1,5 @@
 @charset "UTF-8";
 // reset打包的混合宏(mixin);
-    
 ///////////////////////////////////////////////
 // 循环初始字体大小:                         //  
 //  @end   : 结束字体大小(数字),必须输;      //
@@ -8,14 +7,16 @@
 //  @un    : 字体单位(字符串),可以省略;      //
 //  例子   : @include base-fonts(32);        //
 ///////////////////////////////////////////////
-@mixin base-fonts( $end:100,$begin:12,$un:px,$format:'-' ){
-    @if( TestNum( $begin,$end ) ){
-        @for $i from $begin through $end {
-            @if( $i%2 == 0 ){
-                .f#{$format}#{$i}{ font-size:addUnits($i); }
-            }
+@mixin base-fonts( $end:100, $begin:12, $un:px, $format:'-') {
+  @if( TestNum( $begin, $end)) {
+    @for $i from $begin through $end {
+      @if( $i%2==0) {
+        .f#{$format}#{$i} {
+          font-size: addUnits($i);
         }
+      }
     }
+  }
 }
 
 /////////////////////////////////////////////////////////////
@@ -28,96 +29,200 @@
 //  @un    : 字体单位(字符串),可以省略;                    // 
 //  例子   : @include base-styles(mb,margin-bottom,30,5);  //
 /////////////////////////////////////////////////////////////
-@mixin base-styles( $name,$style,$end:100,$begin:5,$mult:5,$un:px,$format:'-' ){
-    @if( TestNum( $begin,$end ) ){
-        @for $i from $begin through $end {
-            @if( $i%$mult == 0 ){
-                .#{$name}#{$format}#{$i}{ #{$style}:addUnits($i); }
-            }
-            
+@mixin base-styles( $name, $style, $end:100, $begin:5, $mult:5, $un:px, $format:'-') {
+  @if( TestNum( $begin, $end)) {
+    @for $i from $begin through $end {
+      @if( $i%$mult==0) {
+        .#{$name}#{$format}#{$i} {
+          #{$style}: addUnits($i);
         }
+      }
     }
+  }
 }
 
 //打包默认样式;
-@mixin base($content:1000,$orange:#f60,$yellow:#fff000,$blue:#5fb3d2,$red:#ff546a,$gray:#ccc,$disabled:#ccc,$bor_color:#ccc,$format:'-',$label:false){
-     /* 清默认样式 */
-     @include label($label);
-    /* 默认浮动 */
-    .fl{ @include fl; }
-    .fr{ @include fr; }
-    .fn-clear{ @include clear; }
-    /* 显示隐藏 */
-    .hide{ @include hide(true); }
-    .show{ @include block(true); }
-    /* 文本方向 */
-    .tal{ @include tal; }
-    .tar{ @include tar; }
-    .tac{ @include tac; }
-    /* 截取 */
-    .over{ @include over; }
-    .ofv{ @include ofv; }
-    /* 定位 */
-    .abs{ @include abs; }
-    .rel{ @include rel; }
-    /* 鼠标手势 */
-    .cursor{ @include cur; }
-    .def{ @include def; }
-    /* 。。。。 */
-    .ellipsis{ @include tofl; }
-    /* 强制折行 */
-    .break#{$format}word{ @include bword; }
-    /* 默认颜色 */
-    .colr#{$format}red{color: $red;}
-    .colr#{$format}blue{color: $blue;}
-    .colr#{$format}gray{color: $gray;}
-    .colr#{$format}yellow{color: $yellow;}
-    .colr#{$format}org{color: $orange;}
-    /* 默认背景颜色 */
-    .bg#{$format}red{ background-color: $red;}
-    .bg#{$format}blue{background-color: $blue;}
-    .bg#{$format}gray{background-color: $gray;}
-    .bg#{$format}yellow{background-color: $yellow;}
-    .bg#{$format}org{background-color: $orange;}
-    /* 默认置灰 */
-    .disabled{ background-color:$disabled; }
-    /* 默认字体 */
-    @include base-fonts(32,$format:$format);
-    /* margin  padding */
-    .mt0 { margin-top: 0 !important; }
-    @include base-styles(mt,margin-top,30,5,$format:$format);
-    .mb0 { margin-bottom: 0 !important; }
-    @include base-styles(mb,margin-bottom,30,5,$format:$format);
-    .ml0 { margin-left: 0 !important; }
-    @include base-styles(ml,margin-left,30,5,$format:$format);
-    .mr0 { margin-right: 0 !important; }
-    @include base-styles(mr,margin-right,30,5,$format:$format);
-    /* 高度 */
-    @include base-styles(blk,height,50,5,$format:$format);
-    /* 边框 */
-    .bor#{$format}t{ border-top:solid 1px $bor_color;}
-    .bor#{$format}l{ border-left:solid 1px $bor_color;}
-    .bor#{$format}r{ border-right:solid 1px $bor_color;}
-    .bor#{$format}b{ border-bottom:solid 1px $bor_color;}
-    .bor#{$format}t0{ border-top:none!important;}
-    .bor#{$format}l0{ border-left:none!important;}
-    .bor#{$format}r0{ border-right:none!important;}
-    .bor#{$format}b0{ border-bottom:none!important;}
-    .bor#{$format}das{ border:1px dashed $bor_color;}
-    .bor#{$format}dot{ border:1px dotted $bor_color;}
-    .border{ border:1px solid $bor_color;}
-    /* box */
-    .content{ width: addUnits($content); margin:0 auto; }
+@mixin base($content:1000, $orange:#f60, $yellow:#fff000, $blue:#5fb3d2, $red:#ff546a, $gray:#ccc, $disabled:#ccc, $bor_color:#ccc, $format:'-', $label:false) {
+  /* 清默认样式 */
+  @include label($label);
+  /* 默认浮动 */
+  .fl {
+    @include fl;
+  }
+  .fr {
+    @include fr;
+  }
+  .fn-clear {
+    @include clear;
+  }
+  /* 显示隐藏 */
+  .hide {
+    @include hide(true);
+  }
+  .show {
+    @include block(true);
+  }
+  /* 文本方向 */
+  .tal {
+    @include tal;
+  }
+  .tar {
+    @include tar;
+  }
+  .tac {
+    @include tac;
+  }
+  /* 截取 */
+  .over {
+    @include over;
+  }
+  .ofv {
+    @include ofv;
+  }
+  /* 定位 */
+  .abs {
+    @include abs;
+  }
+  .rel {
+    @include rel;
+  }
+  /* 鼠标手势 */
+  .cursor {
+    @include cur;
+  }
+  .def {
+    @include def;
+  }
+  /* 。。。。 */
+  .ellipsis {
+    @include tofl;
+  }
+  /* 强制折行 */
+  .break#{$format}word {
+    @include bword;
+  }
+  /* 默认颜色 */
+  .colr#{$format}red {
+    color: $red;
+  }
+  .colr#{$format}blue {
+    color: $blue;
+  }
+  .colr#{$format}gray {
+    color: $gray;
+  }
+  .colr#{$format}yellow {
+    color: $yellow;
+  }
+  .colr#{$format}org {
+    color: $orange;
+  }
+  /* 默认背景颜色 */
+  .bg#{$format}red {
+    background-color: $red;
+  }
+  .bg#{$format}blue {
+    background-color: $blue;
+  }
+  .bg#{$format}gray {
+    background-color: $gray;
+  }
+  .bg#{$format}yellow {
+    background-color: $yellow;
+  }
+  .bg#{$format}org {
+    background-color: $orange;
+  }
+  /* 默认置灰 */
+  .disabled {
+    background-color: $disabled;
+  }
+  /* 默认字体 */
+  @include base-fonts(32, $format:$format);
+  /* margin  padding */
+  .mt0 {
+    margin-top: 0 !important;
+  }
+  @include base-styles(mt, margin-top, 30, 5, $format:$format);
+  .mb0 {
+    margin-bottom: 0 !important;
+  }
+  @include base-styles(mb, margin-bottom, 30, 5, $format:$format);
+  .ml0 {
+    margin-left: 0 !important;
+  }
+  @include base-styles(ml, margin-left, 30, 5, $format:$format);
+  .mr0 {
+    margin-right: 0 !important;
+  }
+  @include base-styles(mr, margin-right, 30, 5, $format:$format);
+  /* 高度 */
+  @include base-styles(blk, height, 50, 5, $format:$format);
+  /* 边框 */
+  .bor#{$format}t {
+    border-top: solid 1px $bor_color;
+  }
+  .bor#{$format}l {
+    border-left: solid 1px $bor_color;
+  }
+  .bor#{$format}r {
+    border-right: solid 1px $bor_color;
+  }
+  .bor#{$format}b {
+    border-bottom: solid 1px $bor_color;
+  }
+  .bor#{$format}t0 {
+    border-top: none !important;
+  }
+  .bor#{$format}l0 {
+    border-left: none !important;
+  }
+  .bor#{$format}r0 {
+    border-right: none !important;
+  }
+  .bor#{$format}b0 {
+    border-bottom: none !important;
+  }
+  .bor#{$format}das {
+    border: 1px dashed $bor_color;
+  }
+  .bor#{$format}dot {
+    border: 1px dotted $bor_color;
+  }
+  .border {
+    border: 1px solid $bor_color;
+  }
+  /* box */
+  .content {
+    width: addUnits($content);
+    margin: 0 auto;
+  }
 }
 
 //简易打包默认样式;
-@mixin min-base($content:1000,$label:false){
-    /* 清默认样式 */
-     @include label($label);
-    /* 默认浮动 */
-    .fl{ @include fl; }
-    .fr{ @include fr; }
-    .fn-clear{ @include clear; }
-     /* box */
-    .content{ width: addUnits($content); margin:0 auto; }
+@mixin min-base($content:1000, $label:false) {
+  /* 清默认样式 */
+  @include label($label);
+  /* 默认浮动 */
+  .fl {
+    @include fl;
+  }
+  .fr {
+    @include fr;
+  }
+  .fn-clear {
+    @include clear;
+  }
+  /* 显示隐藏 */
+  .hide {
+    @include hide(true);
+  }
+  .show {
+    @include block(true);
+  }
+  /* box */
+  .content {
+    width: addUnits($content);
+    margin: 0 auto;
+  }
 }
