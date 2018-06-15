@@ -122,11 +122,11 @@
 //阴影;
 @mixin box-s($shadow...) {
     @if( length($shadow) >=1) {
-        @include css3(box-shadow, $shadow);
+        @include css3(box-shadow, addUnits($shadow) );
     }
     @else {
         $shadow: 0 0 4px rgba(0, 0, 0, .3);
-        @include css3(box-shadow, $shadow);
+        @include css3(box-shadow, addUnits($shadow) );
     }
 }
 

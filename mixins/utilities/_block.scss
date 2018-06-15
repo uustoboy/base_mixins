@@ -28,6 +28,11 @@
 	}
 }
 
+//visibility显示隐藏;
+@mixin v( $args:hidden ){
+	visibility : $args;
+}
+
 //box(老版本的弹性盒模型);
 @mixin box{
     @include css3(display,box,false,true);
