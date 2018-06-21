@@ -133,11 +133,11 @@
 //文字阴影;
 @mixin text-s($shadow...) {
     @if( length($shadow) >=1) {
-        @include css3(text-shadow, $shadow);
+        @include css3(text-shadow, addUnits($shadow) );
     }
     @else {
         $shadow: 0 0 4px rgba(0, 0, 0, .3);
-        @include css3(text-shadow, $shadow);
+        @include css3(text-shadow, addUnits($shadow) );
     }
 }
 
@@ -225,7 +225,6 @@
         filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
         *zoom: 1;
     }
-    
 }
 
 //滤镜: 将彩色照片显示为黑白照片;
