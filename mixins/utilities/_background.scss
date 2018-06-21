@@ -15,14 +15,28 @@
 	background:none!important;
 }
 
-//设置图片背景;
-@mixin bgi($img:false,$repeat:no-repeat,$position:0 0 ){
+//设置图片背景 && background-size;
+@mixin bgiz($img:false,$repeat:no-repeat,$position:0 0,$size:cover){
 	background:url($img) $repeat $position;
+	@include bgz($size);
 }
 
 //设置background-size;
 @mixin bgz( $value:cover ){
 	background-size:$value;
+}
+
+//设置图片背景 && background-size;
+@mixin bgi( $color,$img:false,$repeat:no-repeat,$position:0 0,$size:cover ){
+	@include bg($color,$img,$repeat,$position);
+  @include bgz($size);
+
+}
+
+//设置图片背景 && background-size;
+@mixin bgiz($img:false,$repeat:no-repeat,$position:0 0,$size:cover){
+	background:url($img) $repeat $position;
+	@include bgz($size);
 }
 
 //设置background-clip;
