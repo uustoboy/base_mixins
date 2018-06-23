@@ -10,32 +10,27 @@
 	}
 }
 
-//取消背景;
-@mixin no-bg{
-	background:none!important;
-}
-
-//设置图片背景 && background-size;
-@mixin bgiz($img:false,$repeat:no-repeat,$position:0 0,$size:cover){
-	background:url($img) $repeat $position;
-	@include bgz($size);
+//设置图片背景;
+@mixin bgi( $img:false, $repeat:no-repeat, $position:0 0 ) {
+  @if( not $position) {
+    background-image: url($img) $repeat;
+  }@else if( not $repeat) {
+    background-image: url($img) $position;
+  }@else if( not $position and not $repeat) {
+    background: url($img);
+  }@else {
+    background-image: url($img) $repeat $position;
+  }
 }
 
 //设置background-size;
 @mixin bgz( $value:cover ){
-	background-size:$value;
+  background-size: addUnits( $value );
 }
 
 //设置图片背景 && background-size;
-@mixin bgi( $color,$img:false,$repeat:no-repeat,$position:0 0,$size:cover ){
-	@include bg($color,$img,$repeat,$position);
-  @include bgz($size);
-
-}
-
-//设置图片背景 && background-size;
-@mixin bgiz($img:false,$repeat:no-repeat,$position:0 0,$size:cover){
-	background:url($img) $repeat $position;
+@mixin bgiz( $img:false,$repeat:no-repeat,$position:0 0,$size:cover ){
+	@include bgi($img,$repeat,$position);
 	@include bgz($size);
 }
 
@@ -45,7 +40,7 @@
 }
 
 //设置background-origin;
-@mixin bgo( $value:content-box ){	
+@mixin bgo( $value:content-box ){
 	background-origin:$value;
 }
 
@@ -55,7 +50,7 @@
 }
 
 //设置背景颜色;
-@mixin bgc($color,$opacity:false,$support-for-ie:false){
+@mixin bgc( $color,$opacity:false,$support-for-ie:false ){
 	//@if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
 	@if( $opacity ){
 		background-color:rgba($color,$opacity);
@@ -79,18 +74,153 @@
 }
 
 // 2x 3x 背景图片;
-@mixin bg-image( $url ) {
-	background-image: url("$url + '@2x.png'");
+@mixin bg-image( $url , $repeat:no-repeat, $position:0 0) {
+  @include bgi("$url + '@2x.png'",$repeat,$position);
 	@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
-		background-image: url("$url + '@3x.png'");
+    @include bgi("$url + '@3x.png'",$repeat,$position);
 	}
 }
 
 //全屏大图背景;
-@mixin fullscreen-bg( $url ) {
+@mixin fullscreen-bg( $url ,$position:50% 50% ) {
 	@include wh(100%);
 	@include wh(100vw,100vh);
 	@include bgi($url,$position:50% 50%);
 	@include bgz;
+}
+
+///////////////////////////////////////////////////////////////////////////
+// css sprite,只能X轴、Y轴(默认Y轴);                                        //
+// 例子 :                                                                 //
+//    .sprite-ico{                                                       //
+//      @include wh(163);                                                //
+//      @include bgi('../i/1.jpg');                                      //
+//    }                                                                  //
+//    @include bg-sprite('personal-ico',0,481,163){                      //
+//      @include fl;                                                     //
+//    };                                                                 //
+//    或者 X轴;                                                           //
+//      @include bg-sprite('personal-ico',0,481,163,x)                   //
+///////////////////////////////////////////////////////////////////////////
+//css精灵(智能X轴、Y轴);
+@mixin bg-sprite( $name:sprite-ico,$star:0,$end:10,$mult:2,$dir:y,$url:false,$bgz:false ) {
+  // name                  : class名;
+  // star                  : 开始点;
+  // end                   : 结束点;
+  // mult                  ; 间隔距离;
+  // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
+  // url                   : 图片路径;
+  // bgz                   : background-size;
+  @if( TestNum( $star,$end)) {
+    $num: 0;
+    @for $i from $star through $end {
+      @if( $i%$mult==0) {
+        $num: $num+1;
+        .#{$name}#{$num} {
+          @content;
+
+          @if( $url ) {
+            @include bgi(url($url),
+            url($url));
+          }
+
+					@if( $dir=='y' ) {
+            @include bgp(0 $i*-1);
+          }
+
+					@else if( $dir=='x' ) {
+            @include bgp($i*-1 0);
+          }@else if( $dir=='xy' ) {
+            @include bgp($i*-1 $i*-1);
+          }
+
+          @if( $bgz ) {
+            @include bgz( $bgz);
+          }
+
+        }
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////
+// css sprite2,矩阵图形(默认X轴开始);                                       //
+// 例子 (sprite图 2行3列图标):                                             //
+//    .sprite-ico{                                                       //
+//      @include wh(163);                                                //
+//      @include bgi('../i/1.jpg');                                      //
+//    }                                                                  //
+//    @include bg-sprite('sprite-ico',2,3,163){                          //
+//      @include fl;                                                     //
+//    };                                                                 //
+//    或者 Y轴;                                                           //
+//      @include bg-sprite('sprite-ico',2,3,163,y)                       //
+///////////////////////////////////////////////////////////////////////////
+//css精灵(矩阵图形);
+@mixin bg-sprite2( $name:sprite-ico,$y:0,$x:0,$mult:2,$dir:x,$url:false,$bgz:false) {
+  // name                  : class名;
+  // x                     : X轴个数(行数);
+  // y                     : Y轴个数(列数);
+  // mult                  ; 间隔距离;
+  // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
+  // url                   : 图片路径;
+  // bgz                   : background-size;
+  $num: 0;
+  $dirX:0;
+  $dirY:0;
+  @if( $dir == 'x' ){
+    @if( $x > $y ){
+        $dirX : min($x,$y);
+        $dirY : max($x,$y);
+    }@else if( $x < $y ){
+        $dirX : max($x,$y);
+        $dirY : min($x,$y);
+    }@else{
+        $dirX : $x;
+        $dirY : $y;
+    }
+  }@else{
+    @if( $x > $y ){
+        $dirX : max($x,$y);
+        $dirY : min($x,$y);
+    }@else if( $x < $y ){
+        $dirX : min($x,$y);
+        $dirY : max($x,$y);
+    }@else{
+        $dirX : $x;
+        $dirY : $y;
+    }
+  }
+
+  @for $i from 0 to $dirY{
+    @for $j from 0 to $dirX{
+      $num: $num+1;
+      .#{$name}#{$num} {
+        @content;
+
+        @if( $url ) {
+          @include bgi(url($url),
+          url($url));
+        }
+
+        @if( $dir == 'x' ){
+          @include bgp( $j*$mult*-1 $i*$mult*-1 );
+        }@else{
+          @include bgp( $i*$mult*-1 $j*$mult*-1 );
+        }
+
+        @if( $bgz ) {
+          @include bgz( $bgz);
+        }
+
+      }
+    }
+  }
+}
+
+//取消背景;
+@mixin no-bg{
+	background:none!important;
 }
 
