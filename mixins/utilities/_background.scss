@@ -102,7 +102,7 @@
 //    或者 X轴;                                                           //
 //      @include bg-sprite('personal-ico',0,481,163,x)                   //
 ///////////////////////////////////////////////////////////////////////////
-//css精灵(智能X轴、Y轴);
+//css精灵(只能X轴、Y轴);
 @mixin bg-sprite( $name:sprite-ico,$star:0,$end:10,$mult:2,$dir:y,$bgz:false,$url:false ) {
   // name                  : class名;
   // star                  : 开始点;
