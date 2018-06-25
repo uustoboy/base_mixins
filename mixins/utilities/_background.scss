@@ -96,11 +96,11 @@
 //      @include wh(163);                                                //
 //      @include bgi('../i/1.jpg');                                      //
 //    }                                                                  //
-//    @include bg-sprite('personal-ico',0,481,163){                      //
+//    @include bg-sp('personal-ico',0,481,163){                          //
 //      @include fl;                                                     //
 //    };                                                                 //
 //    或者 X轴;                                                           //
-//      @include bg-sprite('personal-ico',0,481,163,x)                   //
+//      @include bg-sp('personal-ico',0,481,163,x)                       //
 ///////////////////////////////////////////////////////////////////////////
 //css精灵(只能X轴、Y轴);
 @mixin bg-sp( $name:sprite-ico,$star:0,$end:10,$mult:2,$dir:y,$bgz:false,$url:false ) {
@@ -146,11 +146,11 @@
 //      @include wh(163);                                                //
 //      @include bgi('../i/1.jpg');                                      //
 //    }                                                                  //
-//    @include bg-sprite('sprite-ico',2,3,163){                          //
+//    @include bg-sp2('sprite-ico',2,3,163){                             //
 //      @include fl;                                                     //
 //    };                                                                 //
 //    或者 Y轴;                                                           //
-//      @include bg-sprite('sprite-ico',2,3,163,y)                       //
+//      @include bg-sp2('sprite-ico',2,3,163,y)                          //
 ///////////////////////////////////////////////////////////////////////////
 //css精灵(矩阵图形);
 @mixin bg-sp2( $name:sprite-ico,$y:0,$x:0,$mult:2,$dir:x,$bgz:false,$url:false ) {
