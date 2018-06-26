@@ -214,7 +214,11 @@
 }
 
 //取消背景;
-@mixin no-bg{
-	background:none!important;
+@mixin no-bg( $agr:true ){
+  @if( $agr ){
+    background:none!important;
+  }@else{
+    background:none;
+  }
 }
 

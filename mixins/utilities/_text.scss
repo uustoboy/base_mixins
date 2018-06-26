@@ -24,7 +24,7 @@
 }
 
 //断行;
-@mixin wdw($wrap: break-word) {
+@mixin wdw( $wrap: break-word ) {
   overflow-wrap: $wrap;
   word-wrap: $wrap;
   @if $wrap == break-word {
@@ -35,7 +35,7 @@
 }
 
 //隐藏文字;
-@mixin hide-text($num:101%){
+@mixin hide-text( $num:101% ){
   @include indent($num);
   white-space: nowrap;
   overflow: hidden;
@@ -47,7 +47,7 @@
 }
 
 //显示图标;
-@mixin replace-text($image,$x:50%,$y:50%){
+@mixin replace-text( $image,$x:50%,$y:50% ){
   @include hide-text();
   background-image:$image;
   background-repeat:no-repeat;

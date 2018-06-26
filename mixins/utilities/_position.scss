@@ -5,7 +5,7 @@
 // 定位:                                       							//             
 //  例子 : @include position(absolute,(t:10px,l:0px,z:5));   //
 //////////////////////////////////////////////////////////////////////////
-@mixin position($position,$args:false){
+@mixin position( $position,$args:false ){
 	position: $position;
 	@include position_each( $args );
 }

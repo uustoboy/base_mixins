@@ -1,27 +1,27 @@
 @charset "UTF-8";
 // 宽高的混合宏(mixin);
 //设置width;
-@mixin w( $width) {
+@mixin w( $width ) {
     width: addUnits($width);
 }
 
 //设置height;
-@mixin h( $height) {
+@mixin h( $height ) {
     height: addUnits($height);
 }
 
 //设置max-height;
-@mixin mah( $height) {
+@mixin mah( $height ) {
     max-height: addUnits($height);
 }
 
 //设置max-width;
-@mixin maw( $width) {
+@mixin maw( $width ) {
     max-width: addUnits($width);
 }
 
 //设置min-height;
-@mixin mih($height) {
+@mixin mih( $height ) {
     min-height: addUnits($height);
     @if( compatibility() ){
         _height:addUnits($height);
@@ -29,7 +29,7 @@
 }
 
 //设置min-width;
-@mixin miw($width) {
+@mixin miw( $width ) {
     min-width: addUnits($width);
     @if( compatibility() ){
         _width:addUnits($width);
@@ -37,7 +37,7 @@
 }
 
 //设置width/height;
-@mixin size($width, $height:$width, $attr:true) {
+@mixin size( $width, $height:$width, $attr:true ) {
     @if( $attr=='w') {
         @include w($width);
     }
