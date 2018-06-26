@@ -13,13 +13,13 @@
 //设置图片背景;
 @mixin bgi( $img:false, $repeat:no-repeat, $position:0 0 ) {
   @if( not $position) {
-    background-image: url($img) $repeat;
+    background: url($img) $repeat;
   }@else if( not $repeat) {
-    background-image: url($img) $position;
+    background: url($img) $position;
   }@else if( not $position and not $repeat) {
     background: url($img);
   }@else {
-    background-image: url($img) $repeat $position;
+    background: url($img) $repeat $position;
   }
 }
 
