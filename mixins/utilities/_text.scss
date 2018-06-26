@@ -17,6 +17,11 @@
   text-overflow: ellipsis;
 }
 
+//强制一行;
+@mixin ws( $arg:nowrap ){
+  white-space: $arg;
+}
+
 //强制折行;
 @mixin bword{
   word-break:break-all; /*支持IE，chrome，FF不支持*/
