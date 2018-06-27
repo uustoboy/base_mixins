@@ -22,6 +22,11 @@
   white-space: $arg;
 }
 
+//文字排列方式;
+@mixin wm( $arg:normal ){
+  writing-mode:$arg;
+}
+
 //强制折行;
 @mixin bword{
   word-break:break-all; /*支持IE，chrome，FF不支持*/
