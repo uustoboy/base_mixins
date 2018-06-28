@@ -23,6 +23,11 @@
   }
 }
 
+//设置background-repeat;
+@mixin bgr( $arg:no-repeat ){
+  background-repeat:$arg;
+}
+
 //设置background-size;
 @mixin bgz( $value:cover ){
   background-size: addUnits( $value );
