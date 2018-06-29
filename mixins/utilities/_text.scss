@@ -61,7 +61,7 @@
   @include hide-text();
   background-image:$image;
   background-repeat:no-repeat;
-  background-position:$x $y;
+  background-position:addUnits($x) addUnits($y);
 }
   
 //文字居左对齐;
