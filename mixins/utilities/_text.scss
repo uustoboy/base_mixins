@@ -46,7 +46,7 @@
 
 //隐藏文字;
 @mixin hide-text( $num:101% ){
-  @include indent($num);
+  @include ti($num);
   white-space: nowrap;
   overflow: hidden;
 }
