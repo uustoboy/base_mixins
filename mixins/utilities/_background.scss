@@ -90,7 +90,7 @@
 @mixin fullscreen-bg( $url ,$position:50% 50% ) {
 	@include wh(100%);
 	@include wh(100vw,100vh);
-	@include bgi( $url,$position );
+	@include bgi( $url,$position:$position );
 	@include bgz;
 }
 
