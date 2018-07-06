@@ -25,7 +25,7 @@
 
 //设置background-repeat;
 @mixin bgr( $arg:no-repeat ){
-  background-repeat:$arg;
+  background-repeat:addUnits( $arg );
 }
 
 //设置background-size;
