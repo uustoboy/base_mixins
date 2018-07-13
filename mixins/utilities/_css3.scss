@@ -237,17 +237,17 @@
     &:-moz-placeholder { 
         @include fz($fz); 
         @include c($color);
-        @include text-align($align); 
+        @include ta($align); 
     }
     &:-ms-input-placeholder { 
         @include fz($fz); 
         @include c($color);
-        @include text-align($align); 
+        @include ta($align); 
     }
     &::-webkit-input-placeholder { 
         @include fz($fz); 
         @include c($color);
-        @include text-align($align);  
+        @include ta($align);  
     }
   }
   
