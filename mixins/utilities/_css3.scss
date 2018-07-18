@@ -120,25 +120,13 @@
 }
 
 //阴影;
-@mixin box-s($shadow...) {
-    @if( length($shadow) >=1) {
-        @include css3(box-shadow, addUnits($shadow) );
-    }
-    @else {
-        $shadow: 0 0 4px rgba(0, 0, 0, .3);
-        @include css3(box-shadow, addUnits($shadow) );
-    }
+@mixin box-s( $shadow:0 0 4px rgba(0, 0, 0, .3) ) {
+    @include css3(box-shadow, addUnits($shadow) );
 }
 
 //文字阴影;
-@mixin text-s($shadow...) {
-    @if( length($shadow) >=1) {
-        @include css3(text-shadow, addUnits($shadow) );
-    }
-    @else {
-        $shadow: 0 0 4px rgba(0, 0, 0, .3);
-        @include css3(text-shadow, addUnits($shadow) );
-    }
+@mixin text-s( $shadow:0 0 4px rgba(0, 0, 0, .3) ) {
+    @include css3(text-shadow, addUnits($shadow) );
 }
 
 //去除阴影;
