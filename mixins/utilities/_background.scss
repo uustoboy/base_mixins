@@ -25,7 +25,7 @@
 
 //设置background-repeat;
 @mixin bgr( $arg:no-repeat ){
-  background-repeat:addUnits( $arg );
+  background-repeat: $arg ;
 }
 
 //设置background-size;
@@ -51,7 +51,7 @@
 
 //设置background-position;
 @mixin bgp( $value:center center ){
-	background-position:$value;
+	background-position:addUnits( $value );
 }
 
 //设置背景颜色;
