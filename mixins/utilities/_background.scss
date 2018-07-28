@@ -12,6 +12,7 @@
     }
 	}@else{
 		background:$color;
+    @include bgc($color,$support-for-ie:$ie6);
 	}
 }
 
@@ -80,20 +81,18 @@
 }
 
 //设置背景颜色;
-@mixin bgc( $color,$opacity:false,$support-for-ie:false ){
-	//@if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
-	@if( $opacity ){
-		background-color:rgba($color,$opacity);
-		@if( $global-for-ie or $support-for-ie ){
-			//ie-hex-str(rgba(0, 255, 0, 0.5)) => #8000FF00
-			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str(rgba($color,$opacity))},endColorstr=#{ie-hex-str(rgba($color,$opacity))});
+@mixin bgc( $color,$support-for-ie:false ){
+  @if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
+    background-color: $color;
+    @if( $global-for-ie or $support-for-ie ){
+			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str($color)},endColorstr=#{ie-hex-str($color)});
 			:root & {
 				filter:none;
 			}
 		}
-	}@else{
-		background-color:unquote($color);
-	}
+  }@else{
+    background-color:unquote($color);
+  }
 }
 
 //用max-width来防止图片撑破容器
@@ -133,7 +132,7 @@
 //      @include bg-sp('.sprite-ico',0,481,163,x)                        //
 ///////////////////////////////////////////////////////////////////////////
 //css精灵(只能X轴、Y轴);
-@mixin bg-sp( $name:sprite-ico,$star:0,$end:10,$mult:2,$dir:y,$bgz:false,$url:false ) {
+//@mixin bg-sp( $name:sprite-ico,$star:0,$end:10,$mult:2,$dir:y,$bgz:false,$url:false,$ie6:false ) {
   // name                  : class名;
   // star                  : 开始点;
   // end                   : 结束点;
@@ -141,31 +140,84 @@
   // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
   // bgz                   : background-size;
   // url                   : 图片路径;
-  $num: 0;
-  @for $i from $star through $end {
-    @if( $i%$mult==0) {
-      $num: $num+1;
-      #{$name}#{$num} {
-        @content;
+  // ie6                   : 兼容ie6添加gif图片;
+//   $num: 0;
+//   @for $i from $star through $end {
+//     @if( $i%$mult==0) {
+//       $num: $num+1;
+//       #{$name}#{$num} {
+//         @content;
 
-        @if( $url ) {
-          @include bgi($url,$position:false);
-        }
+//         @if( $url ) {
+//           @include bgi($url,$position:false,$ie6:$ie6);
+//         }
 
-        @if( $dir=='y' ) {
-          @include bgp(0 $i*-1);
-        }@else if( $dir=='x' ) {
-          @include bgp($i*-1 0);
-        }@else if( $dir=='xy' ) {
-          @include bgp($i*-1 $i*-1);
-        }
+//         @if( $dir=='y' ) {
+//           @include bgp(0 $i*-1);
+//         }@else if( $dir=='x' ) {
+//           @include bgp($i*-1 0);
+//         }@else if( $dir=='xy' ) {
+//           @include bgp($i*-1 $i*-1);
+//         }
 
-        @if( $bgz ) {
-          @include bgz( $bgz);
-        }
+//         @if( $bgz ) {
+//           @include bgz( $bgz);
+//         }
 
+//       }
+//     }
+//   }
+// }
+
+
+///////////////////////////////////////////////////////////////////////////
+// css sprite,只能X轴、Y轴(默认Y轴);                                        //
+// 例子 :                                                                 //
+//    .sprite-ico{                                                       //
+//      @include wh(163);                                                //
+//      @include bgi('../i/1.jpg');                                      //
+//    }                                                                  //
+//    @include bg-sp('.sprite-ico',0,5,163){                             //
+//      @include fl;                                                     //
+//    };                                                                 //
+//    或者 X轴;                                                           //
+//      @include bg-sp('.sprite-ico',0,5,163,x)                          //
+///////////////////////////////////////////////////////////////////////////
+//css精灵(只能X轴、Y轴);
+@mixin bg-sp( $name:sprite-ico,$number:10,$mult:2,$start:0,$dir:y,$bgz:false,$url:false,$ie6:false ) {
+  // name                  : class名;
+  // start                 : 开始像素点;
+  // digit                 : 图标个数;
+  // number                : 间隔距离;
+  // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
+  // bgz                   : background-size;
+  // url                   : 图片路径;
+  // ie6                   : 兼容ie6添加gif图片;
+  $num : 0;
+  $distance : 0;
+  @for $i from 0 through $number {
+    $num: $num+1;
+    #{$name}#{$num} {
+      @content;
+
+      @if( $url ) {
+        @include bgi($url,$position:false,$ie6:$ie6);
       }
+      $distance : ($i*$mult*-1)+$start;
+      @if( $dir=='y' ) {
+        @include bgp(0 $distance);
+      }@else if( $dir=='x' ) {
+        @include bgp($distance0);
+      }@else if( $dir=='xy' ) {
+        @include bgp($distance $distance);
+      }
+
+      @if( $bgz ) {
+        @include bgz( $bgz );
+      }
+
     }
+
   }
 }
 
@@ -183,7 +235,7 @@
 //      @include bg-sp2('.sprite-ico',2,3,163,y)                          //
 ///////////////////////////////////////////////////////////////////////////
 //css精灵(矩阵图形);
-@mixin bg-sp2( $name:sprite-ico,$y:0,$x:0,$mult:2,$dir:x,$bgz:false,$url:false ) {
+@mixin bg-sp2( $name:sprite-ico,$y:0,$x:0,$mult:2,$dir:x,$bgz:false,$url:false,$ie6:false ) {
   // name                  : class名;
   // y                     : Y轴个数(行数);
   // x                     : X轴个数(列数);
@@ -191,6 +243,7 @@
   // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
   // bgz                   : background-size;
   // url                   : 图片路径;
+  // ie6                   : 兼容ie6添加gif图片;
   $num: 0;
   $dirX:0;
   $dirY:0;
@@ -225,7 +278,7 @@
         @content;
 
         @if( $url ) {
-          @include bgi($url,$position:false);
+          @include bgi($url,$position:false,$ie6:$ie6);
         }
 
         @if( $dir == 'x' ){
