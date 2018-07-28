@@ -185,9 +185,9 @@
 //css精灵(只能X轴、Y轴);
 @mixin bg-sp( $name:sprite-ico,$number:10,$mult:2,$start:0,$dir:y,$bgz:false,$url:false,$ie6:false ) {
   // name                  : class名;
+  // number                : 图标个数;
+  // mult                  : 间隔距离;
   // start                 : 开始像素点;
-  // digit                 : 图标个数;
-  // number                : 间隔距离;
   // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
   // bgz                   : background-size;
   // url                   : 图片路径;
