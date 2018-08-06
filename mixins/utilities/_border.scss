@@ -86,7 +86,7 @@
 
 //描边;
 @mixin oln( $args... ){
-	outline:$args;
+	outline:addUnits($args...);
 }
 
 //描边的颜色;
