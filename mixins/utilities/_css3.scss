@@ -176,22 +176,26 @@
 
 //设置 3D 元素的基点位置;
 @mixin pec-o($value: 50% 50%) {
-    @include css3(perspective-origin, $value);
+    @include css3(perspective-origin, addUnits($value) );
 }
 
 //设置 3D 元素的基点X位置;
 @mixin pec-ox($value: 50%) {
-    @include css3(perspective-origin-x, $value);
+    @include css3(perspective-origin-x, addUnits($value) );
 }
 
 //设置 3D 元素的基点Y位置;
 @mixin pec-oy($value: 50%) {
-    @include css3(perspective-origin-y, $value);
+    @include css3(perspective-origin-y, addUnits($value) );
 }
 
 //旋转;
 @mixin rotate($degrees) {
-    @include css3(transform, rotate($degrees));
+    @if( unit( $degrees ) == 'deg' or $degrees == 0 ){
+        @include css3(transform, rotate($degrees));
+    }@else{
+        @include css3(transform, rotate($degrees+deg));
+    }
 }
 
 // 禁用元素事件
@@ -210,7 +214,7 @@
 @mixin blur( $blur:10px ){
     @include filter(blur(addUnits($blur)));
     @if( compatibility() ){
-        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{addUnits($blur)}');
         *zoom: 1;
     }
 }
