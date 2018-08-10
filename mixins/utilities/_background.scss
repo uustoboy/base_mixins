@@ -82,7 +82,7 @@
 //设置背景颜色;
 @mixin bgc( $color,$support-for-ie:false ){
   @if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
-    background-color: $color;
+    background: $color;
     @if( $global-for-ie or $support-for-ie ){
 			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str($color)},endColorstr=#{ie-hex-str($color)});
 			:root & {
@@ -90,7 +90,7 @@
 			}
 		}
   }@else{
-    background-color:unquote($color);
+    background:unquote($color);
   }
 }
 
