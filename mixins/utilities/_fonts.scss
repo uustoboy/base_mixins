@@ -73,9 +73,14 @@
 	@include fz( $fz );
 }
 
-// 文字透明
+// 文字透明;
 @mixin transparent-text() { 
 	font: 0/0 serif; 
 	text-shadow: none; 
 	color: transparent; 
+}
+
+//字符间距;
+@mixin ls( $args... ){
+	letter-spacing:addUnits($args...)
 }
