@@ -304,3 +304,108 @@
   }
 }
 
+//css精灵(只能X轴、Y轴);
+@mixin bgList-sp( $list:(),$mult:2,$start:0,$dir:y,$bgz:false,$url:false,$ie6:false ) {
+  // list                  : 多个class名;
+  // mult                  : 间隔距离;
+  // start                 : 开始像素点;
+  // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
+  // bgz                   : background-size;
+  // url                   : 图片路径;
+  // ie6                   : 兼容ie6添加gif图片;
+
+  $distance : 0;
+  @each $name in $list {
+    $i : index($list,$name);
+    #{$name}{
+        @content;
+
+        @if( $url ) {
+          @include bgi($url,$position:false,$ie6:$ie6);
+        }
+
+        $distance : ($i*$mult*-1)+$start;
+
+        @if( $dir=='y' ) {
+          @include bgp(0 $distance);
+        }@else if( $dir=='x' ) {
+          @include bgp($distance0);
+        }@else if( $dir=='xy' ) {
+          @include bgp($distance $distance);
+        }
+
+        @if( $bgz ) {
+          @include bgz( $bgz );
+        }
+    }
+
+  }
+
+}
+
+@mixin bgList-sp2( $list:(),$y:0,$x:0,$mult:2,$dir:x,$bgz:false,$url:false,$ie6:false ) {
+  // list                  : 多个class名;
+  // y                     : Y轴个数(行数);
+  // x                     : X轴个数(列数);
+  // mult                  : 间隔距离;
+  // dir                   : 方向:X轴、Y轴、XY轴(x,y,xy);
+  // bgz                   : background-size;
+  // url                   : 图片路径;
+  // ie6                   : 兼容ie6添加gif图片;
+  $num : 0;
+  $dirX : 0;
+  $dirY : 0;
+  $len : 0;
+  @if( $dir == 'x' ){
+    @if( $x > $y ){
+        $dirX : min($x,$y);
+        $dirY : max($x,$y);
+    }@else if( $x < $y ){
+        $dirX : max($x,$y);
+        $dirY : min($x,$y);
+    }@else{
+        $dirX : $x;
+        $dirY : $y;
+    }
+  }@else{
+    @if( $x > $y ){
+        $dirX : max($x,$y);
+        $dirY : min($x,$y);
+    }@else if( $x < $y ){
+        $dirX : min($x,$y);
+        $dirY : max($x,$y);
+    }@else{
+        $dirX : $x;
+        $dirY : $y;
+    }
+  }
+  $len : length($list);
+  @for $i from 0 to $dirX{
+    @for $j from 0 to $dirY{
+      $num: $num+1;
+      @debug  $num;
+
+      @if($num <= $len ){
+          $name:nth($list,$num);
+          #{$name}{
+          @content;
+
+          @if( $url ) {
+            @include bgi($url,$position:false,$ie6:$ie6);
+          }
+
+          @if( $dir == 'x' ){
+            @include bgp( $j*$mult*-1 $i*$mult*-1 );
+          }@else{
+            @include bgp( $i*$mult*-1 $j*$mult*-1 );
+          }
+
+          @if( $bgz ) {
+            @include bgz( $bgz);
+          }
+        }
+      }
+    }
+  }
+
+}
