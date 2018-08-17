@@ -88,7 +88,7 @@
   }
 }
 
-//特殊标记段落第一行
+//特殊标记段落第一行;
 @mixin first-line($color:red) {
   &::first-line{
     @include c($color);

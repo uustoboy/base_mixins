@@ -257,50 +257,26 @@
   }
   
 //美化选中文本
-@mixin beauty-select( $bg:#00F, $color:#fff, $obj:false) {
-    @if( $obj) {
-         ::selection {
-            background: $bg;
-            color: $color;
-        }
-         ::-moz-selection {
-            background: $bg;
-            color: $color;
-        }
-         ::-webkit-selection {
-            background: $bg;
-            color: $color;
-        }
-         ::-ms-selection {
-            background: $bg;
-            color: $color;
-        }
-         ::-o-selection {
-            background: $bg;
-            color: $color;
-        }
+@mixin beauty-select( $bg:#00F, $color:#fff, $obj:'') {
+    #{$obj}::selection {
+        background: $bg;
+        color: $color;
     }
-    @else {
-        .#{$obj}::selection {
-            background: $bg;
-            color: $color;
-        }
-        .#{$obj}::-moz-selection {
-            background: $bg;
-            color: $color;
-        }
-        .#{$obj}::-webkit-selection {
-            background: $bg;
-            color: $color;
-        }
-        .#{$obj}::-ms-selection {
-            background: $bg;
-            color: $color;
-        }
-        .#{$obj}::-o-selection {
-            background: $bg;
-            color: $color;
-        }
+    #{$obj}::-moz-selection {
+        background: $bg;
+        color: $color;
+    }
+    #{$obj}::-webkit-selection {
+        background: $bg;
+        color: $color;
+    }
+    #{$obj}::-ms-selection {
+        background: $bg;
+        color: $color;
+    }
+    #{$obj}::-o-selection {
+        background: $bg;
+        color: $color;
     }
 }
 
@@ -320,24 +296,24 @@
 //    background-color: #fbd0c9;                                         //
 //  };                                                                   //
 ///////////////////////////////////////////////////////////////////////////
-@mixin scrollbar($style) {
-     ::-webkit-#{$style} {
+@mixin scrollbar($style,$obj:'') {
+    #{$obj}::-webkit-#{$style} {
         $browser: '-webkit-' !global;
         @content;
     }
-     ::-moz-#{$style} {
+    #{$obj}::-moz-#{$style} {
         $browser: '-moz-' !global;
         @content;
     }
-     ::-ms-#{$style} {
+    #{$obj}::-ms-#{$style} {
         $browser: '-ms-' !global;
         @content;
     }
-     ::-o-#{$style} {
+    #{$obj}::-o-#{$style} {
         $browser: '-o-' !global;
         @content;
     }
-     ::#{$style} {
+    #{$obj}::#{$style} {
         $browser: '' !global;
         @content;
     }

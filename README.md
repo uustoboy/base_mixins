@@ -105,13 +105,15 @@ bg ( 设置background )<br>
    参数2 $img : 图片路径;
    参数3 $repeat : 'no-repeat'(默认) 设置background-repeat;
    参数4 $position : '0 0'(默认) 设置background-position;
+   参数5 $ie6 : false(默认) 是否兼容png在ie6下添加gif;
    .className{ @include bg(#fff,'../i/a.jpg'); }  
    或
    .className{ @include bg(#fff); }  
 ```
-no-bg ( 取消背景background:none!important )<br>
+no-bg ( 取消背景background:none )<br>
 ```
 例子 :
+    参数 $agr : true(默认) 是否添加!important
    .className{ @include no-bg; }   
 ```
 bgi ( 设置background-image )<br>
@@ -120,7 +122,14 @@ bgi ( 设置background-image )<br>
   参数1 $img : 图片路径;
   参数2 $repeat : 'no-repeat'(默认) 设置background-repeat;
   参数3 $position : '0 0'(默认) 设置background-position;
+  参数4 $ie6 : false(默认) 是否兼容png在ie6下添加gif;
   .className{ @include bgi('../i/new-close.gif',$position:center center); }  
+```
+bgr ( 设置background-repeat )<br>
+```
+例子 :
+  参数 $arg : no-repeat(默认) 图片平铺;
+  .className{ @include bgr; }  
 ```
 bgz ( 设置background-size )<br/>
 ```
@@ -129,6 +138,15 @@ bgz ( 设置background-size )<br/>
    .className{ @include bgz(); }
    或  
    .className{ @include bgz(contain); }  
+```
+bgiz ( 设置background-image && background-size )<br>
+```
+例子 :
+  参数1 $img : 图片路径;
+  参数2 $repeat : 'no-repeat'(默认) 设置background-repeat;
+  参数3 $position : '0 0'(默认) 设置background-position;
+  参数4 $size : cover(默认) 设置background-size;
+  .className{ @include bgiz('../i/new-close.gif',$position:center center); }  
 ```
 bg-clip ( 设置background-clip )<br>
 ```
@@ -158,16 +176,130 @@ bgc  ( 设置背景颜色 )<br>
 ```
 例子 : 
    参数1 $color : 为颜色;
-   参数2 $opacity : 开启rgba的透明度;
-   参数3 $support-for-ie : true/false(默认为) 如果$global-for-ie:false 又想当前className的rgba兼容ie则传true;
+   参数2 $support-for-ie : true/false(默认为) 如果$global-for-ie:false 又想当前className的rgba兼容ie则传true;
    .className{ @include bgc(#fff); } 
    或
-   .className{ @include bgc(#fff,0.3); }
-   或 
-   .className{ @include bgc(rgba(0,0,0,0.25),0.3); }
+   .className{ @include bgc(rgba(0,0,0,0.25)); }
    或
    $global-for-ie:false;
-   .className{ @include bgc(#fff,0.3,true); }
+   .className{ @include bgc(rgba(0,0,0,0.25),true); }
+```
+max-img ( 用max-width来防止图片撑破容器 )<br>
+```
+例子 : 
+   .className{ @include max-img; }
+```
+bg-image ( 设置@2x/@3x 背景图片 )<br>
+```
+例子 : 
+    参数1 $url : 图片路径;
+    参数2 $repeat : 'no-repeat' (默认) 设置background-repeat;
+    参数3 $position : '0 0' (默认) 设置background-position;
+   .className{ @include bg-image('../i/i/img.png'); }
+```
+fullscreen-bg ( 设置全屏大图背景 )<br>
+```
+例子 : 
+    参数1 $url : 图片路径;
+    参数3 $position : '50% 50%'(默认) 设置background-position;
+   .className{ @include fullscreen-bg('../i/i/img.png'); }
+```
+bg-sp ( css sprite:只能X轴、Y轴(默认Y轴) )<br>
+```
+例子 : 
+  参数1 $name : '.sprite-ico'(默认图标名) 设置class名;
+  参数2 $number : 10 (默认值10) 循环图标个数;
+  参数3 $mult : 2 (默认值2)  间隔距离;
+  参数4 $startX : 0 (默认值0) x轴开始像素点;
+  参数5 $startY : 0 (默认值0) y轴开始像素点;
+  参数6 $dir : y (默认y轴) y 方向:X轴、Y轴、XY轴(x,y,xy);
+  参数7 $bgz : false (默认false) 设置background-size;
+  参数8 $url : false (默认false) 图片路径; 
+  参数9 $ie6 : false (默认false) 是否兼容png在ie6下添加gif;
+  .sprite-ico{
+     @include wh(163);
+      @include bgi('../i/1.jpg');
+  }
+  @include bg-sp('.sprite-ico',5,163){ @include fl; };
+  或者
+  @include bg-sp('.sprite-ico',5,163,$dir:x);
+```
+bg-sp2 ( css sprite:矩阵图形(默认X轴开始) )<br>
+```
+例子 : 
+  参数1 $name : '.sprite-ico'(默认图标名) 设置class名;
+  参数2 $y : 0 (默认值0) Y轴个数(行数);
+  参数3 $x : 0 (默认值0) X轴个数(列数);
+  参数4 $multY : 2 (默认值2) y轴间隔距离;
+  参数5 $multX : 2 (默认值2) x轴间隔距离;
+  参数6 $startX : 0(默认值0) x轴开始像素点;
+  参数7 $startY : 0(默认值0) y轴开始像素点;
+  参数8 $dir : y(默认y轴) y 方向:X轴、Y轴、XY轴(x,y,xy);
+  参数9 $bgz : false(默认false) 设置background-size;
+  参数10 $url : false(默认false) 图片路径; 
+  参数11 $ie6 : false(默认false) 是否兼容png在ie6下添加gif;
+  .sprite-ico{
+     @include wh(163);
+      @include bgi('../i/1.jpg');
+  }
+  @include bg-sp('.sprite-ico',2,3,163){ @include fl; };
+  或者
+  @include bg-sp('.sprite-ico',2,3,163,$dir:x);
+```
+bgList-sp ( css sprite:只能X轴、Y轴(默认Y轴) )<br>
+```
+例子 : 
+  参数1 $list : () (默认空) 设置多个class名;
+  参数2 $mult : 2 (默认值2)  间隔距离;
+  参数3 $startX : 0 (默认值0) x轴开始像素点;
+  参数4 $startY : 0 (默认值0) y轴开始像素点;
+  参数5 $dir : y (默认y轴) y 方向:X轴、Y轴、XY轴(x,y,xy);
+  参数6 $bgz : false (默认false) 设置background-size;
+  参数7 $url : false (默认false) 图片路径; 
+  参数8 $ie6 : false (默认false) 是否兼容png在ie6下添加gif;
+  .sprite-ico{
+     @include wh(163);
+      @include bgi('../i/1.jpg');
+  }
+  @include bgList-sp( ('.sprite-name',
+                       '.sprite-sex',
+                       '.sprite-age'),163){ @include fl; };
+  或者
+  @include bgList-sp( ('.sprite-name',
+                       '.sprite-sex',
+                       '.sprite-age'),163,$dir:x);
+```
+bgList-sp2 ( css sprite:矩阵图形(默认X轴开始) )<br>
+```
+例子 : 
+  参数1 $list : () (默认空) 设置多个class名;
+  参数2 $y : 0 (默认值0) Y轴个数(行数);
+  参数3 $x : 0 (默认值0) X轴个数(列数);
+  参数4 $multY : 2 (默认值2) y轴间隔距离;
+  参数5 $multX : 2 (默认值2) x轴间隔距离;
+  参数6 $startX : 0(默认值0) x轴开始像素点;
+  参数7 $startY : 0(默认值0) y轴开始像素点;
+  参数8 $dir : y(默认y轴) y 方向:X轴、Y轴、XY轴(x,y,xy);
+  参数9 $bgz : false(默认false) 设置background-size;
+  参数10 $url : false(默认false) 图片路径;
+  参数11 $ie6 : false(默认false) 是否兼容png在ie6下添加gif;
+  .sprite-ico{
+     @include wh(163);
+      @include bgi('../i/1.jpg');
+  }
+    @include bgList-sp2( ('.sprite-name',
+                          '.sprite-age',
+                          '.sprite-sex',
+                          '.sprite-native',
+                          '.sprite-education',
+                          '.sprite-married',),2,3,163){ @include fl; };
+  或者
+    @include bgList-sp2( ('.sprite-name',
+                          '.sprite-age',
+                          '.sprite-sex',
+                          '.sprite-native',
+                          '.sprite-education',
+                          '.sprite-married',),2,3,163,$dir:y);
 ```
 
 ### 块的混合宏(_block.scss):
@@ -658,6 +790,12 @@ usr-s ( 设置user-select )<br>
    或
    .className{ @include usr-s(); }  
 ```
+user-s-ban ( 设置禁止文本被选择 )<br>
+```
+例子 :
+   不传参数默认'text';
+   .className{ @include user-s-ban(); } 
+```
 trf ( 设置transform )<br>
 ```
 例子 :
@@ -721,11 +859,56 @@ rotate ( 设置transform:rotate )<br>
 例子 :
    .className{ @include rotate(50deg); }  
 ```
-selection ( 设置transform:rotate )<br>
+pe ( 设置pointer-events )<br>
 ```
 例子 :
-   .className{ @include rotate(50deg); }  
-``` 
+    参数 $arg : none (默认none) 设置pointer-events;
+   .className{ @include pe; }  
+```
+filter ( 设置filter )<br>
+```
+例子 :
+   .className{ @include filter( grayscale(100%) ); }  
+```
+blur ( 设置模糊 )<br>
+```
+例子 :
+    参数 $blur : 10px (默认10px) 设置模糊像素;
+   .className{ @include blur(); }  
+```
+grayscale ( 设置图片灰色 )<br>
+```
+例子 :
+    参数 $args : 100% (默认100%) 设置grayscale;
+   .className{ @include grayscale(); }  
+```
+beauty-placeholder ( 设置placeholder )<br>
+```
+例子 :
+    参数1 $fz : 12 (默认12px) 设置font-size;
+    参数2 $color : #999 (默认#999) 设置color;
+    参数3 $align : left (默认left) 设置text-align;
+   .className{ @include beauty-placeholder(12,red,left); }  
+```
+beauty-placeholder2 ( 自定义placeholder )<br>
+```
+例子 :
+   @include beauty-placeholder2{
+       color:red;
+       font-size:12px;
+   }  
+```
+beauty-select ( 设置选中文本 )<br>
+```
+例子 :
+    参数1 $fz : 12 (默认12px) 设置font-size;
+    参数2 $color : #999 (默认#999) 设置color;
+    参数3 $align : left (默认left) 设置text-align;
+   @include beauty-placeholder2{
+       color:red;
+       font-size:12px;
+   }  
+```
 scrollbar ( 设置css3滚动条 )<br>
 ```
 例子 :
@@ -758,6 +941,18 @@ erow ( 多行显示... )<br>
    .className{ @include erow(); }  
    或
    .className{ @include erow(3); }  
+```
+ws ( 强制一行 )<br>
+```
+例子 : 
+   参数 $arg : nowrap (默认) 设置white-space;
+   .className{ @include ws(); }  
+```
+wm ( 文字排列方式 )<br>
+```
+例子 : 
+   参数 $arg : normal (默认) 设置writing-mode;
+   .className{ @include ws(); }  
 ```
 bword ( 强制折行 )<br>
 ```
@@ -805,13 +1000,19 @@ tac ( text-align:center )<br>
 例子 :
    .className{ @include tac; }  
 ```
-text-align ( 设置text-align )<br>
+ta ( 设置text-align )<br>
 ```
 例子 :
    不传参数默认'left';
-   .className{ @include text-align()}; 
+   .className{ @include ta()}; 
    或
-   .className{ @include text-align(right); }  
+   .className{ @include ta(right); }  
+```
+tj ( 设置text-justify  )<br>
+```
+例子 :
+   参数 $arg : auto(默认) 设置text-justify;
+   .className{ @include tj(); }  
 ```
 td ( 设置text-decoration )<br>
 ```
@@ -1088,7 +1289,11 @@ fa ( 设置font-family )<br>
 c ( 设置color )<br>
 ```
 例子 :
+  参数1 $color : #000 (默认#000) 设置color;
+  参数2 $hovercolor : false (默认false) 是否设置hover颜色;
   .className{ @include c(#fff); }  
+  或
+  .className{ @include c(#fff,#999); } 
 ``` 
 fs ( 设置font-style )<br>
 ```
@@ -1119,6 +1324,28 @@ lh ( 设置line-height )<br>
 ```
 例子 :
   .className{ @include lh(10); }  
+```
+normal-font ( 设置正常字体样式 )<br>
+```
+例子 :
+  .className{ @include normal-font; }  
+```
+assist-font ( 设置辅助性文字(灰色) )<br>
+```
+例子 :
+  参数1 $color : #b0b0b0 (默认) 设置color;
+  参数2 $$fz : 14(默认14px) 设置font-size;
+  .className{ @include assist-font(#ccc,14); }  
+```
+transparent-text ( 设置文字透明 )<br>
+```
+例子 :
+  .className{ @include transparent-text; }  
+```
+ls ( 设置letter-spacing )<br>
+```
+例子 :
+  .className{ @include ls(10); }  
 ```
 
 ### 边框的混合宏(_border.scss);
@@ -1241,6 +1468,22 @@ oln-o ( 设置outline-offset )<br>
 例子 :
    .className{ @include oln-w(30); }  
 ```
+cut-line ( 分割线 | )<br>
+```
+例子 :
+    参数1 $mar : 0 10px (默认) 设置margin;
+    参数2 $color : #999 (默认#999) 设置color;
+    参数3 $fz : 14 (默认14px) 设置font-size;
+   .className{ @include cut-line(0 10,#999,14); }  
+```
+cut-line2 ( 分割线 / (面包屑导航) )<br>
+```
+例子 :
+    参数1 $pad : 0 10px (默认) 设置;
+    参数2 $color : #ccc (默认#ccc) 设置color;
+    参数3 $fz : 14 (默认14px) 设置font-size;
+   .className{ @include cut-line2(0 10,#999,14); }  
+```
 
 ### 边距的混合宏(_box.scss);
 mar ( 设置margin )<br>
@@ -1249,7 +1492,7 @@ mar ( 设置margin )<br>
    .className{ @include mar(30); }  
    或
    多值情况:
-   .className{ @include mar(30,10,50,30); } 
+   .className{ @include mar(30 10 50 30); } 
 ```
 pad ( 设置padding )<br>
 ```
@@ -1257,7 +1500,7 @@ pad ( 设置padding )<br>
    .className{ @include pad(30); }  
    或
    多值情况:
-   .className{ @include pad(30,10,50,30); } 
+   .className{ @include pad(30 10 5030); } 
 ```
 mt ( 设置margin-top )<br>
 ```
@@ -1306,7 +1549,7 @@ mtb ( 设置margin-top && margin-bottom )<br>
    参数2 $size2 : number(默认margin-bottom = margin-top) 设置margin-bottom;
    .className{ @include mtb(30); } 
    或
-   .className{ @include mtb(30,10); } 
+   .className{ @include mtb(30 10); } 
 ```
 mlr ( 设置margin-left && margin-right )<br>
 ```
@@ -1315,7 +1558,7 @@ mlr ( 设置margin-left && margin-right )<br>
    参数2 $size2 : number(默认margin-right = margin-left) 设置margin-right;
    .className{ @include mlr(30); } 
    或
-   .className{ @include mlr(30,10); } 
+   .className{ @include mlr(30 10); } 
 ```
 ptb ( 设置padding-top && padding-bottom )<br>
 ```
@@ -1333,7 +1576,7 @@ plr ( 设置padding-left && padding-right )<br>
    参数2 $size2 : number(默认padding-right = padding-left) 设置padding-right;
    .className{ @include plr(30); } 
    或
-   .className{ @include plr(30,10); } 
+   .className{ @include plr(30 10); } 
 ```
 
 ### reset打包的混合宏(_resetpack.scss);
@@ -1447,6 +1690,21 @@ faflc ( 设置family & font-size & line-height & color & font )<br>
 例子 :
    .className{ @include flc('宋体',10,10,#fff); } 
 ```
+mawh ( 设置max-width & max-height )<br>
+```
+例子 :
+   .className{ @include mawh(100%,100%); } 
+```
+miwh ( 设置min-width & min-height )<br>
+```
+例子 :
+   .className{ @include miwh(100%,100%); } 
+```
+mmw ( 设置min-width & max-width)<br>
+```
+例子 :
+   .className{ @include mmw(100%,100%); } 
+```
 
 ### 其他的混合宏(_other.scss);
 vit ( vertical-align:top )<br>
@@ -1479,12 +1737,22 @@ ofv ( overflow:visible !important; )<br>
 例子 :
    .className{ @include ofv; } 
 ```
+over-x ( x轴截断 )<br>
+```
+例子 :
+   .className{ @include over-x; } 
+```
+over-y ( y轴截断 )<br>
+```
+例子 :
+   .className{ @include over-y; } 
+```
 cur ( 鼠标手 )<br>
 ```
 例子 :
    .className{ @include cur; } 
 ```
-$support-for-iecur ( 鼠标默认 )<br>
+$def ( 鼠标默认 )<br>
 ```
 例子 :
    .className{ @include def; } 
@@ -1508,6 +1776,18 @@ no-resize ( 禁止textarea拖动大小resize: none )<br>
 ```
 例子 :
    .className{ @include no-resize; } 
+```
+first-letter ( 首字下沉 )<br>
+```
+例子 :
+    参数 $fz : 6em (默认6em) 设置font-szie;
+   .className{ @include first-letter(2em); } 
+```
+first-line ( 特殊标记段落第一行 )<br>
+```
+例子 :
+    参数 $color : red (默认红色) 设置color;
+   .className{ @include first-line(#333); } 
 ```
 
 ### 圆形的混合宏(_round.scss);
