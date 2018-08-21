@@ -33,7 +33,7 @@
         }@else{
             @warn  "字符串不相等";
             @return false;
-        } 
+        }
     }@else{
        @if( type-of($num1) == number ){
             @warn  "非字符串";
@@ -41,7 +41,7 @@
         }@else{
             @warn  "字符串";
             @return false;
-        } 
+        }
     }
 }
 
@@ -52,15 +52,15 @@
 	$arr : null;
     $new-arg : null;
     $argUnit : null;
-   
+
     @for $i from 1 through $len {
         $new-arg : nth( $new-args , $i );
         @if( type-of($new-arg) == number ){
 
             $argUnit : testUnit( $new-arg );
-            $arr : $arr $argUnit; 
+            $arr : $arr $argUnit;
         }@else{
-            $arr : $arr $new-arg; 
+            $arr : $arr $new-arg;
         }
 	}
 	@return $arr;
@@ -77,18 +77,18 @@
 
 //检验单位;
 @function testUnit( $args ){
-    $filter-units : !important,px,rem,em,rpx,auto,vw,vh,vmin,vmax,fr,deg;
+    $filter-units : !important,px,rem,em,rpx,auto,vw,vh,vmin,vmax,fr,deg,cm;
     @each $o in $filter-units {
         @if( str-index('#{$args}',$o) ){
             @return $args;
         }@else if(str-index('#{$args}',k) ){//保持数字不变keep缩写k
             $new-args : ''+$args+'';
             $new-len : (str-length($new-args) - 1);
-            @return unquote(str-slice($new-args,1,$new-len));  
+            @return unquote(str-slice($new-args,1,$new-len));
         }
     }
     @if( unit( $args ) == '%' or $args == 0 ){
-        @return $args;  
+        @return $args;
     }@else if( $global-unit == rem ){
         @return px2rem( $args );
     }@else if( $global-unit == rpx ){
@@ -99,7 +99,3 @@
         @return $args;
     }
 }
-
-
-
-
