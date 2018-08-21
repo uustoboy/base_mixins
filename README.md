@@ -6,6 +6,10 @@
 |---|---
 |E-mail|278659513@qq.com
 ****
+****
+### 代码提示插件:
+vs code 代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也是在vs code 插件库里直接搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
+****
 ### 全局设置参数:
 $global-for-ie    : true(默认)/false;  ( 兼容老版ie ) <br>
 $vendors          : webkit moz ms o;  ( 设置css3前缀 )<br>
