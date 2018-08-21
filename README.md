@@ -1,9 +1,11 @@
 # base_mixins
-[![](https://vsmarketplacebadge.apphb.com/version-short/uustoboy.base_mixins.svg?style=flat-square)]
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social&label=Star%20on%20Github)](https://github.com/uustoboy/base_mixins)
-基于sass开发的简写、组合速写的混合宏<br>
 
+基于sass开发的简写、组合速写的混合宏<br>
+****
+|Author|uustoboy|
+|---|---
+|E-mail|278659513@qq.com
+****
 ### 全局设置参数:
 $global-for-ie    : true(默认)/false;  ( 兼容老版ie ) <br>
 $vendors          : webkit moz ms o;  ( 设置css3前缀 )<br>
