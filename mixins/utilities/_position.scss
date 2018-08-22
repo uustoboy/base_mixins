@@ -5,7 +5,7 @@
 // 定位:                                       							//             
 //  例子 : @include position(absolute,(t:10px,l:0px,z:5));   //
 //////////////////////////////////////////////////////////////////////////
-@mixin position( $position,$args:false ){
+@mixin pos( $position,$args:false ){
 	position: $position;
 	@include position_each( $args );
 }
@@ -37,6 +37,14 @@
 	@if( compatibility() ){
 		_position: absolute; *zoom: 1; 
 	}
+	@include position_each( $args );
+}
+//////////////////////////////////////////////////////////////////////////
+// 默认值:                                   							//             
+//  例子 : @include static((t:10px,l:0px,z:5));               //
+//////////////////////////////////////////////////////////////////////////
+@mixin static($args:false){
+	position: static;
 	@include position_each( $args );
 }
 

@@ -206,13 +206,13 @@
 @mixin pe( $arg:none ) { pointer-events: $arg; }
 
 //filter;
-@mixin filter( $arg ){
+@mixin flt( $arg ){
     @include css3(filter,$arg);
 }
 
 //模糊;
 @mixin blur( $blur:10px ){
-    @include filter(blur(addUnits($blur)));
+    @include flt(blur(addUnits($blur)));
     @if( compatibility() ){
         filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{addUnits($blur)}');
         *zoom: 1;
