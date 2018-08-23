@@ -4,8 +4,9 @@
 
 ****
 ### 简单代码提示插件:
-VS Code 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
-Sublime Text 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets) (Package Control 不收录所以发布不了)
+[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
+
+[Sublime Text](https://www.sublimetext.com/3) 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets) (Package Control 不收录所以发布不了)
 
 
 ****
