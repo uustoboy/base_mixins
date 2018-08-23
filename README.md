@@ -5,6 +5,7 @@
 ****
 ### 简单代码提示插件:
 VS Code 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
+Sublime Text 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets) (Package Control 不收录所以发布不了)
 
 
 ****
@@ -606,7 +607,7 @@ fx-b ( 设置flex-basis )<br>
    或
    .className{ @include fx-b( 2 ); }
 ```
-gd ( display:grid )<br>
+gd ( 设置display:grid )<br>
 ```
 例子 :
    .className{ @include gd; }
@@ -689,17 +690,17 @@ js ( 设置justify-self )<br>
 
 ### 浮动混合宏(_clear.scss):
 
-fl ( float:left )<br>
+fl ( 设置float:left )<br>
 ```
 例子 :
    .className{ @include fl; }
 ```
-fr ( float:left )<br>
+fr ( 设置float:left )<br>
 ```
 例子 :
    .className{ @include fr; }
 ```
-clear ( 清浮动clear )<br>
+clear ( 设置清浮动clear )<br>
 ```
 例子 :
    .className{ @include clear; }
@@ -707,7 +708,7 @@ clear ( 清浮动clear )<br>
 
 ### css3的混合宏(_css3.scss):
 
-css3  ( css3前缀 )<br>
+css3  ( 设置css3前缀 )<br>
 ```
 例子 :
    css3前缀:
@@ -1134,7 +1135,7 @@ gpx2rpx ( 简单rpx多值转行 )<br>
 
 ### 定位的混合宏(_position.scss);
 
-position ( 设置position )<br>
+pos ( 设置position )<br>
 ```
 例子 :
    参数1 $position : position的属性;
@@ -1145,19 +1146,25 @@ abs ( position: absolute )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
-   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }
+   .className{ @include abs((t:10px,l:0px,z:5)); }
 ```
 rel ( position: relative )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
-   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }
+   .className{ @include rel((t:10px,l:0px,z:5)); }
 ```
 fixed ( position: fixed )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
-   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }
+   .className{ @include fixed((t:10px,l:0px,z:5)); }
+```
+static ( position: static )<br>
+```
+例子 :
+   参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
+   .className{ @include static((t:10px,l:0px,z:5)); }
 ```
 t ( 设置top值 )<br>
 ```

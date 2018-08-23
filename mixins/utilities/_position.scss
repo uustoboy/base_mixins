@@ -85,7 +85,7 @@
 }
 
 //定位top/left值;
-@mixin tl($top:0,$left:0,$zindex:false){
+@mixin tl($top:0,$left:$top,$zindex:false){
 	@include t($top);
 	@include l($top);
 	@if( $zindex ){
@@ -94,7 +94,7 @@
 }
 
 //定位right/left值;
-@mixin rl($right:0,$left:0,$zindex:false){
+@mixin rl($right:0,$left:$right,$zindex:false){
 	@include r($right);
 	@include l($left);
 	@if( $zindex ){
@@ -103,7 +103,7 @@
 }
 
 //定位bottom/left值;
-@mixin bl($bottom:0,$left:0,$zindex:false){
+@mixin bl($bottom:0,$left:$bottom,$zindex:false){
 	@include b($bottom);
 	@include l($left);	
 	@if( $zindex ){
@@ -112,7 +112,7 @@
 }
 
 //定位bottom/right值;
-@mixin br($bottom:0,$right:0,$zindex:false){
+@mixin br($bottom:0,$right:$bottom,$zindex:false){
 	@include b($bottom);
 	@include r($right);	
 	@if( $zindex ){
@@ -121,7 +121,7 @@
 }
 
 //定位top/left/bottom/right值;
-@mixin trbl($top:0,$left:0,$bottom:0,$right:0,$zindex:false){
+@mixin trbl($top:0,$left:$top,$bottom:$top,$right:$top,$zindex:false){
 	@include t($top);
 	@include l($left);
 	@include b($bottom);
@@ -167,7 +167,7 @@
 }
 
 //设置层级数;
-@mixin z( $num ){
+@mixin z( $num:1 ){
   z-index:$num;
 }
 

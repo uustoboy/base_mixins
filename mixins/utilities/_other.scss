@@ -3,21 +3,21 @@
 
 //元素顶端对齐方式;
 @mixin vit{
-  @include vertical-align(top);
+  @include va(top);
 }
 
 //元素中部对齐方式;
 @mixin vic{
-  @include vertical-align(middle);
+  @include va(middle);
 }
 
 //元素最低对齐方式;
 @mixin vib{
-  @include vertical-align(bottom);
+  @include va(bottom);
 }
 
 //元素垂直对齐方式;
-@mixin vertical-align( $direction:middle ){
+@mixin va( $direction:middle ){
   //baseline    :   默认。元素放置在父元素的基线上;
   //sub         :   垂直对齐文本的下标;
   //super       :   垂直对齐文本的上标;
@@ -32,7 +32,9 @@
 }
 
 //超出截断;
-@mixin over{overflow:hidden; }
+@mixin over( $arg:hidden ){
+  overflow:$arg; 
+}
 
 //x轴截断;
 @mixin over-x($arg:hidden){
