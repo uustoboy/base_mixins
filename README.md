@@ -990,8 +990,8 @@ replace-text ( 设置text-indent  )<br>
 ```
 例子 :
    参数1 $image: 图片路径;
-   参数2 $x: 50%(默认) 图片x轴;
-   参数3 $y: 50%(默认) 图片y轴;
+   参数2 $position: 50% 50%(默认) 图片x y轴;
+   参数3 $ie6: false(默认) 是否兼容ie6的png;
    .className{ @include replace-text('../i/a.jpg',10px,220px); }
 ```
 tal ( text-align:left )<br>
@@ -1131,7 +1131,7 @@ gpx2rpx ( 简单rpx多值转行 )<br>
 例子 :
    .className{ @include pal(gpx2rpx(10,10,10,10)); }
    或
-   .className{ @include margin:gpx2rpx(10,10,10,10); }
+   .className{ margin:gpx2rpx(10,10,10,10); }
 ```
 
 ### 定位的混合宏(_position.scss);
@@ -1143,25 +1143,25 @@ pos ( 设置position )<br>
    参数2 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)7个值
    .className{ @include position(absolute,(t:10px,l:0px,z:5)); }
 ```
-abs ( position: absolute )<br>
+abs ( 设置position: absolute )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
    .className{ @include abs((t:10px,l:0px,z:5)); }
 ```
-rel ( position: relative )<br>
+rel ( 设置position: relative )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
    .className{ @include rel((t:10px,l:0px,z:5)); }
 ```
-fixed ( position: fixed )<br>
+fixed ( 设置position: fixed )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
    .className{ @include fixed((t:10px,l:0px,z:5)); }
 ```
-static ( position: static )<br>
+static ( 设置position: static )<br>
 ```
 例子 :
    参数 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)几个值
@@ -1481,7 +1481,7 @@ oln-w ( 设置outline-width )<br>
 oln-o ( 设置outline-offset )<br>
 ```
 例子 :
-   .className{ @include oln-w(30); }
+   .className{ @include oln-o(30); }
 ```
 cut-line ( 分割线 | )<br>
 ```
@@ -1610,6 +1610,13 @@ base ( 设置项目初始化 )<br>
   参数9 $bor_color : #ccc 设置默认边框颜色;
   参数10 $format : - 设置默认连接-;
   @include base(1000);
+```
+min-base ( 设置项目迷你初始化 )<br>
+```
+例子 :
+  参数1 $content:1000(默认值) 设置 .content 的宽度;
+  参数2 $label:false(默认值)  设置pc/app标签初始化;
+  @include min-base(1000);
 ```
 
 ### 清除标签的混合宏(_normalize.scss);
@@ -1767,7 +1774,7 @@ cur ( 鼠标手 )<br>
 例子 :
    .className{ @include cur; }
 ```
-$def ( 鼠标默认 )<br>
+def ( 鼠标默认 )<br>
 ```
 例子 :
    .className{ @include def; }
