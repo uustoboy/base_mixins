@@ -157,6 +157,11 @@
 	@include fx-dir(row);
 }
 
+//flex垂直方向;
+@mixin fx-col{
+	@include fx-col(column);
+}
+
 //flex换行设置;
 @mixin fx-w( $args:wrap ){
 	@include css3(flex-wrap,$args);
