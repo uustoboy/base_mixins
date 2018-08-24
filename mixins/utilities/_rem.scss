@@ -3,11 +3,11 @@
 
 //移动端rem单位函数、配合hotcss.js一起用同时设置$designWidth的PSD宽度值(https://github.com/imochen/hotcss/blob/master/src/hotcss.js);
 //感谢'墨尘(https://github.com/imochen)'开源的项目'hotcss(https://github.com/imochen/hotcss)'
-////////////////////////////////////////////////////////////////////////////// 
-// 转换rem: $px:数值,$important:权限最高      							    //             
-//  例子 :                                                                  //   
-//		    $designWidth : 640;                                             //
-//			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }    //
+//////////////////////////////////////////////////////////////////////////////
+// 转换rem: $px:数值,$important:权限最高      							                   //
+//  例子 :                                                                   //
+//		    $designWidth : 640;                                               //
+//			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }        //
 //////////////////////////////////////////////////////////////////////////////
 @function px2rem( $px , $important:false ){
 	$value : 0;
@@ -42,10 +42,10 @@
 
 //微信小程序rpx单位函数同时设置$wxDesignWidth的PSD宽度;
 //////////////////////////////////////////////////////////////////////////////
-// 转换rpx: $px:数值,$important:权限最高      							    //            
-//  例子 :                                                                  //   
-//			$wxDesignWidth : 750;                                           //
-//			.a{ width : px2rpx(100); } /  .a{ @include w(px2rpx(100)); }    //
+// 转换rpx: $px:数值,$important:权限最高      							                   //
+//  例子 :                                                                   //
+//			$wxDesignWidth : 750;                                               //
+//			.a{ width : px2rpx(100); } /  .a{ @include w(px2rpx(100)); }        //
 //////////////////////////////////////////////////////////////////////////////
 @function px2rpx( $px , $important:false ){
 	$value : 0;
@@ -54,16 +54,16 @@
 		//是否最高权限;
 		$value : strip-units($px)*(750/$wxDesignWidth);
 		@if( $important ){
-			@return toRound($value) + rpx + !important;
+			@return toRound( $value ) + rpx + !important;
 		}
-		@return toRound($value) + rpx;
+		@return toRound( $value ) + rpx;
 	}@else{
 		//是否最高权限;
 		$value : $px*(750/$wxDesignWidth);
 		@if( $important ){
-			@return toRound($value) + rpx + !important;
+			@return toRound( $value ) + rpx + !important;
 		}
-		@return toRound($value) + rpx;
+		@return toRound( $value ) + rpx;
 	}
 }
 
