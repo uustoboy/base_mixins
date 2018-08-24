@@ -10,19 +10,23 @@
 //			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }    //
 //////////////////////////////////////////////////////////////////////////////
 @function px2rem( $px , $important:false ){
+	$value : 0;
 	//判断是否有单位;
 	@if( not unitless($px) ){
 		//是否最高权限;
+		$value : strip-units($px)*320/$designWidth/20;
 		@if( $important ){
-			@return strip-units($px)*320/$designWidth/20 + rem + !important;
+			@return toRound( $value ) + rem + !important;
 		}
-		@return strip-units($px)*320/$designWidth/20 + rem;
+
+		@return toRound( $value ) + rem;
 	}@else{
 		//是否最高权限;
+		$value : $px*320/$designWidth/20;
 		@if( $important ){
-			@return $px*320/$designWidth/20 + rem + !important;
+			@return toRound( $value ) + rem + !important;
 		}
-		@return $px*320/$designWidth/20 + rem;
+		@return toRound( $value ) + rem;
 	}
 	
 }
@@ -44,20 +48,22 @@
 //			.a{ width : px2rpx(100); } /  .a{ @include w(px2rpx(100)); }    //
 //////////////////////////////////////////////////////////////////////////////
 @function px2rpx( $px , $important:false ){
-	
+	$value : 0;
 	//判断是否有单位;
 	@if( not unitless($px) ){
 		//是否最高权限;
+		$value : strip-units($px)*(750/$wxDesignWidth);
 		@if( $important ){
-			@return strip-units($px)*(750/$wxDesignWidth) + rpx + !important;
+			@return toRound($value) + rpx + !important;
 		}
-		@return strip-units($px)*(750/$wxDesignWidth) + rpx;
+		@return toRound($value) + rpx;
 	}@else{
 		//是否最高权限;
+		$value : $px*(750/$wxDesignWidth);
 		@if( $important ){
-			@return strip-units($px)*(750/$wxDesignWidth) + rpx + !important;
+			@return toRound($value) + rpx + !important;
 		}
-		@return $px*(750/$wxDesignWidth) + rpx;
+		@return toRound($value) + rpx;
 	}
 }
 
@@ -73,4 +79,11 @@
 //去单位函数;
 @function strip-units($number){
     @return $number / ($number * 0 + 1);
+}
+
+//四舍五入,保留小数4位;
+@function toRound( $num ){
+	$number : 0;
+	$number : floor($num * 10000)/10000;
+	@return  $number;
 }
