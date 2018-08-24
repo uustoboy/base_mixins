@@ -1141,7 +1141,7 @@ pos ( 设置position )<br>
 例子 :
    参数1 $position : position的属性;
    参数2 $args :  json 可传(t:0,l:0,b:0,r:0,w:10,h:10,z:10)7个值
-   .className{ @include position(absolute,(t:10px,l:0px,z:5)); }
+   .className{ @include pos(absolute,(t:10px,l:0px,z:5)); }
 ```
 abs ( 设置position: absolute )<br>
 ```
