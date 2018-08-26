@@ -33,11 +33,7 @@
 
 //简单rem多值转行;
 @function gpx2rem( $px... ){
-   $arr:null;
-   @each $arg in $px {
-     $arr : $arr px2rem( $arg );  
-   }
-   @return $arr;
+   @return addUnits($px...);
 }
 
 //微信小程序rpx单位函数同时设置$wxDesignWidth的PSD宽度;
@@ -69,11 +65,7 @@
 
 //简单rpx多值转行;
 @function gpx2rpx( $px... ){
-   $arr:null;
-   @each $arg in $px {
-     $arr : $arr px2rpx( $arg );  
-   }
-   @return $arr;
+   @return addUnits($px...);
 }
 
 //去单位函数;
