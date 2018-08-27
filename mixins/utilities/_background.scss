@@ -7,7 +7,7 @@
     background:url($img) $color $repeat addUnits($position);
     $global-ie : compatibility() and str-index($img,png);
     $present-ie : $ie6 and str-index($img,png);
-    @if( $global-ie or $present-ie ){
+    @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background:url($img-gif) $color $repeat addUnits($position);
@@ -23,28 +23,28 @@
   $present-ie : $ie6 and str-index($img,png);
   @if( not $position) {
     background: url($img) $repeat;
-    @if( $global-ie or $present-ie ){
+    @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) $repeat;
     }
   }@else if( not $repeat) {
     background: url($img) addUnits($position);
-    @if( $global-ie or $present-ie ){
+    @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) addUnits($position);
     }
   }@else if( not $position and not $repeat) {
     background: url($img);
-    @if( $global-ie or $present-ie ){
+    @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif);
     }
   }@else {
     background: url($img) $repeat addUnits($position);
-    @if( $global-ie or $present-ie ){
+    @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) $repeat addUnits($position);
@@ -84,15 +84,16 @@
 }
 
 //设置背景颜色;
-@mixin bgc( $color,$support-for-ie:false ){
+@mixin bgc( $color,$support-for-ie:true ){
   @if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
     background: $color;
-    @if( compatibility() or $support-for-ie ){
-			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str($color)},endColorstr=#{ie-hex-str($color)});
-			:root & {
-				filter:none;
-			}
-		}
+    @if( $support-for-ie and compatibility() ){
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str($color)},endColorstr=#{ie-hex-str($color)});
+      :root & {
+        filter:none;
+      }
+    }
+    
   }@else{
     background:unquote($color);
   }
