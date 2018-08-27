@@ -4,8 +4,10 @@
 //设置背景;
 @mixin bg( $color,$img:false,$repeat:no-repeat,$position:0 0,$ie6:false ){
 	@if( $img ){
-		background:url($img) $color $repeat addUnits($position);
-    @if( $ie6 and str-index($img,png) ){
+    background:url($img) $color $repeat addUnits($position);
+    $global-ie : compatibility() and str-index($img,png);
+    $present-ie : $ie6 and str-index($img,png);
+    @if( $global-ie or $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background:url($img-gif) $color $repeat addUnits($position);
@@ -17,30 +19,32 @@
 
 //设置图片背景;
 @mixin bgi( $img:false, $repeat:no-repeat, $position:0 0,$ie6:false ) {
+  $global-ie : compatibility() and str-index($img,png);
+  $present-ie : $ie6 and str-index($img,png);
   @if( not $position) {
     background: url($img) $repeat;
-    @if( $ie6 and str-index($img,png) ){
+    @if( $global-ie or $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) $repeat;
     }
   }@else if( not $repeat) {
     background: url($img) addUnits($position);
-    @if( $ie6 and str-index($img,png) ){
+    @if( $global-ie or $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) addUnits($position);
     }
   }@else if( not $position and not $repeat) {
     background: url($img);
-    @if( $ie6 and str-index($img,png) ){
+    @if( $global-ie or $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif);
     }
   }@else {
     background: url($img) $repeat addUnits($position);
-    @if( $ie6 and str-index($img,png) ){
+    @if( $global-ie or $present-ie ){
       $img-len :  (str-length($img) - 3);
       $img-gif : str-slice($img,1,$img-len)+'gif';
       _background: url($img-gif) $repeat addUnits($position);
@@ -83,7 +87,7 @@
 @mixin bgc( $color,$support-for-ie:false ){
   @if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
     background: $color;
-    @if( $global-for-ie or $support-for-ie ){
+    @if( compatibility() or $support-for-ie ){
 			filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{ie-hex-str($color)},endColorstr=#{ie-hex-str($color)});
 			:root & {
 				filter:none;
