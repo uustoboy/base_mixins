@@ -4,7 +4,7 @@
 
 ****
 ### 简单代码提示插件:
-[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
+[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets) (推荐使用 Visual Studio Code)
 
 [Sublime Text](https://www.sublimetext.com/3) 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets)
 
