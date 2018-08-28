@@ -2,21 +2,21 @@
 // 字体的混合宏(mixin);
 
 //设置所有字体属性;
-@mixin f( $font... ){	
+@mixin f( $font... ){
 	@if( length($font) >= 2 ){
 		font:$font;
 	}@else{
-		font-size:addUnits(nth($font,1));
+		@include fz( $font );
 	}
 }
 
 //设置字号;
 @mixin fz( $font:12 ){
-	font-size:addUnits($font); 
+	font-size:addUnits($font);
 }
 
 //设置字体;
-@mixin fa( $family... ){ 
+@mixin fa( $family... ){
 	$base-family : 'Microsoft Yahei','宋体','黑体';
 	$new-family :  append($family,$base-family);
 	font-family : $new-family;
@@ -26,13 +26,33 @@
 @mixin c( $color:#000,$hovercolor:false ){
 	color:$color;
 	@if( $hovercolor ){
-		&:hover { 
-			color: $hovercolor; 
-		
+		&:hover {
+			color: $hovercolor;
+
 		}
 	}
 }
 
+//消除字体锯齿;
+@mixin f-smooth( $webkit:antialiased,$moz:grayscale ){
+	-webkit-font-smoothing: $webkit;
+	-moz-osx-font-smoothing: $moz;
+}
+
+//字距调整属性(英文);
+@mixin fk( $value:normal ){
+	@include css3(font-kerning,$value);
+}
+
+//小体型大写字母;
+@mixin fv( $value:normal ){
+	font-variant: $value;
+}
+
+//font-variant-alternates;
+@mixin ffs( $value... ) {
+	font-variant-alternates: $value;
+}
 //文字风格;
 @mixin fs( $value:bold  ){
 	font-style: $value;
@@ -64,22 +84,22 @@
 }
 
 // 正常字体样式;
-@mixin normal-font() { 
-	font-weight: normal; 
-	font-style: normal; 
+@mixin normal-font() {
+	font-weight: normal;
+	font-style: normal;
 }
 
 // 辅助性文字(灰色);
-@mixin assist-font( $color: #b0b0b0, $fz: 14px ) { 
+@mixin assist-font( $color: #b0b0b0, $fz: 14px ) {
 	@include c( $color );
 	@include fz( $fz );
 }
 
 // 文字透明;
-@mixin transparent-text() { 
-	font: 0/0 serif; 
-	text-shadow: none; 
-	color: transparent; 
+@mixin transparent-text() {
+	font: 0/0 serif;
+	text-shadow: none;
+	color: transparent;
 }
 
 //字符间距;
