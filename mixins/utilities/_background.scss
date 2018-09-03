@@ -98,20 +98,84 @@
   }
 }
 
-//父级混合;
+//设置mix-blend-mode;
 @mixin mix-bm( $args:normal ){
   mix-blend-mode: $args;
 }
 
-//背景色混合;
+//设置background-blend-mode;
 @mixin bg-bm( $args:normal ){
   background-blend-mode: $args;
 }
 
-//创建一个新的stacking context;
+//设置isolation;
 @mixin iso( $args:auto ){
   isolation: $args;
 }
+
+//设置object-fit;
+@mixin obj-f( $args:cover ){
+  object-fit: $args;
+}
+
+//设置object-position;
+@mixin obj-p( $args:center ){
+  object-position: addUnits($args);
+}
+
+//组合object-fit && object-position;
+@mixin obj-fp($fit:cover,$position:center){
+  @include obj-f($fit);
+  @include obj-p($position);
+}
+
+//设置backdrop-filter;
+@mixin bd-flt( $args ){
+ @include css3(backdrop-filter,$args);
+}
+
+//设置mask-attachment;
+@mixin mask-a( $args:scroll ){
+  @include css3(mask-attachment,$args,$support-vendors:webkit);
+}
+
+//设置mask-box-image;
+@mixin mask-bi( $args ){
+  @include css3(mask-box-image,$args,$support-vendors:webkit);
+}
+//设置mask-clip;
+@mixin mask-c( $args:border-box ){
+  @include css3(mask-clip,$args,$support-vendors:webkit);
+}
+//设置mask-composite;
+@mixin mask-co( $args:add ){
+  @include css3(mask-composite,$args,$support-vendors:webkit);
+}
+
+//设置mask-image;
+@mixin mask-i($url){
+  @include css3(mask-image,$url,$support-vendors:webkit);
+}
+
+//设置mask-origin;
+@mixin mask-o($args:border-box){
+  @include css3(mask-origin,$args,$support-vendors:webkit);
+}
+
+//设置mask-position;
+@mixin mask-p($args:50% 50%){
+  mask-position:addUnits($args);
+}
+
+//设置mask-repeat;
+@mixin mask-r($args:no-repeat){
+  mask-repeat:$args;
+}
+//设置mask-size;
+@mixin mask-s($args:cover){
+  mask-size:addUnits($args);
+}
+
 
 //用max-width来防止图片撑破容器
 @mixin max-img{

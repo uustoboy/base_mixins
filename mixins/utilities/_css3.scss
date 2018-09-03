@@ -7,42 +7,54 @@
 //  $prefix    :  是否添加样式前缀,默认开启;        //
 //  $suffix    :  是否添加样式后缀,默认关闭;        //
 //////////////////////////////////////////////////////
-@mixin css3($style, $frames, $prefix:true, $suffix:false) {
+@mixin css3($style, $frames, $prefix:true, $suffix:false,$support-vendors:false) {
     @if( $prefixNo) {
         $style: $frames;
     }
     @else {
         @if( $prefix) {
             @if( $suffix) {
-                @each $goods in $vendors {
-                    @if( $prefixWebkit and $goods=='webkit') {
-                        -#{$goods}-#{$style}: -#{$goods}-#{$frames};
-                    }
-                    @else if( $prefixMozilla and $goods=='moz') {
-                        -#{$goods}-#{$style}: -#{$goods}-#{$frames};
-                    }
-                    @else if($prefixMicrosoft and $goods=='ms') {
-                        -#{$goods}-#{$style}: -#{$goods}-#{$frames};
-                    }
-                    @else if($prefixOpera and $goods=='o') {
+                @if($support-vendors){
+                    @each $goods in $support-vendors {
                         -#{$goods}-#{$style} :-#{$goods}-#{$frames};
+                    }
+                }@else{
+                    @each $goods in $vendors {
+                        @if( $prefixWebkit and $goods=='webkit') {
+                            -#{$goods}-#{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if( $prefixMozilla and $goods=='moz') {
+                            -#{$goods}-#{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if($prefixMicrosoft and $goods=='ms') {
+                            -#{$goods}-#{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if($prefixOpera and $goods=='o') {
+                            -#{$goods}-#{$style} :-#{$goods}-#{$frames};
+                        }
                     }
                 }
                 #{$style}: #{$frames};
             }
             @else {
-                @each $goods in $vendors {
-                    @if( $prefixWebkit and $goods=='webkit') {
-                        -#{$goods}-#{$style}: #{$frames};
+                @if($support-vendors){
+                    @each $goods in $support-vendors {
+                        -#{$goods}-#{$style} :-#{$goods}-#{$frames};
                     }
-                    @else if( $prefixMozilla and $goods=='moz') {
-                        -#{$goods}-#{$style}: #{$frames};
-                    }
-                    @else if($prefixMicrosoft and $goods=='ms') {
-                        -#{$goods}-#{$style}: #{$frames};
-                    }
-                    @else if($prefixOpera and $goods=='o') {
-                        -#{$goods}-#{$style}: #{$frames};
+                }@else{
+                    @each $goods in $vendors {
+                        @if( $prefixWebkit and $goods=='webkit') {
+                            -#{$goods}-#{$style}: #{$frames};
+                        }
+                        @else if( $prefixMozilla and $goods=='moz') {
+                            -#{$goods}-#{$style}: #{$frames};
+                        }
+                        @else if($prefixMicrosoft and $goods=='ms') {
+                            -#{$goods}-#{$style}: #{$frames};
+                        }
+                        @else if($prefixOpera and $goods=='o') {
+                            -#{$goods}-#{$style}: #{$frames};
+                        }
                     }
                 }
                 #{$style}: #{$frames};
@@ -50,18 +62,24 @@
         }
         @else {
             @if( $suffix) {
-                @each $goods in $vendors {
-                    @if( $prefixWebkit and $goods=='webkit') {
-                        #{$style}: -#{$goods}-#{$frames};
+                @if($support-vendors){
+                    @each $goods in $support-vendors {
+                        -#{$goods}-#{$style} :-#{$goods}-#{$frames};
                     }
-                    @else if( $prefixMozilla and $goods=='moz') {
-                        #{$style}: -#{$goods}-#{$frames};
-                    }
-                    @else if($prefixMicrosoft and $goods=='ms') {
-                        #{$style}: -#{$goods}-#{$frames};
-                    }
-                    @else if($prefixOpera and $goods=='o') {
-                        #{$style}: -#{$goods}-#{$frames};
+                }@else{
+                    @each $goods in $vendors {
+                        @if( $prefixWebkit and $goods=='webkit') {
+                            #{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if( $prefixMozilla and $goods=='moz') {
+                            #{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if($prefixMicrosoft and $goods=='ms') {
+                            #{$style}: -#{$goods}-#{$frames};
+                        }
+                        @else if($prefixOpera and $goods=='o') {
+                            #{$style}: -#{$goods}-#{$frames};
+                        }
                     }
                 }
                 #{$style}: #{$frames};
