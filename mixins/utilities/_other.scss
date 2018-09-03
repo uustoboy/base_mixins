@@ -49,6 +49,11 @@
 //取消截断;
 @mixin ofv{overflow:visible !important;}
 
+//滚动回弹效果;
+@mixin ofl-sc($arg:touch){
+  @include css3(overflow-scrolling,$arg,$support-vendors:webkit);
+}
+
 //鼠标手;
 @mixin cur{ 
   @include cursor;
