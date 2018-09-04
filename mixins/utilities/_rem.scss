@@ -72,10 +72,3 @@
 @function strip-units($number){
     @return $number / ($number * 0 + 1);
 }
-
-//四舍五入,保留小数4位;
-@function toRound( $num ){
-	$number : 0;
-	$number : floor($num * 10000)/10000;
-	@return  $number;
-}

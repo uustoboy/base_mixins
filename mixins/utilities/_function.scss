@@ -45,6 +45,13 @@
     }
 }
 
+//四舍五入,保留小数4位;
+@function toRound( $num ){
+	$number : 0;
+	$number : floor($num * 10000)/10000;
+	@return  $number;
+}
+
 //添加单位;
 @function addUnits( $arg1,$arg2... ){
     $new-args : join( $arg1,$arg2 );
