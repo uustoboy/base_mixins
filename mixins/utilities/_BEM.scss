@@ -1,0 +1,27 @@
+@charset "UTF-8";
+// BEM混合宏(mixin);
+
+$elementSeparator: '__';
+$modifierSeparator: '--';
+
+@mixin b( $block ) {
+    .#{$block} {
+        @content;
+    }
+}
+
+@mixin e( $element ){
+  @at-root {
+      &#{$elementSeparator+$element} {
+          @content;
+      }
+  }
+}
+
+@mixin m( $modifier ){
+  @at-root {
+      #{&}#{$modifierSeparator+$modifier} {
+          @content;
+      }
+  }
+}

@@ -130,3 +130,54 @@
 	  content: "/\00a0";
 	}
 }
+
+//Retina屏幕1px边框;
+//父级需要加定位;
+/// ul{
+///   @include flex;
+///   li{
+///     @include rel();
+///     @include wh(33.3%,30);
+///     @include flc(14,30,#333);
+///     @include tac;
+///     @include bgc(#ccc);
+///     @include mar(0 0 0 -1px);
+///     @include scale-1px();
+///   }
+/// }
+@mixin scale-1px($color:#000,$radius:false,$dir:false){
+  &:after{
+    content: '';
+    @include abs((t:0,l:0));
+    @if($dir == 't' or $dir == 'top'){
+      @include bdt(1px solid $color);
+    }
+    @if($dir == 'r' or $dir == 'right'){
+      @include bdr(1px solid $color);
+    }
+    @if($dir == 'b' or $dir == 'bottom'){
+      @include bdb(1px solid $color);
+    }
+    @if($dir == 'l' or $dir == 'left'){
+      @include bdl(1px solid $color);
+    }
+    @if($dir == 'tb'){
+      @include bdt(1px solid $color);
+      @include bdb(1px solid $color);
+    }
+    @if($dir == 'rl'){
+      @include bdr(1px solid $color);
+      @include bdl(1px solid $color);
+    }
+    @if(not $dir or $dir == 'all'){
+      @include bd(1px solid $color);
+    }
+    @include box-sz;
+    @include wh(200%);
+    @include trf(scale(0.5));
+    @include trf-o(left top);
+    @if( $radius ){
+      @include bdrs(toRound($radius/0.5889));
+    }
+  }
+}
