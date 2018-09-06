@@ -167,6 +167,16 @@
     @include usr-s(none);
 }
 
+//touch-action;
+@mixin touch-a($arg:auto){
+    touch-action:$arg;
+}
+
+//touch-callout;
+@mixin touch-c($arg:none){
+    @include css3(touch-callout,$arg,$support-vendors:webkit);
+}
+
 //transform;
 @mixin trf($property...) {
     @include css3(transform, $property);
