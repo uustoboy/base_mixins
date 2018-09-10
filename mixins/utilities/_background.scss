@@ -88,11 +88,6 @@
 	background-attachment: $value;
 }
 
-//
-@mixin bg-comp( $value ){
-  -webkit-background-composite: $value;
-};
-
 //设置背景颜色;
 @mixin bgc( $color,$support-for-ie:true ){
   @if( str-slice('#{$color}', 1, 4)  == 'rgba' ){
