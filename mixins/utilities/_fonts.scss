@@ -33,7 +33,7 @@
 	}
 }
 
-//消除字体锯齿;
+//消除字体锯齿(主要用于svg字体);
 @mixin f-smooth( $webkit:antialiased,$moz:grayscale ){
 	-webkit-font-smoothing: $webkit;
 	-moz-osx-font-smoothing: $moz;
@@ -49,10 +49,11 @@
 	font-variant: $value;
 }
 
-//font-variant-alternates;
-@mixin ffs( $value... ) {
-	font-variant-alternates: $value;
+//减除字体动画震颤(用于数字变化快的抖动);
+@mixin ffs( $value:normal ){
+	@include css3(font-feature-settings,$value);
 }
+
 //文字风格;
 @mixin fs( $value:bold  ){
 	font-style: $value;
@@ -105,4 +106,14 @@
 //字符间距;
 @mixin ls( $args... ){
 	letter-spacing:addUnits($args...)
+}
+
+//拼音
+@mixin rby-a( $args:auto ){
+	ruby-align:$args;
+}
+
+//文字描边;
+@mixin t-str( $arg... ){
+  @include css3(text-stroke,addUnits($arg));
 }

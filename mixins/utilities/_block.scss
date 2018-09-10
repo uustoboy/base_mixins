@@ -117,6 +117,11 @@
 	@include css3(box-direction,normal,true,false);
 }
 
+//垂直位置;
+@mixin box-p( $value:start ){
+	@include css3(box-pack,$value,true,false);
+}
+
 //对齐框的子元素;
 @mixin box-a( $value:center ){
 	//box-align: start(对于正常方向的框,上边缘沿着框的顶边放置|对于反方向的框,上边缘沿着框的底边放置)  |

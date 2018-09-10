@@ -54,6 +54,16 @@
   @include css3(overflow-scrolling,$arg,$support-vendors:webkit);
 }
 
+//覆盖默认的浏览器滚动;
+@mixin os-b($arg:auto){
+  overscroll-behavior:$arg;
+}
+
+//禁用下拉刷新;
+@mixin os-b-y($arg:contain){
+   overscroll-behavior-y:$arg;
+}
+
 //鼠标手;
 @mixin cur{ 
   @include cursor;
@@ -74,6 +84,12 @@
   cursor:$args
 }
 
+
+//移动标手;
+@mixin touch-a( $args:auto ){
+  touch-action:$args
+}
+
 //透明度;
 @mixin opa($opacity:.8,$support-for-ie:false) {
   opacity: $opacity;
@@ -82,8 +98,14 @@
   }
 }
 
+//resize;
+@mixin rz($args:none){
+  resize: none;
+}
+
+
 //禁止textarea拖动大小;
-@mixin no-resize{
+@mixin no-rz{
   resize: none;
 }
 

@@ -157,6 +157,11 @@
     @include css3(text-shadow, $noshadow);
 }
 
+//倒影(Firefox不兼容-moz-element());
+@mixin box-r($value:none) {
+    @include css3(box-reflect, $value);
+}
+
 //是否允许用户选中文本;
 @mixin usr-s($arg: text) {
     @include css3(user-select, $arg);
@@ -233,6 +238,11 @@
 // 4. 阻止JavaScript点击事件的触发
 @mixin pe( $arg:none ) { pointer-events: $arg; }
 
+//设置appearance;
+@mixin ap( $arg:normal ){
+    @include css3(appearance,$arg,$support-vendors:webkit moz);
+}
+
 //filter;
 @mixin flt( $arg ){
     @include css3(filter,$arg);
@@ -250,6 +260,11 @@
 //滤镜: 将彩色照片显示为黑白照片;
 @mixin grayscale( $args:100% ){
 	@include css3(filter,grayscale($args));
+}
+
+//元素被点击时高亮颜色(移动端);
+@mixin thc( $args ){
+	@include css3(tap-highlight-color,$args);
 }
 
 // 美化占位符 placeholder 样式

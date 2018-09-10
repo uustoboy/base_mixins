@@ -120,3 +120,44 @@
   @include td(none !important);
 }
 
+//行内元素片断块(元素必须是inline元素);
+@mixin box-dir-break( $args:slice ){
+  @include css3(box-decoration-break,$args);
+}
+
+
+
+//文本分列;
+@mixin cols( $arg... ){
+  @include css3(columns,$arg);
+}
+
+//文本分列数;
+@mixin col-c( $arg:2 ){
+  @include css3(column-count,$arg);
+}
+
+//列进行填充;
+@mixin col-f( $arg:balance ){
+  @include css3(column-fill,$arg);
+}
+
+//列间的间隔;
+@mixin col-g( $arg:10 ){
+  @include css3(column-gap,addUnits($arg));
+}
+
+//列之间的线;
+@mixin col-r( $arg... ){
+  @include css3(column-rule,addUnits($arg));
+}
+
+//横跨所有列;
+@mixin col-r( $arg:all ){
+  @include css3(column-span,$arg);
+}
+
+//列的宽度;
+@mixin col-w( $arg:10 ){
+  @include css3(column-width,addUnits($arg));
+}

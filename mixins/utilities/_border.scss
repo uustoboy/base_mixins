@@ -42,6 +42,21 @@
 	border-color:$args;
 }
 
+//border-collapse;
+@mixin bd-c( $args:separate ) {
+	border-collapse:$args;
+}
+
+//border-spacing;
+@mixin bdsp( $args... ) {
+	border-spacing:addUnits($args...);
+}
+
+//隐藏表格中空单元格;
+@mixin ec( $args:hide ){
+	empty-cells: $args;
+}
+
 //边框图片;
 @mixin bdi( $image ){
   @include css3(border-image, $image,false,true);
@@ -180,4 +195,14 @@
       @include bdrs(toRound($radius/0.5889));
     }
   }
+}
+
+//border-after;
+@mixin bda( $args... ) {
+	-webkit-border-after:addUnits($args...);
+}
+
+//border-before;
+@mixin bd-b( $args... ) {
+	-webkit-border-before:addUnits($args...);
 }
