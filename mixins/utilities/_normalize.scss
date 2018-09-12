@@ -2,7 +2,7 @@
 // 清除标签的混合宏(mixin);
 @mixin label( $args:false ){
     
-    @if( $args or $global-unit == rem ){
+    @if( $args or compatibility() ){
         @include mobile-label;
     }@else{
         @include pc-label;

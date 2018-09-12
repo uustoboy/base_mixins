@@ -192,7 +192,7 @@
   .border {
     border: 1px solid $bor_color;
   }
-  /* box */
+  /* content */
   .content {
     width: addUnits($content);
     margin: 0 auto;
@@ -220,9 +220,11 @@
   .show {
     @include block(true);
   }
-  /* box */
+  
+  /* content */
   .content {
     width: addUnits($content);
     margin: 0 auto;
   }
+  
 }
