@@ -13,7 +13,7 @@
 //pc端清除标签的混合宏;
 @mixin pc-label{
     html{
-        font-family:"Microsoft YaHei",'宋体',sans-serif;
+        font-family:"Microsoft YaHei",'SimSun','SimHei',sans-serif;
         -ms-text-size-adjust:100%;
         -webkit-text-size-adjust:100%;
     }
@@ -173,7 +173,7 @@
 //移动端清除标签的混合宏;
 @mixin mobile-label{
     html{
-        font-family:"Microsoft YaHei",'宋体',Arial,Helvetica,sans-serif; 
+        font-family:'Microsoft YaHei','SimSun','SimHei',Arial,Helvetica,sans-serif; 
         font-size:12px;
         -ms-text-size-adjust:100%;
         -webkit-text-size-adjust:100%;
@@ -265,7 +265,8 @@
     }
 	button,input,optgroup,select,textarea{
         margin:0;
-        padding: 0;
+        padding:0;
+        border:none;
         line-height:normal;
         font:inherit;
         color:inherit;

@@ -16,10 +16,10 @@
 }
 
 //设置字体;
-@mixin fa( $family... ){
-	$base-family : 'Microsoft Yahei','宋体','黑体';
-	$new-family :  append($family,$base-family);
-	font-family : $new-family;
+@mixin fa($family...){
+	$base-family : 'Microsoft Yahei','SimSun','SimHei',sans-serif;
+	$new-family : append($family,$base-family);
+	font-family:$new-family;
 }
 
 //文字颜色;

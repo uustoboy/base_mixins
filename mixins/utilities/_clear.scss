@@ -28,3 +28,8 @@
         overflow: hidden;
     }
 }
+
+//设置zoom;
+@mixin zo($arg:1){
+    zoom:$arg;
+}
