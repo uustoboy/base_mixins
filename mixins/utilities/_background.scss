@@ -3,7 +3,9 @@
 
 //设置背景;
 @mixin bg( $color,$img:false,$repeat:no-repeat,$position:0 0,$ie6:false ){
-	@if( $img ){
+  @if( length($color) >= 2 ){
+    background: $color;
+  }@else if( $img ){
     background:url($img) $color $repeat addUnits($position);
     $global-ie : compatibility() and str-index($img,png);
     $present-ie : $ie6 and str-index($img,png);
@@ -21,7 +23,9 @@
 @mixin bgi( $img:false, $repeat:no-repeat, $position:0 0,$ie6:false ) {
   $global-ie : compatibility() and str-index($img,png);
   $present-ie : $ie6 and str-index($img,png);
-  @if( not $position) {
+  @if( length($img) >= 2 ){
+    background: $img;
+  }@else if( not $position) {
     background: url($img) $repeat;
     @if( $global-ie and $present-ie ){
       $img-len :  (str-length($img) - 3);
@@ -102,6 +106,27 @@
     background:unquote($color);
   }
 }
+
+//设置线性渐变;
+@mixin bg-l-g($args...){
+  	@include css3(background-image,linear-gradient($args),false,true);
+}
+
+//设置重复线性渐变;
+@mixin bg-r-l-g($args...){
+  	@include css3(background-image,repeating-linear-gradient($args),false,true);
+}
+
+//设置径向渐变;
+@mixin bg-r-g($args...){
+  	@include css3(background-image,radial-gradient($args),false,true);
+}
+
+//设置重复径向渐变;
+@mixin bg-r-r-g($args...){
+  	@include css3(background-image,repeating-radial-gradient($args),false,true);
+}
+
 
 //设置mix-blend-mode;
 @mixin mix-bm( $args:normal ){
