@@ -164,7 +164,7 @@
 
 //flex垂直方向;
 @mixin fx-col{
-	@include fx-col(column);
+	@include fx-dir(column);
 }
 
 //flex换行设置;
