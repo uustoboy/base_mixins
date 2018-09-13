@@ -65,25 +65,23 @@
 }
 
 //鼠标手;
-@mixin cur{ 
-  @include cursor;
+@mixin cur( $args... ){ 
+  @if( length($args) == 0 ){
+		cursor: pointer;
+	} @else {
+		cursor: $args;
+	}
 }
 
 //鼠标默认;
 @mixin def{ 
-  @include cursor(default);
+  @include cur(default);
 }
 
 //隐藏鼠标手势;
 @mixin hide-cur() { 
   cursor: none !important; 
 }
-
-//设置鼠标手;
-@mixin cursor( $args:pointer ){
-  cursor:$args
-}
-
 
 //移动标手;
 @mixin touch-a( $args:auto ){
