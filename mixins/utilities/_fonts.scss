@@ -115,5 +115,5 @@
 
 //文字描边;
 @mixin t-str( $arg... ){
-  @include css3(text-stroke,addUnits($arg));
+  @include css3(text-stroke,addUnits($arg...));
 }
