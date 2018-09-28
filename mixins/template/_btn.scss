@@ -1,0 +1,71 @@
+@charset "UTF-8";
+// 按钮的混合宏(mixin);
+
+//按钮;
+@mixin btn($args:false){
+	@include btn_each( $args );
+}
+
+//块按钮;
+@mixin btn-block($args:false){
+  $defaultArgs: (d:block,ta:center,cur:pointer,trs:all 0.3s ease );
+  $newArgs : map-merge($defaultArgs,$args);
+  @include btn($newArgs);
+}
+
+//行内按钮;
+@mixin btn-inblock($args:false){
+  $defaultArgs: (d:inline-block,ta:center,cur:pointer,trs:all 0.3s ease );
+  $newArgs : map-merge($defaultArgs,$args);
+  @include btn($newArgs);
+}
+
+//遍历按钮;
+@mixin btn_each( $args ){
+	$parameter  : d,w,h,pad,mar,f,l,c,hc,bg,hbg,bd,r,cur,ta,trs,box-s;
+	$parameter2 :(
+    d:display,
+    w:width,
+    h:height,
+    pad:padding,
+    mar:margin,
+    f:font-size,
+    l:line-height,
+    c:color,
+    hc:color,
+    bg:background,
+    hbg:background,
+    bd:border,
+    r:border-radius,
+    cur:cursor,
+    ta:text-align,
+    trs:transition,
+    box-s:box-shadow
+  );
+	@each $o, $s in $args {
+    $i: index($parameter, $o);
+		@if( $i and type-of( $i ) == number ){
+      @if( $o == 'r' ){
+        @include bdrs($s);
+      }@else if( $o == 'trs' ){
+        @include css3(#{map-get($parameter2,$o)},$s);
+      }@else if( $o == 'box-s'  ){
+        @include css3(#{map-get($parameter2,$o)},addUnits($s));
+      }@else if( $o == 'hbg' or $o == 'hc' ){
+      }@else {
+        #{map-get($parameter2,$o)} : addUnits($s);
+      }
+	  }
+  }
+  @content;
+  @if( map-has-key($args,hc) or map-has-key($args,hbg) ){
+      &:hover{
+        @if( map-has-key($args,hc) ){
+          color:map-get($args,hc);
+        }
+        @if( map-has-key($args,hbg) ){
+          background:map-get($args,hbg);
+        }
+      }
+  }
+}
