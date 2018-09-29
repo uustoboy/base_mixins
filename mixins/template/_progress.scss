@@ -1,0 +1,28 @@
+@charset "UTF-8";
+// progress进度条的混合宏(mixin);
+
+@mixin progress(
+    $barClass:progress-bar,
+    $w:100,
+    $h:30,
+    $outerClass:outer,
+    $bg:#ccc,
+    $innerClass:inner,
+    $innerBg:yellow
+ ){
+  @include BEM-b($barClass){
+    @include rel();
+    @include inblock;
+    @include wh($w,$h);
+    @include BEM-e($outerClass){
+        @include abs((t:0,l:0,w:100%,h:100%,z:1));
+        @include bgc($bg);
+        @include bdrs($h);
+    }
+    @include BEM-e($innerClass){
+        @include abs((t:0,l:0,h:100%,z:1));
+        @include bgc($innerBg);
+        @include bdrs($h);
+    }
+  }
+}

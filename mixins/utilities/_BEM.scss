@@ -4,13 +4,13 @@
 $elementSeparator: '__';
 $modifierSeparator: '--';
 
-@mixin b( $block ) {
+@mixin BEM-b( $block ) {
     .#{$block} {
         @content;
     }
 }
 
-@mixin e( $element ){
+@mixin BEM-e( $element ){
   @at-root {
       &#{$elementSeparator+$element} {
           @content;
@@ -18,7 +18,7 @@ $modifierSeparator: '--';
   }
 }
 
-@mixin m( $modifier ){
+@mixin BEM-m( $modifier ){
   @at-root {
       #{&}#{$modifierSeparator+$modifier} {
           @content;

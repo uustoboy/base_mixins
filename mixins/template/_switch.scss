@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// Switch开关的混合宏(mixin);
+
+@mixin switch( $w:50,$h:28,$bg:#333,$checkClass:'.checkSwitch',$checkBg:#999 ){
+  @include rel();
+  @include btn-inblock((
+    w : $w,
+    h : $h,
+    bg : $bg,
+    r : $h,
+    trs : background-color .3s
+  ));
+  &:after{
+    @include abs((t:2,l:2,z:5));
+    @include btn-inblock((
+      w : $h*1-4,
+      h : $h*1-4,
+      r : 50%,
+      bg : #fff,
+      trs : transform .3s
+    ));
+    @include cnt();
+  }
+  &#{$checkClass}{
+    @include bgc($checkBg);
+    &:after{
+      @include trf(translateX(addUnits($w*1-$h*1)));
+    }
+  }
+}
+
+
