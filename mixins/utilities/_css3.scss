@@ -252,7 +252,7 @@
 @mixin blur( $blur:10px ){
     @include flt(blur(addUnits($blur)));
     @if( compatibility() ){
-        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{addUnits($blur)}');
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{strip-units($blur)}');
         *zoom: 1;
     }
 }

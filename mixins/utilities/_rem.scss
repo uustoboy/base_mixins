@@ -68,11 +68,6 @@
    @return addUnits($px...);
 }
 
-//去单位函数;
-@function strip-units($number){
-    @return $number / ($number * 0 + 1);
-}
-
 //data-dpr;
 //例子: @include dpr2px(font-size, 32);
 @mixin dpr2px($name, $px){
