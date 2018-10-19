@@ -1,27 +1,27 @@
 @charset "UTF-8";
-// 按钮的混合宏(mixin);
+// input的混合宏(mixin);
 
 //按钮;
-@mixin btn($args:false){
-	@include btn_each( $args );
+@mixin input($args:false){
+	@include input_each( $args );
 }
 
 //块按钮;
-@mixin btn-block($args:false){
+@mixin input-block($args:false){
   $defaultArgs: (d:block,ta:center,cur:pointer,trs:all 0.3s ease );
   $newArgs : map-merge($defaultArgs,$args);
-  @include btn($newArgs);
+  @include input($newArgs);
 }
 
 //行内按钮;
-@mixin btn-inblock($args:false){
+@mixin input-inblock($args:false){
   $defaultArgs: (d:inline-block,ta:center,cur:pointer,trs:all 0.3s ease );
   $newArgs : map-merge($defaultArgs,$args);
-  @include btn($newArgs);
+  @include input($newArgs);
 }
 
 //遍历按钮;
-@mixin btn_each( $args ){
+@mixin input_each( $args ){
 	$parameter  : d,w,h,pad,mar,f,l,c,hc,bg,hbg,bd,hbd,r,cur,ta,trs,box-s;
 	$parameter2 :(
     d:display,

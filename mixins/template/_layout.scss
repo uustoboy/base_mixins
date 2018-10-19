@@ -1,0 +1,12 @@
+@charset "UTF-8";
+//layout 布局的混合宏(mixin);
+
+@mixin layout($start:1,$end:24,$className:'className'){
+  @for $i from $start through $end {
+    .#{$className}-#{$i}{
+      @include fl;
+      @include w( toRound(100%/$end*$i) );
+    }
+  }
+}
+
