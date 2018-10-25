@@ -12,7 +12,11 @@
 
 //设置字号;
 @mixin fz( $font:12 ){
-	font-size:addUnits($font);
+	@if( $global-unit == vw ){
+		font-size:px2rem($font);
+	}@else{
+		font-size:addUnits($font);
+	}
 }
 
 //设置字体;

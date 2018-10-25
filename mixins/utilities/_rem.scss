@@ -11,6 +11,10 @@
 //			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }        //
 //////////////////////////////////////////////////////////////////////////////
 @function px2rem( $px , $important:false ){
+	//处理vw单位中rem;
+	@if( $global-unit == vw ){
+		@return toRound((nth($px,1)/$vmFontSize)*1rem);
+	}
 	$value : 0;
 	//判断是否有单位;
 	@if( not unitless($px) ){
@@ -67,6 +71,33 @@
 //简单rpx多值转行;
 @function gpx2rpx( $px... ){
    @return addUnits($px...);
+}
+
+//vw
+@function px2vw( $px , $important:false ){
+	$value : 0;
+	//判断是否有单位;
+	@if( not unitless($px) ){
+		//是否最高权限;
+		$value : (strip-units($px)/$vmDesignWidth)*100vw;
+		@if( $important ){
+			@return toRound( $value ) + !important;
+		}
+
+		@return toRound( $value );
+	}@else{
+		//是否最高权限;
+		$value : ($px/$vmDesignWidth)*100vw;
+		@if( $important ){
+			@return toRound( $value ) + !important;
+		}
+		@return toRound( $value );
+	}
+}
+
+//vh;
+@function vh( $value ) {
+    @return ($value/$vmDesignHeight/100 )*1vh;
 }
 
 //data-dpr;

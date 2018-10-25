@@ -75,7 +75,7 @@
 
 //检验全局兼容;
 @function compatibility(){
-    @if( $global-for-ie and $global-unit == px ){
+    @if( $global-for-ie or $global-unit == px or $global-unit == vw ){
         @return true;
     }@else{
         @return false;
@@ -101,6 +101,8 @@
     }
     @if( unit( $args ) == '%' or $args == 0 ){
         @return $args;
+    }@else if( $global-unit == vw ){
+        @return px2vw( $args );
     }@else if( $global-unit == rem ){
         @return px2rem( $args );
     }@else if( $global-unit == rpx ){
