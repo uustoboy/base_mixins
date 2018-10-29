@@ -2,6 +2,23 @@
 
 基于sass开发的简写、组合速写的混合宏<br>
 
+***
+npm安装base_mixins
+``` 
+  $ npm install -D base_mixins
+```
+vue-cli 3.0 生成的项目中全局引用 创建vue.config.js
+```
+    module.exports = {
+        css: {
+            loaderOptions: {
+            sass: {
+                data: `@import "./node_modules/base_mixins/_base_mixins.scss";`
+            }
+            }
+        }
+    }
+```
 ****
 ### 简单代码提示插件:
 [VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
