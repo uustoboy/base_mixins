@@ -12,9 +12,9 @@ vue-cli 3.0 生成的项目中全局引用 创建vue.config.js
     module.exports = {
         css: {
             loaderOptions: {
-            sass: {
-                data: `@import "./node_modules/base_mixins/_base_mixins.scss";`
-            }
+                sass: {
+                    data: `@import "./node_modules/base_mixins/_base_mixins.scss";`
+                }
             }
         }
     }
