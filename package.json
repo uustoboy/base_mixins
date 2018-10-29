@@ -1,0 +1,24 @@
+{
+  "name": "base_mixins",
+  "version": "1.0.0",
+  "description": "基于sass开发的简写、组合速写混合宏",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uustoboy/base_mixins.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "css"
+  ],
+  "author": "uustoboy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uustoboy/base_mixins/issues"
+  },
+  "homepage": "https://github.com/uustoboy/base_mixins#readme"
+}
