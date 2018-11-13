@@ -121,3 +121,42 @@
     @include c($color);
   }
 }
+
+//css hack
+@mixin hack( $property,$value,$hack:6 ){
+ 
+	$property2 :(
+    d : display,
+    w : width,
+    h : height,
+    pad : padding,
+    mar : margin,
+    f : font-size,
+    lh : line-height,
+    c : color,
+    bg : background,
+    bd : border,
+    pos : position,
+    t : top,
+    l : left,
+    b : bottom,
+    r : right
+  );
+
+  $cssHack : null;
+
+  @if( $hack == 6 ){
+    $cssHack : '_';
+  }@else if( $hack == 7 ){
+    $cssHack : '*';
+  }
+
+  $propertyName : map-get( $property2, $property );
+
+  @if( $propertyName ){
+    #{$cssHack}#{$propertyName} : addUnits($value);
+  }@else{
+    #{$cssHack}#{$property} : addUnits($value);
+  }
+
+}
