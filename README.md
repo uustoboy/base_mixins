@@ -3,7 +3,7 @@
 基于sass开发的简写、组合速写的混合宏<br>
 
 [![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social)](https://github.com/uustoboy/base_mixins/stargazers)
-
+(给大哥点点关注)
 ***
 npm安装base_mixins
 ``` 
@@ -23,7 +23,7 @@ vue-cli 3.0 生成的项目中全局引用 创建vue.config.js
 ```
 ****
 ### 简单代码提示插件:
-[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets)
+[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets) (主力维护的提示插件！vs code大法好！)
 
 [Sublime Text](https://www.sublimetext.com/3) 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets)
 
