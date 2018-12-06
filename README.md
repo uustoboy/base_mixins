@@ -3,7 +3,7 @@
 基于sass开发的简写、组合速写的混合宏<br>
 
 [![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social)](https://github.com/uustoboy/base_mixins/stargazers)
-(点点关注)
+<font size=2 >(点点关注)</font>
 ***
 npm安装base_mixins
 ``` 
