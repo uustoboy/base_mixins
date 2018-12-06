@@ -98,9 +98,8 @@
 
 //resize;
 @mixin rz($args:none){
-  resize: none;
+  resize: $args;
 }
-
 
 //禁止textarea拖动大小;
 @mixin no-rz{

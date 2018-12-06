@@ -2,16 +2,16 @@
 // 动画混合宏(mixin);
 
 ///////////////////////////////////////////////////////////////////////////
-// css3动画,只能写在调用页面,配合.css3( @style,@frames )使用;            //
+// css3动画,只能写在调用页面,配合.css3( @style,@frames )使用;                //
 // 例子 :                                                                //
-//  @include keyframes(animation-name) {                                 //               
+//  @include keyframes(animation-name) {                                 //
 //      0% {                                                             //
 //         #{$browser}transform: translate3d(100%, 0, 0);                //
 //      }                                                                //
 //      100% {                                                           //
 //          #{$browser}transform: translate3d(0%, 0, 0);                 //
 //      }                                                                //
-//   }                                                                   //  
+//   }                                                                   //
 //   .className{ @include css3(animation,animation-name 5s infinite); }  //
 ///////////////////////////////////////////////////////////////////////////
 $browser: null;
