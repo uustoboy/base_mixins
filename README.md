@@ -3,7 +3,7 @@
 基于sass开发的简写、组合速写的混合宏<br>
 
 [![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social)](https://github.com/uustoboy/base_mixins/stargazers)
-(给大哥点点关注)
+(点点关注)
 ***
 npm安装base_mixins
 ``` 
@@ -23,7 +23,7 @@ vue-cli 3.0 生成的项目中全局引用 创建vue.config.js
 ```
 ****
 ### 简单代码提示插件:
-[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets) (主力维护的提示插件！vs code大法好！)
+[VS Code](https://code.visualstudio.com/) 简单代码提示插件 [mixins-snippets](https://github.com/uustoboy/mixins-snippets) 也可以直接在VS Code 插件库里搜索 [mixins-snippets](https://marketplace.visualstudio.com/items?itemName=uustoboy.mixins-snippets) (主力维护的提示插件!VS Code大法好!)
 
 [Sublime Text](https://www.sublimetext.com/3) 简单代码提示插件 [MixinsSnippets](https://github.com/uustoboy/MixinsSnippets)
 
@@ -37,9 +37,12 @@ $prefixMozilla    : true !default(默认)/false; ( 开启火狐前缀:moz前缀 
 $prefixMicrosoft  : true!default(默认)/false;  ( 开启IE前缀:ms前缀 )<br>
 $prefixOpera      : true!default(默认)/false;  ( 开启opera前缀:o前缀 )<br>
 $prefixNo         : true/false!default(默认); ( 默认前缀关闭 )<br>
-$global-unit      : px;  ( 全局默认补全单位,如果设置默认单位为'rem'/'rpx'且不需要加'!important'可直接传值 全部值会自动转换)<br>
+$global-unit      : px;  ( 全局默认补全单位,如果设置默认单位为'rem'/'rpx'/'vw'且不需要加'!important'可直接传值 全部值会自动转换)<br>
 $designWidth      : 640; ( 移动转rem默认尺寸大小 ) <br>
 $wxDesignWidth    : 750;    ( 微信小程序转rpx默认尺寸大小 ) <br>
+$vmDesignWidth    : 750; ( 移动端转vw默认尺寸 )<br/>
+$vmDesignHeight   : 750; ( 移动端转vh默认尺寸 )<br/>
+$vmFontSize       : 75;  ( 移动端转vw设置的字体 )<br/>
 
 ### 动画的混合宏(_animation.scss):
 
@@ -1813,10 +1816,15 @@ opa ( 设置opacity )<br>
    $global-for-ie:false;
    .className{ @include opa(0.8,true); }
 ```
-no-resize ( 禁止textarea拖动大小resize: none )<br>
+rz( 设置resize 默认值none )<br>
 ```
 例子 :
-   .className{ @include no-resize; }
+   .className{ @include rz; }
+```
+no-rz( 禁止textarea拖动大小resize: none )<br>
+```
+例子 :
+   .className{ @include no-rz; }
 ```
 first-letter ( 首字下沉 )<br>
 ```
@@ -1828,6 +1836,14 @@ first-line ( 特殊标记段落第一行 )<br>
 ```
 例子 :
     参数 $color : red (默认红色) 设置color;
+   .className{ @include first-line(#333); }
+```
+hack ( 设置IE7、IE6的CSS Hack )<br>
+```
+例子 :
+    参数 $property 设置hack属性;
+    参数 $value 设置hack属性值;
+    参数 $hack : 6 (默认IE6) 设置6为IE6 hack、这是7为IE7 hack;
    .className{ @include first-line(#333); }
 ```
 
