@@ -2,8 +2,8 @@
 
 基于sass开发的简写、组合速写的混合宏<br>
 
-[![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social)](https://github.com/uustoboy/base_mixins/stargazers)
-<font size=1 >(点点关注)</font>
+![](https://img.shields.io/npm/v/base_mixins.svg?style=flat)&nbsp;&nbsp;&nbsp; ![](https://img.shields.io/npm/dm/base_mixins.svg?style=flat)&nbsp;&nbsp;&nbsp;[![GitHub stars](https://img.shields.io/github/stars/uustoboy/base_mixins.svg?style=social)](https://github.com/uustoboy/base_mixins/stargazers)
+&nbsp;<font size=1 >(点点关注)</font>
 ***
 npm安装base_mixins
 ``` 
