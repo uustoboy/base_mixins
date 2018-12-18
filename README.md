@@ -2084,6 +2084,10 @@ $BG_ULR :"../i/";//路径;
     }
 }
 ```
+
+## 更新记录
+[base_mixins 更新记录](https://github.com/uustoboy/base_mixins/blob/master/CHANGELOG.md)
+
 ### 感谢
 - [SassMagic](https://github.com/W3cplus/SassMagic) -- 感谢 [W3cplus](https://github.com/W3cplus)
 - [mylus](https://github.com/linx4200/mylus) -- 感谢 [liuxinran](https://github.com/linx4200)
