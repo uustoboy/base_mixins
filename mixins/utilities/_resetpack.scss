@@ -12,7 +12,7 @@
     @for $i from $begin through $end {
       @if( $i%2==0) {
         .f#{$format}#{$i} {
-          font-size: addUnits($i);
+          @include fz($i);
         }
       }
     }
@@ -42,7 +42,7 @@
 }
 
 //打包默认样式;
-@mixin base($content:1000, $orange:#f60, $yellow:#fff000, $blue:#5fb3d2, $red:#ff546a, $gray:#ccc, $disabled:#ccc, $bor_color:#ccc, $format:'-', $label:false) {
+@mixin base($content:1000,$red:$c-red,$blue:$c-blue,$yellow:$c-yellow,$orange:$c-orange,$gray:$c-gray, $disabled:$c-dark, $bor_color:$c-dark, $format:'-', $label:false) {
   /* 清默认样式 */
   @include label($label);
   /* 默认浮动 */
