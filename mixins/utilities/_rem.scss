@@ -33,7 +33,7 @@
 		}
 		@return toRound( $value ) + rem;
 	}
-	
+
 }
 
 //简单rem多值转行;
@@ -53,14 +53,14 @@
 	//判断是否有单位;
 	@if( not unitless($px) ){
 		//是否最高权限;
-		$value : strip-units($px)*(750/$wxDesignWidth);
+		$value : strip-units($px)*($wxDesignWidth/375);
 		@if( $important ){
 			@return toRound( $value ) + rpx + !important;
 		}
 		@return toRound( $value ) + rpx;
 	}@else{
 		//是否最高权限;
-		$value : $px*(750/$wxDesignWidth);
+		$value : $px*($wxDesignWidth/375);
 		@if( $important ){
 			@return toRound( $value ) + rpx + !important;
 		}
