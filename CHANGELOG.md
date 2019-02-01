@@ -36,3 +36,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$disabled : $c-dark,<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$bor_color : $c-dark<br/>
 ); 颜色值与_var.scss 颜色变量值同步;
+
+## 1.0.6 (2019-02-01)
+
+修改小程序rpx转值;

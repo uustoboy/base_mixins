@@ -53,14 +53,14 @@
 	//判断是否有单位;
 	@if( not unitless($px) ){
 		//是否最高权限;
-		$value : strip-units($px)*($wxDesignWidth/375);
+    	$value : strip-units($px)*750/$wxDesignWidth;
 		@if( $important ){
 			@return toRound( $value ) + rpx + !important;
 		}
 		@return toRound( $value ) + rpx;
 	}@else{
 		//是否最高权限;
-		$value : $px*($wxDesignWidth/375);
+    	$value : $px*750/$wxDesignWidth;
 		@if( $important ){
 			@return toRound( $value ) + rpx + !important;
 		}
