@@ -1,5 +1,25 @@
 更新记录
 =======
+## 1.0.7 (2019-05-10)
+
+修复compatibility()判断全局兼容函数bug;
+
+## 1.0.6 (2019-02-01)
+
+修改小程序rpx转值;
+
+## 1.0.5 (2019-01-08)
+
+修改@include base(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$red : $c-red,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$blue : $c-blue,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$yellow : $c-yellow,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$orange : $c-orange,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$gray : $c-gray, <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$disabled : $c-dark,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$bor_color : $c-dark<br/>
+); 颜色值与_var.scss 颜色变量值同步;
+
 ## 1.0.4 (2018-12-18)
 
 添加基础变量:
@@ -25,18 +45,3 @@
 * `$lh-value`  : 18;<br/>
 * `$bdrs-value`: 5;<br/>
 
-## 1.0.5 (2019-01-08)
-
-修改@include base(<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$red : $c-red,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$blue : $c-blue,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$yellow : $c-yellow,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$orange : $c-orange,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$gray : $c-gray, <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$disabled : $c-dark,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$bor_color : $c-dark<br/>
-); 颜色值与_var.scss 颜色变量值同步;
-
-## 1.0.6 (2019-02-01)
-
-修改小程序rpx转值;
