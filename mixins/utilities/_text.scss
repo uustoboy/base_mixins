@@ -161,3 +161,8 @@
 @mixin col-w( $arg:10 ){
   @include css3(column-width,addUnits($arg));
 }
+
+//两端文本;
+@mixins ta-l( $arg:justify ){
+  text-align-last: $arg;
+}
