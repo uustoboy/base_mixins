@@ -163,6 +163,6 @@
 }
 
 //两端文本;
-@mixins ta-l( $arg:justify ){
+@mixin ta-l( $arg:justify ){
   text-align-last: $arg;
 }
