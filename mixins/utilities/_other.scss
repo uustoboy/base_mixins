@@ -121,6 +121,11 @@
   }
 }
 
+//input 光标
+@mixin c-c($color:#0066cc){
+  caret-color:$color;
+}
+
 //css hack
 @mixin hack( $property,$value,$hack:6 ){
  

@@ -1,6 +1,6 @@
 {
   "name": "base_mixins",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "基于sass开发的简写、组合速写混合宏",
   "main": "",
   "scripts": {
