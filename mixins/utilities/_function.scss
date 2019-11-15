@@ -75,12 +75,8 @@
 
 //检验全局兼容;
 @function compatibility(){
-    @if( $global-for-ie ){
-        @if( $global-unit == px ){
-            @return true;
-        }@else{
-            @return false;   
-        }
+    @if( $global-for-ie and $global-unit == px ){
+        @return true;
     }@else{
         @return false;
     }

@@ -2,7 +2,6 @@
 =======
 ## 1.0.8 (2019-11-14)
 
-重新修复compatibility()判断全局兼容函数;<br/>
 添加caret-color(input光标):<br/>
 @include c-c($color:#0066cc);
 
