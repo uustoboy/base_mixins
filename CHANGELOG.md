@@ -1,14 +1,15 @@
 更新记录
 =======
-## 1.0.8 (2019-11-14)
+## 1.0.8 (2021-01-06)
+默认兼容老版IE设置false;<br/>
+$global-for-ie：false
 
-添加caret-color(input光标):<br/>
-@include c-c($color:#0066cc);
 
 ## 1.0.7 (2019-05-10)
 
-修复compatibility()判断全局兼容函数bug;
-
+修复compatibility()判断全局兼容函数bug;<br/>
+添加caret-color(input光标):<br/>
+@include c-c($color:#0066cc);<br/>
 ## 1.0.6 (2019-02-01)
 
 修改小程序rpx转值;
