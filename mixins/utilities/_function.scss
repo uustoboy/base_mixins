@@ -2,114 +2,146 @@
 // 函数的混合宏(mixin);
 
 //判断是否为数字;
-@function TestNum( $num1,$num2 ){
-    @if ( not unitless($num1) or not unitless($num2) ){
+@function TestNum($num1, $num2 ) {
+    @if (not unitless($num1) or not unitless($num2)) {
         @debug "其中数值有单位";
         @return false;
     }
-    @if ( type-of($num1) == number and type-of($num1) == number ) {
+
+    @if (type-of($num1)==number and type-of($num1)==number) {
         @return true;
-    }@else{
+    }
+
+    @else {
         @debug "其中有值不数字";
         @return false;
     }
 }
 
 //判断是否为数字返回true/false;
-@function returnNum( $num ){
-    @if( type-of($num) == number ){
+@function returnNum($num ) {
+    @if(type-of($num)==number) {
         @return true;
-    }@else{
+    }
+
+    @else {
         @return false;
     }
 }
 
 //判断是否为字符串;
-@function returnStr( $str,$value ){
-    @if( $value ){
-       @if( ( type-of( $num1 ) == number ) and ( $num1 == $value) ){
-            @warn  "字符串相等";
+@function returnStr($str, $value ) {
+    @if($value ) {
+        @if((type-of($num1 )==number) and ($num1 ==$value)) {
+            @warn "字符串相等";
             @return true;
-        }@else{
-            @warn  "字符串不相等";
+        }
+
+        @else {
+            @warn "字符串不相等";
             @return false;
         }
-    }@else{
-       @if( type-of($num1) == number ){
-            @warn  "非字符串";
+    }
+
+    @else {
+        @if(type-of($num1)==number) {
+            @warn "非字符串";
             @return true;
-        }@else{
-            @warn  "字符串";
+        }
+
+        @else {
+            @warn "字符串";
             @return false;
         }
     }
 }
 
 //四舍五入,保留小数4位;
-@function toRound( $num ){
-	$number : 0;
-	$number : floor($num * 10000)/10000;
-	@return  $number;
+@function toRound($num ) {
+    $number : 0;
+    $number : floor($num * 10000)/10000;
+    @return $number;
 }
 
 //添加单位;
-@function addUnits( $arg1,$arg2... ){
-    $new-args : join( $arg1,$arg2 );
+@function addUnits($arg1, $arg2... ) {
+    $new-args : join($arg1, $arg2 );
     $len : length($new-args );
-	$arr : null;
+    $arr : null;
     $new-arg : null;
     $argUnit : null;
 
     @for $i from 1 through $len {
-        $new-arg : nth( $new-args , $i );
-        @if( type-of($new-arg) == number ){
+        $new-arg : nth($new-args , $i );
 
-            $argUnit : testUnit( $new-arg );
+        @if(type-of($new-arg)==number) {
+
+            $argUnit : testUnit($new-arg );
             $arr : $arr $argUnit;
-        }@else{
+        }
+
+        @else {
             $arr : $arr $new-arg;
         }
-	}
-	@return $arr;
+    }
+
+    @return $arr;
 }
 
 //检验全局兼容;
-@function compatibility(){
-    @if( $global-for-ie and $global-unit == px ){
+@function compatibility() {
+    @if($global-for-ie and $global-unit ==px) {
         @return true;
-    }@else{
+    }
+
+    @else {
         @return false;
     }
 }
 
 //去单位函数;
-@function strip-units($number){
+@function strip-units($number) {
     @return $number / ($number * 0 + 1);
 }
 
 //检验单位;
-@function testUnit( $args ){
-    $filter-units : !important,px,rem,em,rpx,auto,vw,vh,vmin,vmax,fr,deg,cm,PX;
+@function testUnit($args ) {
+    $filter-units : !important, px, rem, em, rpx, auto, vw, vh, vmin, vmax, fr, deg, cm, PX;
+
     @each $o in $filter-units {
-        @if( str-index('#{$args}',$o) ){
+        @if(str-index('#{$args}', $o)) {
             @return $args;
-        }@else if(str-index('#{$args}',k) ){//保持数字不变keep缩写k
-            $new-args : ''+$args+'';
+        }
+
+        @else if(str-index('#{$args}', k)) {
+            //保持数字不变keep缩写k
+            $new-args : '' +$args+'';
             $new-len : (str-length($new-args) - 1);
-            @return unquote(str-slice($new-args,1,$new-len));
+            @return unquote(str-slice($new-args, 1, $new-len));
         }
     }
-    @if( unit( $args ) == '%' or $args == 0 ){
+
+    @if(unit($args )=='%' or $args ==0) {
         @return $args;
-    }@else if( $global-unit == vw ){
-        @return px2vw( $args );
-    }@else if( $global-unit == rem ){
-        @return px2rem( $args );
-    }@else if( $global-unit == rpx ){
-        @return px2rpx( $args );
-    }@else if( unitless( $args ) ){
+    }
+
+    @else if($global-unit ==vw) {
+        @return px2vw($args );
+    }
+
+    @else if($global-unit ==rem) {
+        @return px2rem($args );
+    }
+
+    @else if($global-unit ==rpx) {
+        @return px2rpx($args );
+    }
+
+    @else if(unitless($args )) {
         @return $args+$global-unit;
-    }@else{
+    }
+
+    @else {
         @return $args;
     }
 }

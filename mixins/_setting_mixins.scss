@@ -1,29 +1,31 @@
 @charset "UTF-8";
-//全局设置 
+//全局设置
 
 //版本号:
 $version : 1.0.9;
 
 //兼容老版ie;
-$global-for-ie   :          false;
+$global-for-ie : false;
 
 //css3前缀;
-$vendors          :          webkit moz ms o; //csss前缀;
-$prefixWebkit     :          true !default;   //谷歌前缀:webkit前缀   
-$prefixMozilla    :          true !default;   //火狐前缀:moz前缀
-$prefixMicrosoft  :          true !default;   //IE前缀:ms前缀
-$prefixOpera      :          true !default;   //opera前缀:o前缀
-$prefixNo         :          false !default;  //默认;
+$vendors : webkit moz ms o; //csss前缀;
+$prefixWebkit : true !default; //谷歌前缀:webkit前缀   
+$prefixMozilla : true !default; //火狐前缀:moz前缀
+$prefixMicrosoft : true !default; //IE前缀:ms前缀
+$prefixOpera : true !default; //opera前缀:o前缀
+$prefixNo : false !default; //默认;
 
 //单位;
-$global-unit      :           px;
+$global-unit : px;
 //移动端默认单位大小;
-$designWidth 	  :           640; 
+$designWidth : 640;
 //微信小程序默认单位大小;
-$wxDesignWidth    :           750;
+$wxDesignWidth : 750;
 //移动端vw的width;
-$vmDesignWidth    :           750;
+$vmDesignWidth : 750;
 //移动端vw的height;
-$vmDesignHeight   :           750;
+$vmDesignHeight : 750;
 //移动端vw字体;
-$vmFontSize       :           75;
+$vmFontSize : 75;
+//移动端rem自定义转化公式;
+$remFormula : null;

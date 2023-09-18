@@ -1,4 +1,3 @@
-
 @charset "utf-8";
 // px转rem的混合宏(mixin);
 
@@ -10,35 +9,57 @@
 //		    $designWidth : 640;                                               //
 //			.a{ width : px2rem(100); } /  .a{ @include w(px2rem(100)); }        //
 //////////////////////////////////////////////////////////////////////////////
-@function px2rem( $px , $important:false ){
+@function px2rem($px , $important: false) {
+
 	//处理vw单位中rem;
-	@if( $global-unit == vw ){
-		@return toRound((nth($px,1)/$vmFontSize)*1rem);
+	@if($global-unit ==vw) {
+		@return toRound((nth($px, 1)/$vmFontSize)*1rem);
 	}
+
 	$value : 0;
+
 	//判断是否有单位;
-	@if( not unitless($px) ){
-		//是否最高权限;
-		$value : strip-units($px)*320/$designWidth/20;
-		@if( $important ){
-			@return toRound( $value ) + rem + !important;
+	@if(not unitless($px)) {
+		@if($remFormula) {
+			//是否最高权限;
+			$value : strip-units($px)*($remFormula);
 		}
 
-		@return toRound( $value ) + rem;
-	}@else{
-		//是否最高权限;
-		$value : $px*320/$designWidth/20;
-		@if( $important ){
-			@return toRound( $value ) + rem + !important;
+		@else {
+			//是否最高权限;
+			$value : strip-units($px)*320/$designWidth/20;
 		}
-		@return toRound( $value ) + rem;
+
+		@if($important ) {
+			@return toRound($value )+rem+ !important;
+		}
+
+		@return toRound($value )+rem;
+	}
+
+	@else {
+		@if($remFormula) {
+			//是否最高权限;
+			$value : $px*($remFormula);
+		}
+
+		@else {
+			//是否最高权限;
+			$value : $px*320/$designWidth/20;
+		}
+
+		@if($important ) {
+			@return toRound($value )+rem+ !important;
+		}
+
+		@return toRound($value )+rem;
 	}
 
 }
 
 //简单rem多值转行;
-@function gpx2rem( $px... ){
-   @return addUnits($px...);
+@function gpx2rem($px... ) {
+	@return addUnits($px...);
 }
 
 //微信小程序rpx单位函数同时设置$wxDesignWidth的PSD宽度;
@@ -48,78 +69,96 @@
 //			$wxDesignWidth : 750;                                               //
 //			.a{ width : px2rpx(100); } /  .a{ @include w(px2rpx(100)); }        //
 //////////////////////////////////////////////////////////////////////////////
-@function px2rpx( $px , $important:false ){
+@function px2rpx($px , $important: false) {
 	$value : 0;
+
 	//判断是否有单位;
-	@if( not unitless($px) ){
+	@if(not unitless($px)) {
 		//是否最高权限;
-    	$value : strip-units($px)*750/$wxDesignWidth;
-		@if( $important ){
-			@return toRound( $value ) + rpx + !important;
+		$value : strip-units($px)*750/$wxDesignWidth;
+
+		@if($important ) {
+			@return toRound($value )+rpx+ !important;
 		}
-		@return toRound( $value ) + rpx;
-	}@else{
+
+		@return toRound($value )+rpx;
+	}
+
+	@else {
 		//是否最高权限;
-    	$value : $px*750/$wxDesignWidth;
-		@if( $important ){
-			@return toRound( $value ) + rpx + !important;
+		$value : $px*750/$wxDesignWidth;
+
+		@if($important ) {
+			@return toRound($value )+rpx+ !important;
 		}
-		@return toRound( $value ) + rpx;
+
+		@return toRound($value )+rpx;
 	}
 }
 
 //简单rpx多值转行;
-@function gpx2rpx( $px... ){
-   @return addUnits($px...);
+@function gpx2rpx($px... ) {
+	@return addUnits($px...);
 }
 
 //vw
-@function px2vw( $px , $important:false ){
+@function px2vw($px , $important: false) {
 	$value : 0;
+
 	//判断是否有单位;
-	@if( not unitless($px) ){
+	@if(not unitless($px)) {
 		//是否最高权限;
 		$value : (strip-units($px)/$vmDesignWidth)*100vw;
-		@if( $important ){
-			@return toRound( $value ) + !important;
+
+		@if($important ) {
+			@return toRound($value )+ !important;
 		}
 
-		@return toRound( $value );
-	}@else{
+		@return toRound($value );
+	}
+
+	@else {
 		//是否最高权限;
 		$value : ($px/$vmDesignWidth)*100vw;
-		@if( $important ){
-			@return toRound( $value ) + !important;
+
+		@if($important ) {
+			@return toRound($value )+ !important;
 		}
-		@return toRound( $value );
+
+		@return toRound($value );
 	}
 }
 
 //vh;
-@function vh( $value ) {
-    @return ($value/$vmDesignHeight/100 )*1vh;
+@function vh($value ) {
+	@return ($value/$vmDesignHeight/100)*1vh;
 }
 
 //data-dpr;
 //例子: @include dpr2px(font-size, 32);
-@mixin dpr2px($name, $px){
-    #{$name}: round($px / 2) * 1px;
-    [data-dpr="2"] & {
-        #{name}: $px * 1px;
-    }
-    // for mx3
-    [data-dpr="2.5"] & {
-        #{$name}: round($px * 2.5 / 2) * 1px;
-    }
-    // for 小米note
-    [data-dpr="2.75"] & {
-        #{$name}: round($px * 2.75 / 2) * 1px;
-    }
-    [data-dpr="3"] & {
-        #{$name}: round($px / 2 * 3) * 1px;
-    }
-    // for 三星note4
-    [data-dpr="4"] & {
-        #{$name}: $px * 2px;
-    }
+@mixin dpr2px($name, $px) {
+	#{$name}: round($px / 2) * 1px;
+
+	[data-dpr="2"] & {
+		#{name}: $px * 1px;
+	}
+
+	// for mx3
+	[data-dpr="2.5"] & {
+		#{$name}: round($px * 2.5 / 2) * 1px;
+	}
+
+	// for 小米note
+	[data-dpr="2.75"] & {
+		#{$name}: round($px * 2.75 / 2) * 1px;
+	}
+
+	[data-dpr="3"] & {
+		#{$name}: round($px / 2 * 3) * 1px;
+	}
+
+	// for 三星note4
+	[data-dpr="4"] & {
+		#{$name}: $px * 2px;
+	}
 }
